@@ -9,6 +9,8 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
 
+const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
 export function Services(): React.JSX.Element {
   const t = useTranslations("Index.Services")
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
@@ -50,14 +52,15 @@ export function Services(): React.JSX.Element {
         {services.map((service, index) => (
           <motion.div
             key={index}
+            layout
             onMouseEnter={() => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
             animate={{ 
               width: activeIndex === null ? "33.33%" : activeIndex === index ? "60%" : "20%" 
             }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: EASE_APPLE }}
             className={cn(
-              "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/5 overflow-hidden transition-colors duration-700 min-h-[200px] lg:min-h-0",
+              "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/5 overflow-hidden transition-colors duration-1000 min-h-[200px] lg:min-h-0",
               activeIndex === index ? service.color : "bg-background"
             )}
           >
@@ -66,18 +69,22 @@ export function Services(): React.JSX.Element {
               
               {/* TOP: ID & LABEL */}
               <div className="flex items-center justify-between overflow-hidden">
-                <span className={cn(
-                  "font-heading text-4xl lg:text-6xl font-black transition-colors duration-500",
-                  activeIndex === index ? service.textColor : "text-brand-primary/20"
-                )}>
+                <motion.span 
+                  layout
+                  className={cn(
+                    "font-heading text-4xl lg:text-6xl font-black transition-colors duration-500",
+                    activeIndex === index ? service.textColor : "text-brand-primary/20"
+                  )}
+                >
                   {service.id}
-                </span>
+                </motion.span>
                 <AnimatePresence>
                   {activeIndex === index && (
                     <motion.span
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.5, ease: EASE_APPLE }}
                       className={cn("text-[10px] font-black uppercase tracking-[0.6em]", service.textColor)}
                     >
                       {service.label}
@@ -91,9 +98,10 @@ export function Services(): React.JSX.Element {
                 {activeIndex !== index ? (
                   <motion.div
                     key="vertical"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.1 }}
+                    transition={{ duration: 0.8, ease: EASE_APPLE }}
                     className="absolute inset-0 flex items-center justify-center pointer-events-none"
                   >
                     <h3 className="font-heading text-5xl lg:text-7xl font-black uppercase tracking-tighter text-foreground/10 lg:rotate-[-90deg] whitespace-nowrap">
@@ -103,41 +111,75 @@ export function Services(): React.JSX.Element {
                 ) : (
                   <motion.div
                     key="horizontal"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { 
+                        opacity: 1,
+                        transition: { 
+                          staggerChildren: 0.1,
+                          delayChildren: 0.2
+                        } 
+                      }
+                    }}
                     className="space-y-12"
                   >
-                    <h3 className={cn("font-heading text-6xl md:text-8xl lg:text-[100px] font-black uppercase tracking-[-0.05em] leading-[0.85]", service.textColor)}>
+                    <motion.h3 
+                      variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.8, ease: EASE_APPLE }}
+                      className={cn("font-heading text-6xl md:text-8xl lg:text-[100px] font-black uppercase tracking-[-0.05em] leading-[0.85]", service.textColor)}
+                    >
                       {service.title}
-                    </h3>
-                    <p className={cn("max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight opacity-80", service.textColor)}>
+                    </motion.h3>
+                    <motion.p 
+                      variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      transition={{ duration: 0.8, ease: EASE_APPLE }}
+                      className={cn("max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight opacity-80", service.textColor)}
+                    >
                       {service.description}
-                    </p>
+                    </motion.p>
                     
-                    <div className={cn(
-                      "h-24 w-24 rounded-full border flex items-center justify-center transition-all duration-700 group cursor-pointer",
-                      service.textColor === "text-white" ? "border-white/20 hover:bg-white hover:text-brand-primary" : "border-background/20 hover:bg-background hover:text-foreground"
-                    )}>
+                    <motion.div 
+                      variants={{
+                        hidden: { opacity: 0, scale: 0.8 },
+                        visible: { opacity: 1, scale: 1 }
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={cn(
+                        "h-24 w-24 rounded-full border flex items-center justify-center transition-all duration-700 group cursor-pointer",
+                        service.textColor === "text-white" ? "border-white/20 hover:bg-white hover:text-brand-primary" : "border-background/20 hover:bg-background hover:text-foreground"
+                      )}
+                    >
                        <ArrowUpRight size={40} weight="bold" />
-                    </div>
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
 
               {/* BOTTOM: FOOTER DETAIL */}
               <div className="flex items-end justify-between">
-                 <div className={cn(
-                   "h-px transition-all duration-700",
-                   activeIndex === index ? "w-full bg-current opacity-20" : "w-12 bg-foreground/10"
-                 )} />
+                 <motion.div 
+                   layout
+                   className={cn(
+                     "h-px transition-all duration-1000",
+                     activeIndex === index ? "w-full bg-current opacity-20" : "w-12 bg-foreground/10"
+                   )} 
+                 />
               </div>
 
             </div>
 
             {/* BACKGROUND TEXTURE (SUBTLE) */}
             <div className={cn(
-              "absolute inset-0 z-0 opacity-10 transition-opacity duration-700",
+              "absolute inset-0 z-0 opacity-10 transition-opacity duration-1000",
               activeIndex === index ? "opacity-20" : "opacity-0"
             )} 
                  style={{ backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
