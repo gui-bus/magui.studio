@@ -26,7 +26,7 @@ export function Footer(): React.JSX.Element {
       <div className="container mx-auto max-w-[1800px] px-6 lg:px-12">
         
         {/* MAIN FOOTER CONTENT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-12 items-start mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-12 items-start mb-48">
           
           {/* BRAND BLOCK */}
           <div className="lg:col-span-5 space-y-16">
@@ -92,6 +92,19 @@ export function Footer(): React.JSX.Element {
             </div>
 
           </div>
+        </div>
+
+        {/* MASSIVE SIGNATURE LOGO - Insany Inspiration */}
+        <div className="relative w-full mb-24 overflow-hidden py-12">
+           <motion.h2 
+             initial={{ opacity: 0, y: 100 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+             className="text-[20vw] font-black leading-none text-foreground uppercase tracking-[-0.08em] select-none text-center"
+           >
+             MAGUI<span className="text-[0.2em] align-top text-brand-primary">®</span>
+           </motion.h2>
         </div>
 
         {/* BOTTOM CREDITS */}
