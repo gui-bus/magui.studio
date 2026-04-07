@@ -1,13 +1,67 @@
 {
   "Index": {
-    "title": "Projeto pronto!",
-    "description": "Você já pode adicionar componentes e começar a construir.",
-    "button": "Botão",
-    "added_component": "Já adicionamos o componente de botão para você."
+    "Hero": {
+      "eyebrow": "Estúdio de Engenharia Visual",
+      "title": "A autoridade digital que seu negócio merece",
+      "description": "Unimos estratégia de elite e design de alta fidelidade para transformar sua presença online em um ativo de alto valor.",
+      "cta": "Solicitar Proposta",
+      "secondary_cta": "Nossos Projetos",
+      "scroll": "Role"
+    },
+    "About": {
+      "title": "O Conceito MAGUI",
+      "description": "Nascido da união entre a precisão técnica da engenharia de software e o design estratégico de interface. Focamos em autoridade, escala e performance.",
+      "stats": [
+        { "label": "Performance", "value": "100/100" },
+        { "label": "Fidelidade", "value": "Pixel Perfect" },
+        { "label": "Arquitetura", "value": "Clean Code" }
+      ]
+    },
+    "Value": {
+      "title": "Se você busca o comum, não somos para você.",
+      "description": "Nascemos para atender empresas que exigem rigor, exclusividade e performance absoluta. Onde outros entregam design, nós entregamos autoridade.",
+      "stats": [
+        { "label": "Conversão Otimizada", "value": "Foco" },
+        { "label": "Design de Elite", "value": "Rigor" },
+        { "label": "Arquitetura Escalável", "value": "Poder" }
+      ]
+    },
+    "Showcase": {
+      "title": "Nosso Padrão de Entrega",
+      "description": "Trabalhamos apenas com marcas que buscam ser referência no que fazem.",
+      "projects": [
+        { "title": "Plataforma de Investimentos", "category": "Estratégia & UX" },
+        { "title": "Sistemas Corporativos", "category": "Performance & Escala" },
+        { "title": "Interfaces de Luxo", "category": "Identidade Visual" }
+      ]
+    },
+    "Services": {
+      "title": "Nossa Atuação",
+      "uiux": {
+        "title": "Estratégia de Interface",
+        "description": "Desenhamos jornadas que guiam o seu cliente até a conversão, sem fricção."
+      },
+      "frontend": {
+        "title": "Sistemas Proprietários",
+        "description": "Construímos ferramentas sob medida, focadas na escala e segurança do seu negócio."
+      },
+      "performance": {
+        "title": "Posicionamento de Marca",
+        "description": "Sua marca no topo dos motores de busca com a velocidade que o mercado exige."
+      }
+    },
+    "CTA": {
+      "title": "Pronto para elevar o nível?",
+      "description": "Fale agora com nossos especialistas e descubra como a MAGUI pode transformar sua empresa.",
+      "button": "Iniciar Projeto"
+    }
   },
   "Locale": {
     "en": "Inglês",
-    "pt": "Português"
+    "pt": "Português",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "it": "Italiano"
   },
   "LanguageSwitcher": {
     "switch_to": "Mudar para {lang}"
@@ -17,25 +71,25 @@
     "dark": "Escuro"
   },
   "Config": {
-    "name": "Template de Landing Page",
-    "description": "Um template profissional de landing page construído com Next.js, Tailwind CSS e shadcn/ui.",
-    "keywords": "Next.js, React, Tailwind CSS, Server Components, Landing Page, Template"
+    "name": "MAGUI.studio",
+    "description": "Estúdio de engenharia visual e interface focado em transformar desafios de negócios em sistemas digitais de alta performance.",
+    "keywords": "Design de Interface, Estratégia Digital, UX/UI, Performance, MAGUI.studio"
   },
   "CookieConsent": {
-    "message": "Usamos cookies para melhorar sua experiência em nosso site.",
+    "message": "Utilizamos cookies para otimizar sua experiência técnica em nosso site.",
     "accept": "Aceitar",
     "decline": "Recusar"
   },
   "Errors": {
     "not_found": {
-      "title": "404 - Página não encontrada",
-      "description": "A página que você está procurando não existe.",
-      "button": "Voltar ao início"
+      "title": "404 - Sistema não localizado",
+      "description": "A rota solicitada não existe em nossa infraestrutura.",
+      "button": "Retornar ao Início"
     },
     "general": {
-      "title": "Algo deu errado!",
-      "description": "Ocorreu um erro inesperado.",
-      "button": "Tentar novamente"
+      "title": "Falha no Sistema!",
+      "description": "Ocorreu um erro inesperado durante o processamento.",
+      "button": "Reiniciar"
     }
   }
 }

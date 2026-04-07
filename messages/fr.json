@@ -1,0 +1,95 @@
+{
+  "Index": {
+    "Hero": {
+      "eyebrow": "Ingénierie Visuelle & Stratégie",
+      "title": "Interfaces haute performance pour systèmes d'élite",
+      "description": "Nous transformons des défis commerciaux complexes en expériences numériques impeccables. Rigueur technique et design stratégique en synchronisation totale.",
+      "cta": "Démarrer le Projet",
+      "secondary_cta": "Voir le Portfolio",
+      "scroll": "Faire défiler"
+    },
+    "About": {
+      "title": "Le Concept MAGUI",
+      "description": "Né de l'union entre la précision technique de l'ingénierie logicielle et la stratégie visuelle du design d'interface. Nous nous concentrons sur l'autorité, l'échelle et la performance.",
+      "stats": [
+        { "label": "Performance", "value": "100/100" },
+        { "label": "Fidélité", "value": "Pixel Perfect" },
+        { "label": "Architecture", "value": "Clean Code" }
+      ]
+    },
+    "Value": {
+      "title": "Si vous cherchez l'ordinaire, nous ne sommes pas pour vous.",
+      "description": "Nous sommes nés pour servir les entreprises qui exigent rigueur, exclusivité et performance absolue. Là où d'autres livrent du design, nous livrons de l'autorité.",
+      "stats": [
+        { "label": "Conversion Optimisée", "value": "Focus" },
+        { "label": "Design d'Élite", "value": "Rigueur" },
+        { "label": "Architecture Évolutive", "value": "Pouvoir" }
+      ]
+    },
+    "Showcase": {
+      "title": "Notre Standard de Livraison",
+      "description": "Nous travaillons uniquement avec des marques qui cherchent à être une référence dans ce qu'elles font.",
+      "projects": [
+        { "title": "Plateforme d'Investissement", "category": "Stratégie & UX" },
+        { "title": "Systèmes Corporatifs", "category": "Performance & Échelle" },
+        { "title": "Interfaces de Luxe", "category": "Identité Visuelle" }
+      ]
+    },
+    "Services": {
+      "title": "Notre Expertise",
+      "uiux": {
+        "title": "Design d'Expérience (UX/UI)",
+        "description": "Interfaces haute fidélité axées sur la conversion et l'autorité de la marque."
+      },
+      "frontend": {
+        "title": "Ingénierie Frontend",
+        "description": "Développement robuste avec Next.js, privilégiant les Core Web Vitals et l'évolutivité."
+      },
+      "performance": {
+        "title": "Optimisation des Performances",
+        "description": "Systèmes rapides, légers et prêts pour le référencement naturel."
+      }
+    },
+    "CTA": {
+      "title": "Prêt à élever votre système ?",
+      "description": "Contactez-nous maintenant et découvrez comment MAGUI peut transformer votre présence numérique.",
+      "button": "Parler avec des Spécialistes"
+    }
+  },
+  "Locale": {
+    "en": "Anglais",
+    "pt": "Portugais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "it": "Italien"
+  },
+  "LanguageSwitcher": {
+    "switch_to": "Passer à {lang}"
+  },
+  "ThemeToggle": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "Config": {
+    "name": "MAGUI.studio",
+    "description": "Studio d'ingénierie visuelle et d'interface axé sur la transformation des défis commerciaux en systèmes numériques haute performance.",
+    "keywords": "Design d'Interface, Ingénierie Logicielle, UX/UI, Next.js, Performance, MAGUI.studio"
+  },
+  "CookieConsent": {
+    "message": "Nous utilisons des cookies pour optimiser votre expérience technique sur notre site.",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
+  "Errors": {
+    "not_found": {
+      "title": "404 - Système non localisé",
+      "description": "La route demandée n'existe pas dans notre infrastructure.",
+      "button": "Retour à l'Accueil"
+    },
+    "general": {
+      "title": "Défaillance du Système !",
+      "description": "Une erreur inattendue s'est produite pendant le traitement.",
+      "button": "Redémarrer"
+    }
+  }
+}

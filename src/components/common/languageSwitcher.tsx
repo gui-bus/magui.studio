@@ -26,6 +26,7 @@ const flagCodes: Record<string, string> = {
   es: "ES",
   de: "DE",
   fr: "FR",
+  it: "IT",
 }
 
 export function LanguageSwitcher(): React.JSX.Element {

@@ -1,13 +1,67 @@
 {
   "Index": {
-    "title": "Project ready!",
-    "description": "You may now add components and start building.",
-    "button": "Button",
-    "added_component": "We've already added the button component for you."
+    "Hero": {
+      "eyebrow": "Visual Engineering & Strategy",
+      "title": "High-performance interfaces for elite systems",
+      "description": "We transform complex business challenges into flawless digital experiences. Technical rigor and strategic design in total sync.",
+      "cta": "Start Project",
+      "secondary_cta": "View Portfolio",
+      "scroll": "Scroll"
+    },
+    "About": {
+      "title": "The MAGUI Concept",
+      "description": "Born from the union between technical software engineering precision and strategic interface design. We focus on authority, scale, and performance.",
+      "stats": [
+        { "label": "Performance", "value": "100/100" },
+        { "label": "Fidelity", "value": "Pixel Perfect" },
+        { "label": "Architecture", "value": "Clean Code" }
+      ]
+    },
+    "Value": {
+      "title": "If you seek the ordinary, we are not for you.",
+      "description": "We exist for companies that demand rigor, exclusivity, and absolute performance. Where others deliver design, we deliver authority.",
+      "stats": [
+        { "label": "Optimized Conversion", "value": "Focus" },
+        { "label": "Elite Design", "value": "Rigor" },
+        { "label": "Scalable Architecture", "value": "Power" }
+      ]
+    },
+    "Showcase": {
+      "title": "Our Delivery Standard",
+      "description": "We work only with brands that seek to be a reference in what they do.",
+      "projects": [
+        { "title": "Investment Platform", "category": "Strategy & UX" },
+        { "title": "Corporate Systems", "category": "Performance & Scale" },
+        { "title": "Luxury Interfaces", "category": "Visual Identity" }
+      ]
+    },
+    "Services": {
+      "title": "Our Expertise",
+      "uiux": {
+        "title": "Experience Design (UX/UI)",
+        "description": "High-fidelity interfaces focused on conversion and brand authority."
+      },
+      "frontend": {
+        "title": "Frontend Engineering",
+        "description": "Robust development with Next.js, prioritizing Core Web Vitals and scalability."
+      },
+      "performance": {
+        "title": "Performance Optimization",
+        "description": "Fast, lightweight systems prepared for search engine rankings."
+      }
+    },
+    "CTA": {
+      "title": "Ready to elevate your system?",
+      "description": "Contact us now and discover how MAGUI can transform your digital presence.",
+      "button": "Talk to Specialists"
+    }
   },
   "Locale": {
     "en": "English",
-    "pt": "Portuguese"
+    "pt": "Portuguese",
+    "es": "Spanish",
+    "fr": "French",
+    "it": "Italian"
   },
   "LanguageSwitcher": {
     "switch_to": "Switch to {lang}"
@@ -17,25 +71,25 @@
     "dark": "Dark"
   },
   "Config": {
-    "name": "Landing Page Template",
-    "description": "A professional landing page template built with Next.js, Tailwind CSS and shadcn/ui.",
-    "keywords": "Next.js, React, Tailwind CSS, Server Components, Landing Page, Template"
+    "name": "MAGUI.studio",
+    "description": "Visual engineering and interface studio focused on transforming business challenges into high-performance digital systems.",
+    "keywords": "Interface Design, Software Engineering, UX/UI, Next.js, Performance, MAGUI.studio"
   },
   "CookieConsent": {
-    "message": "We use cookies to improve your experience on our site.",
+    "message": "We use cookies to optimize your technical experience on our site.",
     "accept": "Accept",
     "decline": "Decline"
   },
   "Errors": {
     "not_found": {
-      "title": "404 - Page Not Found",
-      "description": "The page you are looking for does not exist.",
-      "button": "Back to Home"
+      "title": "404 - System not located",
+      "description": "The requested route does not exist in our infrastructure.",
+      "button": "Return Home"
     },
     "general": {
-      "title": "Something went wrong!",
-      "description": "An unexpected error occurred.",
-      "button": "Try again"
+      "title": "System Failure!",
+      "description": "An unexpected error occurred during processing.",
+      "button": "Restart"
     }
   }
 }

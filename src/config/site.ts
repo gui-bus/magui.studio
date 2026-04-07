@@ -1,25 +1,25 @@
 import { env } from "./env"
 
 export const siteConfig = {
-  name: "Landing Page Template",
-  shortName: "LandingTemplate",
+  name: "MAGUI.studio",
+  shortName: "MAGUI",
   url: env.NEXT_PUBLIC_SITE_URL,
   ogImage: `${env.NEXT_PUBLIC_SITE_URL}/og.png`,
   authors: [
     {
-      name: "Guilherme Bustamante",
-      url: "https://github.com/bustamante-gui",
+      name: "MAGUI.studio",
+      url: "https://magui.studio",
     },
   ],
-  creator: "Guilherme Bustamante",
+  creator: "MAGUI.studio",
   links: {
-    twitter: "https://twitter.com/example",
-    github: "https://github.com/example",
+    twitter: "https://twitter.com/maguistudio",
+    github: "https://github.com/maguistudio",
   },
   contact: {
-    email: "contact@example.com",
+    email: "contato@magui.studio",
   },
-  locales: ["pt", "en"],
+  locales: ["pt", "en", "es", "fr", "it"],
   defaultLocale: "pt",
   analytics: {
     google: env.NEXT_PUBLIC_GA_ID || "",

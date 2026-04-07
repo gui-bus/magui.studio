@@ -1,0 +1,95 @@
+{
+  "Index": {
+    "Hero": {
+      "eyebrow": "Ingegneria Visiva e Strategia",
+      "title": "Interfacce ad alte prestazioni per sistemi d'élite",
+      "description": "Trasformiamo sfide aziendali complesse in esperienze digitali impeccabili. Rigore tecnico e design strategico in totale sincronia.",
+      "cta": "Inizia Progetto",
+      "secondary_cta": "Vedi Portfolio",
+      "scroll": "Scorri"
+    },
+    "About": {
+      "title": "Il Concetto MAGUI",
+      "description": "Nato dall'unione tra la precisione tecnica dell'ingegneria del software e la strategia visiva del design delle interfacce. Ci concentriamo su autorità, scala e prestazioni.",
+      "stats": [
+        { "label": "Prestazioni", "value": "100/100" },
+        { "label": "Fedeltà", "value": "Pixel Perfect" },
+        { "label": "Architettura", "value": "Clean Code" }
+      ]
+    },
+    "Value": {
+      "title": "Se cerchi l'ordinario, non facciamo per te.",
+      "description": "Siamo nati per servire aziende che esigono rigore, esclusività e prestazioni assolute. Dove altri offrono design, noi offriamo autorità.",
+      "stats": [
+        { "label": "Conversione Ottimizzata", "value": "Focus" },
+        { "label": "Design d'Élite", "value": "Rigore" },
+        { "label": "Architettura Scalabile", "value": "Potere" }
+      ]
+    },
+    "Showcase": {
+      "title": "Il Nostro Standard di Consegna",
+      "description": "Lavoriamo solo con marchi che cercano di essere un punto di riferimento in quello che fanno.",
+      "projects": [
+        { "title": "Piattaforma di Investimento", "category": "Strategia & UX" },
+        { "title": "Sistemi Aziendali", "category": "Prestazioni & Scala" },
+        { "title": "Interfacce di Lusso", "category": "Identità Visiva" }
+      ]
+    },
+    "Services": {
+      "title": "La Nostra Esperienza",
+      "uiux": {
+        "title": "Design dell'Esperienza (UX/UI)",
+        "description": "Interfacce ad alta fedeltà focalizzate sulla conversione e sull'autorità del marchio."
+      },
+      "frontend": {
+        "title": "Ingegneria Frontend",
+        "description": "Sviluppo robusto con Next.js, dando priorità ai Core Web Vitals e alla scalabilità."
+      },
+      "performance": {
+        "title": "Ottimizzazione delle Prestazioni",
+        "description": "Sistemi veloci, leggeri e pronti per il posizionamento sui motori di ricerca."
+      }
+    },
+    "CTA": {
+      "title": "Pronto a elevare il tuo sistema?",
+      "description": "Contattaci ora e scopri come MAGUI può trasformare la tua presenza digitale.",
+      "button": "Parla con gli Specialisti"
+    }
+  },
+  "Locale": {
+    "en": "Inglese",
+    "pt": "Portoghese",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "it": "Italiano"
+  },
+  "LanguageSwitcher": {
+    "switch_to": "Passa a {lang}"
+  },
+  "ThemeToggle": {
+    "light": "Chiaro",
+    "dark": "Oscuro"
+  },
+  "Config": {
+    "name": "MAGUI.studio",
+    "description": "Studio di ingegneria visiva e interfacce focalizzato sulla trasformazione delle sfide aziendali in sistemi digitali ad alte prestazioni.",
+    "keywords": "Design delle Interfacce, Ingegneria del Software, UX/UI, Next.js, Prestazioni, MAGUI.studio"
+  },
+  "CookieConsent": {
+    "message": "Utilizziamo i cookie per ottimizzare la tua esperienza tecnica sul nostro sito.",
+    "accept": "Accetta",
+    "decline": "Rifiuta"
+  },
+  "Errors": {
+    "not_found": {
+      "title": "404 - Sistema non localizzato",
+      "description": "Il percorso richiesto non esiste nella nostra infrastruttura.",
+      "button": "Torna alla Home"
+    },
+    "general": {
+      "title": "Guasto al Sistema!",
+      "description": "Si è verificato un errore imprevisto durante l'elaborazione.",
+      "button": "Riavvia"
+    }
+  }
+}

@@ -1,14 +1,16 @@
-import { Geist_Mono, Montserrat, Outfit } from "next/font/google"
+import { Geist_Mono, Montserrat, Lexend } from "next/font/google"
 
-const fontHeading = Outfit({
+const fontHeading = Lexend({
   subsets: ["latin"],
   variable: "--font-heading",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 })
 
 const fontSans = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 })
 
