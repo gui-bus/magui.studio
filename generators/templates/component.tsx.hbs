@@ -1,0 +1,15 @@
+import * as React from "react";
+import { cn } from "@/src/lib/utils/utils";
+
+interface {{pascalCase name}}Props {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function {{pascalCase name}}({ className, children }: {{pascalCase name}}Props): React.JSX.Element {
+  return (
+    <div className={cn("", className)}>
+      {children}
+    </div>
+  );
+}

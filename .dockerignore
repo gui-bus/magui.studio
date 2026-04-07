@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.vscode
+.github
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+pnpm-lock.yaml
+Dockerfile
+docker-compose.yml
+README.md

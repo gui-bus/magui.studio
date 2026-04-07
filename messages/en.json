@@ -1,0 +1,41 @@
+{
+  "Index": {
+    "title": "Project ready!",
+    "description": "You may now add components and start building.",
+    "button": "Button",
+    "added_component": "We've already added the button component for you."
+  },
+  "Locale": {
+    "en": "English",
+    "pt": "Portuguese"
+  },
+  "LanguageSwitcher": {
+    "switch_to": "Switch to {lang}"
+  },
+  "ThemeToggle": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "Config": {
+    "name": "Landing Page Template",
+    "description": "A professional landing page template built with Next.js, Tailwind CSS and shadcn/ui.",
+    "keywords": "Next.js, React, Tailwind CSS, Server Components, Landing Page, Template"
+  },
+  "CookieConsent": {
+    "message": "We use cookies to improve your experience on our site.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "Errors": {
+    "not_found": {
+      "title": "404 - Page Not Found",
+      "description": "The page you are looking for does not exist.",
+      "button": "Back to Home"
+    },
+    "general": {
+      "title": "Something went wrong!",
+      "description": "An unexpected error occurred.",
+      "button": "Try again"
+    }
+  }
+}
