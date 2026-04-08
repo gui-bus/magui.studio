@@ -14,6 +14,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function Showcase(): React.JSX.Element {
   const t = useTranslations("Index.Showcase")
+  const idT = useTranslations("Index.Ids")
   const projects = t.raw("projects") as { title: string }[]
   const [activeIndex, setActiveIndex] = React.useState(0)
 
@@ -38,7 +39,10 @@ export function Showcase(): React.JSX.Element {
   }
 
   return (
-    <section id="portfolio" className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24">
+    <section 
+      id={idT("portfolio")}
+      className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24"
+    >
       <div className="mx-auto max-w-7xl">
         
         {/* SECTION HEADER */}

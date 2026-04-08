@@ -14,6 +14,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function Hero(): React.JSX.Element {
   const t = useTranslations("Index.Hero")
+  const idT = useTranslations("Index.Ids")
   const [mounted, setMounted] = React.useState(false)
 
   // Item 7: Background Spotlight
@@ -58,6 +59,7 @@ export function Hero(): React.JSX.Element {
 
   return (
     <section 
+      id={idT("hero")}
       onMouseMove={handleMouseMove}
       className="relative w-full overflow-hidden bg-background"
     >

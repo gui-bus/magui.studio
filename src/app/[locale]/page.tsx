@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { About } from "@/src/components/sections/about"
-import { CTA } from "@/src/components/sections/cta"
+import { Contact } from "@/src/components/sections/contact"
 import { FAQ } from "@/src/components/sections/faq"
 import { Hero } from "@/src/components/sections/hero"
 import { Process } from "@/src/components/sections/process"
@@ -11,10 +11,12 @@ import { Value } from "@/src/components/sections/value"
 
 import { Footer } from "@/src/components/common/footer"
 import { Header } from "@/src/components/common/header"
+import { ScrollSpy } from "@/src/components/common/scrollSpy"
 
 export default function Page(): React.JSX.Element {
   return (
     <div className="relative min-h-svh w-full bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary overflow-x-hidden">
+      <ScrollSpy />
       <Header />
       <main>
         <Hero />
@@ -24,7 +26,7 @@ export default function Page(): React.JSX.Element {
         <Services />
         <Process />
         <FAQ />
-        <CTA />
+        <Contact />
       </main>
       <Footer />
     </div>

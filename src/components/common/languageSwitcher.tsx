@@ -3,10 +3,10 @@
 import * as React from "react"
 
 import { useLocale, useTranslations } from "next-intl"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 import { locales } from "@/src/i18n/config"
-import { CaretDownIcon, CheckIcon } from "@phosphor-icons/react"
+import { CaretDown, Check } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
 import Cookies from "js-cookie"
 import ReactCountryFlag from "react-country-flag"
@@ -23,29 +23,28 @@ import { cn } from "@/src/lib/utils/utils"
 const flagCodes: Record<string, string> = {
   en: "US",
   pt: "BR",
-  es: "ES",
-  de: "DE",
-  fr: "FR",
-  it: "IT",
 }
 
 export function LanguageSwitcher(): React.JSX.Element {
   const t = useTranslations("Locale")
   const currentLocale = useLocale()
   const router = useRouter()
+  const pathname = usePathname()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    const timer = requestAnimationFrame(() => {
-      setMounted(true)
-    })
-    return () => cancelAnimationFrame(timer)
+    setMounted(true)
   }, [])
 
   const handleLocaleChange = (newLocale: string): void => {
     if (newLocale === currentLocale) return
+    
     Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 })
-    router.refresh()
+    
+    // Redirect to the same path but with the new locale
+    // next-intl pattern for [locale] routing
+    const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`)
+    router.push(newPath)
   }
 
   if (!mounted) {
@@ -65,12 +64,13 @@ export function LanguageSwitcher(): React.JSX.Element {
               className="rounded-[2px] opacity-90 grayscale-[0.2] transition-all group-hover:grayscale-0"
               style={{ width: "1.1em", height: "0.8em" }}
             />
-            <span className="text-xs font-medium text-muted-foreground uppercase transition-colors group-hover:text-foreground">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors group-hover:text-foreground">
               {currentLocale}
             </span>
           </div>
-          <CaretDownIcon
+          <CaretDown
             size={12}
+            weight="bold"
             className="text-muted-foreground/60 transition-colors group-hover:text-foreground"
           />
         </div>
@@ -88,7 +88,7 @@ export function LanguageSwitcher(): React.JSX.Element {
             className={cn(
               "group mb-0.5 flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-2 text-sm transition-all last:mb-0",
               currentLocale === loc
-                ? "bg-muted font-medium text-foreground"
+                ? "bg-muted font-bold text-brand-primary"
                 : "text-muted-foreground hover:bg-muted/40 hover:text-foreground"
             )}
           >
@@ -104,7 +104,7 @@ export function LanguageSwitcher(): React.JSX.Element {
                 )}
                 style={{ width: "1.2em", height: "0.9em" }}
               />
-              <span className="tracking-tight">{t(loc)}</span>
+              <span className="font-bold tracking-tight">{t(loc)}</span>
             </div>
             {currentLocale === loc && (
               <motion.div
@@ -112,10 +112,10 @@ export function LanguageSwitcher(): React.JSX.Element {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                <CheckIcon
+                <Check
                   weight="bold"
                   size={12}
-                  className="text-foreground/70"
+                  className="text-brand-primary"
                 />
               </motion.div>
             )}

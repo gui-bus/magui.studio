@@ -1,5 +1,21 @@
 {
   "Index": {
+    "Ids": {
+      "hero": "home",
+      "value": "disciplines",
+      "about": "manifesto",
+      "portfolio": "portfolio",
+      "services": "expertise",
+      "process": "process",
+      "faq": "inquiries",
+      "contact": "contact"
+    },
+    "Nav": {
+      "portfolio": "Portfolio",
+      "services": "Expertise",
+      "about": "Studio",
+      "faq": "Inquiries"
+    },
     "Hero": {
       "eyebrow": "Visual Strategy Studio",
       "title_1": "Elite",
@@ -137,7 +153,8 @@
     "availability": "Available for International Projects",
     "credits": "© {year} MAGUI.studio",
     "policy": "Privacy Policy",
-    "standard": "Digital Authority Standard"
+    "standard": "Digital Authority Standard",
+    "back_to_top": "Back to Top"
   },
   "Locale": {
     "en": "English",

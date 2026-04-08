@@ -11,8 +11,9 @@ import { Button } from "@/src/components/ui/button"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-export function CTA(): React.JSX.Element {
+export function Contact(): React.JSX.Element {
   const t = useTranslations("Index.CTA")
+  const idT = useTranslations("Index.Ids")
   const containerRef = React.useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -23,7 +24,11 @@ export function CTA(): React.JSX.Element {
   const xParallax = useTransform(scrollYProgress, [0, 1], [0, -200])
 
   return (
-    <section ref={containerRef} className="relative w-full py-48 lg:py-72 overflow-hidden bg-background border-t border-foreground/5">
+    <section 
+      id={idT("contact")}
+      ref={containerRef} 
+      className="relative w-full py-48 lg:py-72 overflow-hidden bg-background border-t border-foreground/5"
+    >
       {/* NOISE OVERLAY - Premium Texture */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05]" 
            style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />

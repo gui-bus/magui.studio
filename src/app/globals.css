@@ -53,6 +53,9 @@
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   body {
     @apply bg-background text-foreground antialiased selection:bg-brand-primary/20 selection:text-brand-primary;
     }

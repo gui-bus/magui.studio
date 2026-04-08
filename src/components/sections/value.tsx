@@ -13,6 +13,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function Value(): React.JSX.Element {
   const t = useTranslations("Index.Value")
+  const idT = useTranslations("Index.Ids")
   const containerRef = React.useRef<HTMLDivElement>(null)
   
   // Item 6: Spotlight Effect
@@ -58,6 +59,7 @@ export function Value(): React.JSX.Element {
 
   return (
     <section 
+      id={idT("value")}
       ref={containerRef} 
       onMouseMove={handleMouseMove}
       className="relative w-full bg-background pt-32 pb-64 overflow-hidden border-t border-foreground/5"

@@ -12,6 +12,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function Process(): React.JSX.Element {
   const t = useTranslations("Index.Process")
+  const idT = useTranslations("Index.Ids")
   const steps = t.raw("steps") as { title: string; description: string }[]
 
   const renderStaggeredText = (text: string, delayBase: number = 0) => {
@@ -35,7 +36,10 @@ export function Process(): React.JSX.Element {
   }
 
   return (
-    <section className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24">
+    <section 
+      id={idT("process")}
+      className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24"
+    >
       <div className="mx-auto max-w-7xl">
         
         {/* SECTION HEADER */}

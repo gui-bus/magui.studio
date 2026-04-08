@@ -1,5 +1,21 @@
 {
   "Index": {
+    "Ids": {
+      "hero": "inicio",
+      "value": "disciplinas",
+      "about": "manifesto",
+      "portfolio": "portfolio",
+      "services": "expertise",
+      "process": "processo",
+      "faq": "duvidas",
+      "contact": "contato"
+    },
+    "Nav": {
+      "portfolio": "Portfólio",
+      "services": "Expertise",
+      "about": "O Estúdio",
+      "faq": "Dúvidas"
+    },
     "Hero": {
       "eyebrow": "Studio de Estratégia Visual",
       "title_1": "Design de",
@@ -137,10 +153,11 @@
     "availability": "Disponível para Projetos Internacionais",
     "credits": "© {year} MAGUI.studio",
     "policy": "Política de Privacidade",
-    "standard": "Padrão de Autoridade Digital"
+    "standard": "Padrão de Autoridade Digital",
+    "back_to_top": "Voltar ao Topo"
   },
   "Locale": {
-    "en": "English",
+    "en": "Inglês",
     "pt": "Português"
   },
   "LanguageSwitcher": {

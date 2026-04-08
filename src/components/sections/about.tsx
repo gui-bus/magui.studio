@@ -10,6 +10,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function About(): React.JSX.Element {
   const t = useTranslations("Index.About")
+  const idT = useTranslations("Index.Ids")
   const containerRef = React.useRef<HTMLDivElement>(null)
 
   // Item 5: Background Spotlight
@@ -48,6 +49,7 @@ export function About(): React.JSX.Element {
 
   return (
     <section 
+      id={idT("about")}
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative w-full py-48 lg:py-64 px-6 md:px-12 lg:px-24 bg-background overflow-hidden"

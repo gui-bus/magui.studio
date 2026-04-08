@@ -13,11 +13,15 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function FAQ(): React.JSX.Element {
   const t = useTranslations("Index.FAQ")
+  const idT = useTranslations("Index.Ids")
   const items = t.raw("items") as { question: string; answer: string }[]
   const [openIndex, setOpenIndex] = React.useState<number | null>(0)
 
   return (
-    <section className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24">
+    <section 
+      id={idT("faq")}
+      className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24"
+    >
       <div className="mx-auto max-w-5xl">
         
         {/* SECTION HEADER - Refined */}

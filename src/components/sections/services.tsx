@@ -13,6 +13,7 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export function Services(): React.JSX.Element {
   const t = useTranslations("Index.Services")
+  const idT = useTranslations("Index.Ids")
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
   
   const services = [
@@ -43,7 +44,7 @@ export function Services(): React.JSX.Element {
   ]
 
   return (
-    <section id="services" className="relative w-full bg-background overflow-hidden border-y border-foreground/5">
+    <section id={idT("services")} className="relative w-full bg-background overflow-hidden border-y border-foreground/5">
       {/* NOISE OVERLAY - Premium Texture */}
       <div className="pointer-events-none absolute inset-0 z-50 opacity-[0.03] dark:opacity-[0.05]" 
            style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />
