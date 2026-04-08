@@ -6,7 +6,7 @@ import Link from "next/link"
 
 import { useTranslations } from "next-intl"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { m, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
 
 import { LanguageSwitcher } from "@/src/components/common/languageSwitcher"
@@ -14,7 +14,7 @@ import { ThemeToggle } from "@/src/components/common/themeToggle"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-export function Header(): React.JSX.Element {
+export const Header = React.memo(function Header(): React.JSX.Element {
   const t = useTranslations("Index.Nav")
   const idT = useTranslations("Index.Ids")
   const { resolvedTheme } = useTheme()
@@ -23,6 +23,9 @@ export function Header(): React.JSX.Element {
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => {
     setMounted(true)
+  }, [])
+
+  React.useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
     } else {
@@ -30,22 +33,24 @@ export function Header(): React.JSX.Element {
     }
   }, [isOpen])
 
-  const logoSrc = resolvedTheme === "dark" 
-    ? "/Logos/LOGO_VAR_02_DM.png" 
-    : "/Logos/LOGO_VAR_02_LM.png"
+  const logoSrc = React.useMemo(() => 
+    resolvedTheme === "dark" 
+      ? "/Logos/LOGO_VAR_02_DM.png" 
+      : "/Logos/LOGO_VAR_02_LM.png"
+  , [resolvedTheme])
 
-  const navLinks = [
+  const navLinks = React.useMemo(() => [
     { href: `#${idT("portfolio")}`, label: t("portfolio") },
     { href: `#${idT("services")}`, label: t("services") },
     { href: `#${idT("about")}`, label: t("about") },
     { href: `#${idT("faq")}`, label: t("faq") },
-  ]
+  ], [idT, t])
 
   return (
     <>
       <header className="relative w-full z-[100] flex h-32 items-center justify-between px-6 md:px-12 lg:px-24 border-b border-foreground/5 bg-background">
         {/* LOGO */}
-        <Link href="/" className="relative z-[110] flex items-center h-full">
+        <Link href="/" className="relative z-[110] flex items-center h-full" aria-label="MAGUI.studio Home">
           {mounted && (
             <Image 
               src={logoSrc} 
@@ -60,7 +65,7 @@ export function Header(): React.JSX.Element {
 
         {/* DESKTOP NAV */}
         <div className="flex items-center gap-12">
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-10" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <Link 
                 key={link.href} 
@@ -68,7 +73,7 @@ export function Header(): React.JSX.Element {
                 className="group relative text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40 hover:text-brand-primary transition-colors duration-500"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-primary transition-all duration-500 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-primary transition-all duration-500 group-hover:w-full" aria-hidden="true" />
               </Link>
             ))}
           </nav>
@@ -81,20 +86,25 @@ export function Header(): React.JSX.Element {
           {/* MOBILE MENU TOGGLE */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden relative z-[110] h-10 w-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
-            aria-label="Toggle Menu"
+            className="lg:hidden relative z-[110] h-10 w-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
+            aria-label={isOpen ? "Close Menu" : "Open Menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            <motion.span 
+            <m.span 
               animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 4 : 0 }}
               className="h-[2px] w-6 bg-foreground rounded-full origin-center"
+              aria-hidden="true"
             />
-            <motion.span 
+            <m.span 
               animate={{ opacity: isOpen ? 0 : 1, x: isOpen ? 10 : 0 }}
               className="h-[2px] w-6 bg-foreground rounded-full"
+              aria-hidden="true"
             />
-            <motion.span 
+            <m.span 
               animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -4 : 0 }}
               className="h-[2px] w-6 bg-foreground rounded-full origin-center"
+              aria-hidden="true"
             />
           </button>
         </div>
@@ -103,7 +113,11 @@ export function Header(): React.JSX.Element {
       {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation"
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
@@ -112,7 +126,7 @@ export function Header(): React.JSX.Element {
           >
             <nav className="flex flex-col gap-8">
               {navLinks.map((link, i) => (
-                <motion.div
+                <m.div
                   key={link.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -126,11 +140,11 @@ export function Header(): React.JSX.Element {
                   >
                     {link.label}
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
             </nav>
 
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -138,10 +152,10 @@ export function Header(): React.JSX.Element {
             >
               <LanguageSwitcher />
               <ThemeToggle />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>
   )
-}
+})

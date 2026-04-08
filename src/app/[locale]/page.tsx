@@ -1,17 +1,19 @@
 import * as React from "react"
+import dynamic from "next/dynamic"
 
-import { About } from "@/src/components/sections/about"
-import { Contact } from "@/src/components/sections/contact"
-import { FAQ } from "@/src/components/sections/faq"
 import { Hero } from "@/src/components/sections/hero"
-import { Process } from "@/src/components/sections/process"
-import { Services } from "@/src/components/sections/services"
-import { Showcase } from "@/src/components/sections/showcase"
 import { Value } from "@/src/components/sections/value"
-
-import { Footer } from "@/src/components/common/footer"
 import { Header } from "@/src/components/common/header"
+import { Footer } from "@/src/components/common/footer"
 import { ScrollSpy } from "@/src/components/common/scrollSpy"
+
+// Dynamic imports for sections below the fold to improve LCP and TBT
+const About = dynamic(() => import("@/src/components/sections/about").then(mod => mod.About))
+const Showcase = dynamic(() => import("@/src/components/sections/showcase").then(mod => mod.Showcase))
+const Services = dynamic(() => import("@/src/components/sections/services").then(mod => mod.Services))
+const Process = dynamic(() => import("@/src/components/sections/process").then(mod => mod.Process))
+const FAQ = dynamic(() => import("@/src/components/sections/faq").then(mod => mod.FAQ))
+const Contact = dynamic(() => import("@/src/components/sections/contact").then(mod => mod.Contact))
 
 export default function Page(): React.JSX.Element {
   return (

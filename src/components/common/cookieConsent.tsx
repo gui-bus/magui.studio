@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { useTranslations } from "next-intl"
 
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, m } from "framer-motion"
 import Cookies from "js-cookie"
 
 import { Button } from "@/src/components/ui/button"
@@ -29,7 +29,7 @@ export function CookieConsent(): React.JSX.Element | null {
   return (
     <AnimatePresence>
       {showBanner && (
-        <motion.div
+        <m.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
@@ -55,7 +55,7 @@ export function CookieConsent(): React.JSX.Element | null {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

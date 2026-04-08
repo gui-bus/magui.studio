@@ -7,7 +7,7 @@ import { useRouter, usePathname } from "next/navigation"
 
 import { locales } from "@/src/i18n/config"
 import { CaretDown, Check } from "@phosphor-icons/react"
-import { motion } from "framer-motion"
+import { m, AnimatePresence } from "framer-motion"
 import Cookies from "js-cookie"
 import ReactCountryFlag from "react-country-flag"
 
@@ -36,16 +36,12 @@ export function LanguageSwitcher(): React.JSX.Element {
     setMounted(true)
   }, [])
 
-  const handleLocaleChange = (newLocale: string): void => {
+  const handleLocaleChange = React.useCallback((newLocale: string): void => {
     if (newLocale === currentLocale) return
-    
     Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 })
-    
-    // Redirect to the same path but with the new locale
-    // next-intl pattern for [locale] routing
     const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`)
     router.push(newPath)
-  }
+  }, [currentLocale, pathname, router])
 
   if (!mounted) {
     return (
@@ -79,7 +75,7 @@ export function LanguageSwitcher(): React.JSX.Element {
       <DropdownMenuContent
         align="end"
         sideOffset={8}
-        className="z-110 w-40 animate-in rounded-2xl border border-border/60 bg-background/95 p-1.5 shadow-xl shadow-black/5 backdrop-blur-xl duration-200 zoom-in-95 fade-in"
+        className="z-110 w-40 rounded-2xl border border-border/60 bg-background/95 p-1.5 shadow-xl shadow-black/5 backdrop-blur-xl"
       >
         {locales.map((loc) => (
           <DropdownMenuItem
@@ -107,7 +103,7 @@ export function LanguageSwitcher(): React.JSX.Element {
               <span className="font-bold tracking-tight">{t(loc)}</span>
             </div>
             {currentLocale === loc && (
-              <motion.div
+              <m.div
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -117,7 +113,7 @@ export function LanguageSwitcher(): React.JSX.Element {
                   size={12}
                   className="text-brand-primary"
                 />
-              </motion.div>
+              </m.div>
             )}
           </DropdownMenuItem>
         ))}

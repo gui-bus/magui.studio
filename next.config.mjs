@@ -9,6 +9,9 @@ const analyzer = withBundleAnalyzer({
 
 const nextConfig = {
   output: "standalone",
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react", "framer-motion"],
+  },
   images: {
     remotePatterns: [
       {

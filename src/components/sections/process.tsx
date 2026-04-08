@@ -4,9 +4,10 @@ import * as React from "react"
 
 import { useTranslations } from "next-intl"
 
-import { motion } from "framer-motion"
+import { m } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
+import { StaggeredText } from "@/src/components/ui/staggeredText"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -14,26 +15,6 @@ export function Process(): React.JSX.Element {
   const t = useTranslations("Index.Process")
   const idT = useTranslations("Index.Ids")
   const steps = t.raw("steps") as { title: string; description: string }[]
-
-  const renderStaggeredText = (text: string, delayBase: number = 0) => {
-    return text.split(" ").map((word, i) => (
-      <span key={i} className="inline-block overflow-hidden mr-[0.2em] last:mr-0">
-        <motion.span
-          initial={{ y: "100%" }}
-          whileInView={{ y: 0 }}
-          viewport={{ once: true }}
-          transition={{ 
-            duration: 1.2, 
-            ease: EASE_APPLE, 
-            delay: delayBase + (i * 0.08) 
-          }}
-          className="inline-block"
-        >
-          {word}
-        </motion.span>
-      </span>
-    ))
-  }
 
   return (
     <section 
@@ -44,7 +25,7 @@ export function Process(): React.JSX.Element {
         
         {/* SECTION HEADER */}
         <div className="mb-32 lg:mb-48 text-center space-y-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -56,18 +37,17 @@ export function Process(): React.JSX.Element {
               Protocol V4.0
             </span>
             <div className="h-px w-8 bg-brand-primary/30" />
-          </motion.div>
+          </m.div>
           <h2 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-black leading-none tracking-tight text-foreground uppercase">
-            {renderStaggeredText(t("title"))}
+            <StaggeredText text={t("title")} />
           </h2>
         </div>
 
-        {/* TIMELINE FLOW - Unique Architectural Design */}
+        {/* TIMELINE FLOW */}
         <div className="relative">
           
-          {/* Main Connecting Line */}
           <div className="absolute top-0 left-[15px] md:left-0 md:top-12 w-px h-full md:w-full md:h-px bg-foreground/5 overflow-hidden">
-            <motion.div 
+            <m.div 
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -97,17 +77,16 @@ function StepNode({ step, index }: { step: any, index: number }): React.JSX.Elem
       onMouseLeave={() => setIsHovered(false)}
       className="relative pt-0 md:pt-24 group"
     >
-      {/* Node Marker */}
       <div className="absolute top-0 left-0 md:left-0 md:top-12 -translate-y-1/2 md:-translate-x-0">
         <div className="relative flex items-center justify-center h-8 w-8">
-          <motion.div 
+          <m.div 
             animate={{ 
               scale: isHovered ? 1.5 : 1,
               backgroundColor: isHovered ? "var(--brand-primary)" : "transparent"
             }}
             className="absolute inset-0 rounded-full border border-brand-primary/30"
           />
-          <motion.div 
+          <m.div 
             animate={{ 
               scale: isHovered ? 0.5 : 1,
               backgroundColor: isHovered ? "white" : "var(--brand-primary)"
@@ -115,9 +94,8 @@ function StepNode({ step, index }: { step: any, index: number }): React.JSX.Elem
             className="h-2 w-2 rounded-full" 
           />
           
-          {/* Pulse Effect */}
           {isHovered && (
-            <motion.div 
+            <m.div 
               initial={{ scale: 1, opacity: 0.5 }}
               animate={{ scale: 3, opacity: 0 }}
               transition={{ duration: 1, repeat: Infinity }}
@@ -127,8 +105,7 @@ function StepNode({ step, index }: { step: any, index: number }): React.JSX.Elem
         </div>
       </div>
 
-      {/* Content */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -151,15 +128,14 @@ function StepNode({ step, index }: { step: any, index: number }): React.JSX.Elem
           {step.description}
         </p>
 
-        {/* Modular Detail */}
         <div className="pt-4 overflow-hidden">
-          <motion.div 
+          <m.div 
             animate={{ x: isHovered ? 0 : "-100%" }}
             transition={{ duration: 0.5, ease: EASE_APPLE }}
             className="h-px w-12 bg-brand-primary"
           />
         </div>
-      </motion.div>
+      </m.div>
     </div>
   )
 }

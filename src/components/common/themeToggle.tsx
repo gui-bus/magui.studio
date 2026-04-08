@@ -4,8 +4,8 @@ import * as React from "react"
 
 import { useTranslations } from "next-intl"
 
-import { MoonIcon, SunIcon } from "@phosphor-icons/react"
-import { motion } from "framer-motion"
+import { Moon, Sun } from "@phosphor-icons/react"
+import { m } from "framer-motion"
 
 import { useThemeTransition } from "@/src/lib/hooks/useThemeTransition"
 import { cn } from "@/src/lib/utils/utils"
@@ -16,10 +16,7 @@ export function ThemeToggle(): React.JSX.Element {
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    const timer = requestAnimationFrame(() => {
-      setMounted(true)
-    })
-    return () => cancelAnimationFrame(timer)
+    setMounted(true)
   }, [])
 
   if (!mounted) {
@@ -32,7 +29,7 @@ export function ThemeToggle(): React.JSX.Element {
 
   return (
     <div className="group relative flex h-9 w-18 items-center rounded-full border border-border/60 bg-background/50 p-1 backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50">
-      <motion.div
+      <m.div
         className="absolute z-0 h-7 w-7 rounded-full bg-muted shadow-sm"
         initial={false}
         animate={{
@@ -55,7 +52,7 @@ export function ThemeToggle(): React.JSX.Element {
         )}
         title={t("light")}
       >
-        <SunIcon
+        <Sun
           weight={isLight ? "fill" : "regular"}
           size={14}
           className="transition-transform duration-300"
@@ -72,7 +69,7 @@ export function ThemeToggle(): React.JSX.Element {
         )}
         title={t("dark")}
       >
-        <MoonIcon
+        <Moon
           weight={!isLight ? "fill" : "regular"}
           size={14}
           className="transition-transform duration-300"

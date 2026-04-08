@@ -5,7 +5,7 @@ import * as React from "react"
 import { useTranslations } from "next-intl"
 
 import { ArrowUpRight } from "@phosphor-icons/react"
-import { motion, AnimatePresence } from "framer-motion"
+import { m, AnimatePresence } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
 
@@ -16,7 +16,7 @@ export function Services(): React.JSX.Element {
   const idT = useTranslations("Index.Ids")
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
   
-  const services = [
+  const services = React.useMemo(() => [
     {
       id: "01",
       title: t("uiux.title"),
@@ -41,152 +41,149 @@ export function Services(): React.JSX.Element {
       color: "bg-brand-secondary",
       textColor: "text-white",
     },
-  ]
+  ], [t])
 
   return (
     <section id={idT("services")} className="relative w-full bg-background overflow-hidden border-y border-foreground/5">
-      {/* NOISE OVERLAY - Premium Texture */}
       <div className="pointer-events-none absolute inset-0 z-50 opacity-[0.03] dark:opacity-[0.05]" 
            style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />
 
       <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:h-[800px] w-full">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            layout
-            onMouseEnter={() => setActiveIndex(index)}
-            onMouseLeave={() => setActiveIndex(null)}
-            animate={{ 
-              width: activeIndex === null ? "33.33%" : activeIndex === index ? "60%" : "20%" 
-            }}
-            transition={{ duration: 1, ease: EASE_APPLE }}
-            className={cn(
-              "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/5 overflow-hidden transition-colors duration-1000 min-h-[200px] lg:min-h-0",
-              activeIndex === index ? service.color : "bg-background"
-            )}
-          >
-            {/* CONTENT CONTAINER */}
-            <div className="relative h-full w-full p-12 lg:p-20 flex flex-col justify-between">
-              
-              {/* TOP: ID & LABEL */}
-              <div className="flex items-center justify-between overflow-hidden">
-                <motion.span 
-                  layout
-                  className={cn(
-                    "font-heading text-4xl lg:text-6xl font-black transition-colors duration-500",
-                    activeIndex === index ? service.textColor : "text-brand-primary/20"
-                  )}
-                >
-                  {service.id}
-                </motion.span>
-                <AnimatePresence>
-                  {activeIndex === index && (
-                    <motion.span
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      transition={{ duration: 0.5, ease: EASE_APPLE }}
-                      className={cn("text-[10px] font-black uppercase tracking-[0.6em]", service.textColor)}
+        {services.map((service, index) => {
+          const isActive = activeIndex === index
+          const isOthersActive = activeIndex !== null && !isActive
+
+          return (
+            <m.div
+              key={index}
+              layout
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
+              animate={{ 
+                width: activeIndex === null ? "33.33%" : isActive ? "60%" : "20%" 
+              }}
+              transition={{ duration: 1, ease: EASE_APPLE }}
+              className={cn(
+                "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/5 overflow-hidden transition-colors duration-1000 min-h-[200px] lg:min-h-0",
+                isActive ? service.color : "bg-background"
+              )}
+            >
+              <div className="relative h-full w-full p-12 lg:p-20 flex flex-col justify-between">
+                <div className="flex items-center justify-between overflow-hidden">
+                  <m.span 
+                    layout
+                    className={cn(
+                      "font-heading text-4xl lg:text-6xl font-black transition-colors duration-500",
+                      isActive ? service.textColor : "text-brand-primary/20"
+                    )}
+                  >
+                    {service.id}
+                  </m.span>
+                  <AnimatePresence>
+                    {isActive && (
+                      <m.span
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.5, ease: EASE_APPLE }}
+                        className={cn("text-[10px] font-black uppercase tracking-[0.6em]", service.textColor)}
+                      >
+                        {service.label}
+                      </m.span>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  {!isActive ? (
+                    <m.div
+                      key="vertical"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.1 }}
+                      transition={{ duration: 0.8, ease: EASE_APPLE }}
+                      className="absolute inset-0 flex items-center justify-center pointer-events-none"
                     >
-                      {service.label}
-                    </motion.span>
+                      <h3 className={cn(
+                        "font-heading text-5xl lg:text-7xl font-black uppercase tracking-tighter lg:rotate-[-90deg] whitespace-nowrap transition-colors duration-500",
+                        isOthersActive ? "text-foreground/5" : "text-foreground/10"
+                      )}>
+                        {service.title}
+                      </h3>
+                    </m.div>
+                  ) : (
+                    <m.div
+                      key="horizontal"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { 
+                          opacity: 1,
+                          transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+                        }
+                      }}
+                      className="space-y-12"
+                    >
+                      <m.h3 
+                        variants={{
+                          hidden: { opacity: 0, y: 30 },
+                          visible: { opacity: 1, y: 0 }
+                        }}
+                        transition={{ duration: 0.8, ease: EASE_APPLE }}
+                        className={cn("font-heading text-6xl md:text-8xl lg:text-[100px] font-black uppercase tracking-[-0.05em] leading-[0.85]", service.textColor)}
+                      >
+                        {service.title}
+                      </m.h3>
+                      <m.p 
+                        variants={{
+                          hidden: { opacity: 0, y: 30 },
+                          visible: { opacity: 1, y: 0 }
+                        }}
+                        transition={{ duration: 0.8, ease: EASE_APPLE }}
+                        className={cn("max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight opacity-80", service.textColor)}
+                      >
+                        {service.description}
+                      </m.p>
+                      
+                      <m.div 
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8 },
+                          visible: { opacity: 1, scale: 1 }
+                        }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={cn(
+                          "h-24 w-24 rounded-full border flex items-center justify-center transition-all duration-700 group cursor-pointer",
+                          service.textColor === "text-white" ? "border-white/20 hover:bg-white hover:text-brand-primary" : "border-background/20 hover:bg-background hover:text-foreground"
+                        )}
+                      >
+                         <ArrowUpRight size={40} weight="bold" aria-hidden="true" />
+                      </m.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
+
+                <div className="flex items-end justify-between">
+                   <m.div 
+                     layout
+                     className={cn(
+                       "h-px transition-all duration-1000",
+                       isActive ? "w-full bg-current opacity-20" : "w-12 bg-foreground/10"
+                     )} 
+                   />
+                </div>
               </div>
 
-              {/* CENTER: ROTATED TITLE (WHEN NOT ACTIVE) */}
-              <AnimatePresence mode="wait">
-                {activeIndex !== index ? (
-                  <motion.div
-                    key="vertical"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.1 }}
-                    transition={{ duration: 0.8, ease: EASE_APPLE }}
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  >
-                    <h3 className="font-heading text-5xl lg:text-7xl font-black uppercase tracking-tighter text-foreground/10 lg:rotate-[-90deg] whitespace-nowrap">
-                      {service.title}
-                    </h3>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="horizontal"
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: { 
-                        opacity: 1,
-                        transition: { 
-                          staggerChildren: 0.1,
-                          delayChildren: 0.2
-                        } 
-                      }
-                    }}
-                    className="space-y-12"
-                  >
-                    <motion.h3 
-                      variants={{
-                        hidden: { opacity: 0, y: 30 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      transition={{ duration: 0.8, ease: EASE_APPLE }}
-                      className={cn("font-heading text-6xl md:text-8xl lg:text-[100px] font-black uppercase tracking-[-0.05em] leading-[0.85]", service.textColor)}
-                    >
-                      {service.title}
-                    </motion.h3>
-                    <motion.p 
-                      variants={{
-                        hidden: { opacity: 0, y: 30 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      transition={{ duration: 0.8, ease: EASE_APPLE }}
-                      className={cn("max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight opacity-80", service.textColor)}
-                    >
-                      {service.description}
-                    </motion.p>
-                    
-                    <motion.div 
-                      variants={{
-                        hidden: { opacity: 0, scale: 0.8 },
-                        visible: { opacity: 1, scale: 1 }
-                      }}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={cn(
-                        "h-24 w-24 rounded-full border flex items-center justify-center transition-all duration-700 group cursor-pointer",
-                        service.textColor === "text-white" ? "border-white/20 hover:bg-white hover:text-brand-primary" : "border-background/20 hover:bg-background hover:text-foreground"
-                      )}
-                    >
-                       <ArrowUpRight size={40} weight="bold" />
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* BOTTOM: FOOTER DETAIL */}
-              <div className="flex items-end justify-between">
-                 <motion.div 
-                   layout
-                   className={cn(
-                     "h-px transition-all duration-1000",
-                     activeIndex === index ? "w-full bg-current opacity-20" : "w-12 bg-foreground/10"
-                   )} 
-                 />
-              </div>
-
-            </div>
-
-            {/* BACKGROUND TEXTURE (SUBTLE) */}
-            <div className={cn(
-              "absolute inset-0 z-0 opacity-10 transition-opacity duration-1000",
-              activeIndex === index ? "opacity-20" : "opacity-0"
-            )} 
-                 style={{ backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
-            />
-          </motion.div>
-        ))}
+              <div className={cn(
+                "absolute inset-0 z-0 opacity-10 transition-opacity duration-1000 pointer-events-none",
+                isActive ? "opacity-20" : "opacity-0"
+              )} 
+                   style={{ backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
+              />
+            </m.div>
+          )
+        })}
       </div>
     </section>
   )
