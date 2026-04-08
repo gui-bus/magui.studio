@@ -99,7 +99,7 @@ export function CTA(): React.JSX.Element {
         style={{ x: xParallax }}
         className="absolute bottom-0 right-0 text-[240px] lg:text-[400px] font-black text-foreground/[0.02] select-none leading-none translate-y-1/2 pointer-events-none uppercase font-heading whitespace-nowrap"
       >
-        Studio
+        MAGUI
       </motion.div>
     </section>
   )

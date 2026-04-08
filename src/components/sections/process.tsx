@@ -36,15 +36,6 @@ export function Process(): React.JSX.Element {
             transition={{ delay: 0.5, duration: 1.5, ease: EASE_APPLE }}
             className="h-px flex-1 bg-border/10 hidden md:block origin-left" 
           />
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="text-xs font-mono font-bold text-brand-primary tracking-[0.4em]"
-          >
-            PROTOCOL_V4.0
-          </motion.span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

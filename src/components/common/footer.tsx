@@ -101,7 +101,7 @@ export function Footer(): React.JSX.Element {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-             className="text-[20vw] font-black leading-none text-foreground uppercase tracking-[-0.08em] select-none text-center"
+             className="text-7xl md:text-[160px] lg:text-[280px] xl:text-[360px] font-black leading-none text-foreground uppercase tracking-[-0.08em] select-none text-center"
            >
              MAGUI<span className="text-[0.2em] align-top text-brand-primary">®</span>
            </motion.h2>

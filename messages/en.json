@@ -12,20 +12,32 @@
       "image_alt": "Abstraction of Precision and Power",
       "studio_info": "MAGUI.studio / Global Presence",
       "studio_tagline": "Est. 2026 / Rigor & Excellence",
-      "precision": "Technical Rigor",
-      "precision_value": "Inflexible",
-      "scope": "Global Scale",
-      "scope_value": "Sovereign",
       "trusted": "Partner to visionary brands",
       "brand_alt": "Elite Brand"
     },
     "About": {
       "title": "The MAGUI Concept",
-      "description": "Born from the union between technical software engineering precision and strategic interface design. We focus on authority, scale, and performance.",
-      "stats": [
-        { "label": "Performance", "value": "100/100" },
-        { "label": "Fidelity", "value": "Excellence" },
-        { "label": "Architecture", "value": "Legacy" }
+      "description": "Born from the union between technical software engineering precision and strategic interface design. We focus on authority, scale, and performance for brands that refuse the ordinary."
+    },
+    "Process": {
+      "title": "Execution Protocol.",
+      "steps": [
+        {
+          "title": "Strategy",
+          "description": "Deep mapping of the business ecosystem and definition of impact goals."
+        },
+        {
+          "title": "Architecture",
+          "description": "Technical structuring focused on scalability and critical data security."
+        },
+        {
+          "title": "Design",
+          "description": "Creation of high-fidelity interfaces with a focus on visual authority."
+        },
+        {
+          "title": "Engineering",
+          "description": "Implementation with mathematical rigor and extreme performance optimization."
+        }
       ]
     },
     "Value": {
@@ -96,6 +108,24 @@
         "label": "Pure Speed",
         "description": "We ensure your digital infrastructure loads instantaneously, dominating every performance metric."
       }
+    },
+    "FAQ": {
+      "eyebrow": "Technical Inquiries",
+      "title": "Clarifications.",
+      "items": [
+        {
+          "question": "What is the average project delivery time?",
+          "answer": "Our projects follow an 8 to 12-week protocol, depending on the ecosystem's complexity and required integrations."
+        },
+        {
+          "question": "How does post-launch support work?",
+          "answer": "We offer continuous performance monitoring and critical security updates to ensure the system remains at the elite level."
+        },
+        {
+          "question": "Does the studio work with specific technologies?",
+          "answer": "We focus on cutting-edge technologies like Next.js, React, and Rust to ensure the market's maximum performance and security."
+        }
+      ]
     },
     "CTA": {
       "title": "Ready to elevate your system?",

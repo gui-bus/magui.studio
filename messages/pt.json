@@ -12,20 +12,32 @@
       "image_alt": "Abstração de Precisão e Poder",
       "studio_info": "MAGUI.studio / Presença Global",
       "studio_tagline": "Est. 2026 / Rigor & Excelência",
-      "precision": "Rigor Técnico",
-      "precision_value": "Inflexível",
-      "scope": "Escala Global",
-      "scope_value": "Soberana",
       "trusted": "Parceiro de marcas visionárias",
       "brand_alt": "Marca de Elite"
     },
     "About": {
       "title": "O Conceito MAGUI",
-      "description": "Nascido da união entre a precisão técnica da engenharia de software e o design estratégico de interface. Focamos em autoridade, escala e performance.",
-      "stats": [
-        { "label": "Performance", "value": "100/100" },
-        { "label": "Fidelidade", "value": "Excelência" },
-        { "label": "Arquitetura", "value": "Legado" }
+      "description": "Nascido da união entre a precisão técnica da engenharia de software e o design estratégico de interface. Focamos em autoridade, escala e performance para marcas que não aceitam o comum."
+    },
+    "Process": {
+      "title": "Protocolo de Execução.",
+      "steps": [
+        {
+          "title": "Estratégia",
+          "description": "Mapeamento profundo do ecossistema de negócio e definição de metas de impacto."
+        },
+        {
+          "title": "Arquitetura",
+          "description": "Estruturação técnica focada em escalabilidade e segurança de dados crítica."
+        },
+        {
+          "title": "Design",
+          "description": "Criação de interfaces de alta fidelidade com foco em autoridade visual."
+        },
+        {
+          "title": "Engenharia",
+          "description": "Implementação com rigor matemático e otimização extrema de performance."
+        }
       ]
     },
     "Value": {
@@ -96,6 +108,24 @@
         "label": "Pure Speed",
         "description": "Garantimos que sua infraestrutura carregue instantaneamente, dominando cada métrica de performance."
       }
+    },
+    "FAQ": {
+      "eyebrow": "Dúvidas Técnicas",
+      "title": "Esclarecimentos.",
+      "items": [
+        {
+          "question": "Qual o tempo médio de entrega de um projeto?",
+          "answer": "Nossos projetos seguem um protocolo de 8 a 12 semanas, dependendo da complexidade do ecossistema e das integrações necessárias."
+        },
+        {
+          "question": "Como funciona o suporte pós-lançamento?",
+          "answer": "Oferecemos monitoramento de performance contínuo e atualizações de segurança críticas para garantir que o sistema permaneça na elite."
+        },
+        {
+          "question": "O estúdio trabalha com tecnologias específicas?",
+          "answer": "Focamos em tecnologias de ponta como Next.js, React e Rust para garantir a máxima performance e segurança do mercado."
+        }
+      ]
     },
     "CTA": {
       "title": "Pronto para elevar o nível?",

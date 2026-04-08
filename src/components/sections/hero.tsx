@@ -5,7 +5,7 @@ import * as React from "react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 
-import { ArrowUpRight, Globe, Plus } from "@phosphor-icons/react"
+import { ArrowUpRight, Globe } from "@phosphor-icons/react"
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
 
 import { Button } from "@/src/components/ui/button"
@@ -19,7 +19,7 @@ export function Hero(): React.JSX.Element {
   const { scrollY } = useScroll()
   const yParallax = useTransform(scrollY, [0, 800], [0, 160])
   const opacityFade = useTransform(scrollY, [0, 400], [1, 0])
-  
+
   const scaleImage = useTransform(scrollY, [0, 1000], [1, 1.1])
   const smoothScale = useSpring(scaleImage, { stiffness: 45, damping: 20 })
 
@@ -120,13 +120,7 @@ export function Hero(): React.JSX.Element {
             </div>
 
             {/* ARTISTIC IMAGE - Integrated Architectural Composition */}
-            <motion.div 
-              style={{ y: yParallax, scale: smoothScale }}
-              initial={{ opacity: 0, clipPath: "inset(10% 20% 10% 20% round 2rem)", filter: "blur(10px) grayscale(1)" }}
-              animate={{ opacity: 1, clipPath: "inset(0% 0% 0% 0% round 2rem)", filter: "blur(0px) grayscale(0.5)" }}
-              transition={{ duration: 1.8, ease: EASE_APPLE, delay: 0.4 }}
-              className="absolute top-1/2 right-0 -translate-y-[20%] lg:-translate-y-1/2 z-10 w-[80%] lg:w-[55%] aspect-[16/10] lg:aspect-[16/9] overflow-hidden shadow-2xl transition-all duration-1000"
-            >
+            <motion.div className="absolute top-1/2 right-0 -translate-y-[20%] lg:-translate-y-1/2 z-10 w-[80%] lg:w-[55%] aspect-[16/10] lg:aspect-[16/9] overflow-hidden shadow-2xl transition-all duration-1000">
               <Image
                 src="/utils/placeholder.svg"
                 alt={t("image_alt")}
@@ -174,73 +168,9 @@ export function Hero(): React.JSX.Element {
                 </button>
               </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 1, ease: EASE_APPLE }}
-              className="lg:col-span-7 flex flex-col md:flex-row md:items-end justify-between gap-12"
-            >
-              <div className="grid grid-cols-2 gap-12">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-brand-primary">
-                    <Plus weight="bold" className="h-4 w-4" />
-                    <span className="text-[10px] uppercase tracking-widest font-black">
-                      {t("precision")}
-                    </span>
-                  </div>
-                  <div className="text-4xl font-heading font-black tracking-tighter uppercase">
-                    {t("precision_value")}
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-brand-primary">
-                    <Plus weight="bold" className="h-4 w-4" />
-                    <span className="text-[10px] uppercase tracking-widest font-black">
-                      {t("scope")}
-                    </span>
-                  </div>
-                  <div className="text-4xl font-heading font-black tracking-tighter uppercase">
-                    {t("scope_value")}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-start md:items-end gap-6 border-l md:border-l-0 md:border-r border-foreground/5 pl-8 md:pl-0 md:pr-8">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="h-14 w-14 rounded-full border-[3px] border-background bg-muted overflow-hidden relative grayscale hover:grayscale-0 transition-all cursor-pointer shadow-xl"
-                    >
-                      <Image
-                        src="/utils/placeholder.svg"
-                        alt={t("brand_alt")}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
-                  {t("trusted")}
-                </p>
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>
-
-      {/* SCROLL INDICATOR - Studio Style */}
-      <motion.div
-        style={{ opacity: opacityFade }}
-        className="absolute bottom-12 right-12 z-40 flex items-center gap-6"
-      >
-        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-muted-foreground/30 rotate-90 origin-right translate-y-12 whitespace-nowrap">
-          {t("scroll")}
-        </span>
-        <div className="w-[1px] h-32 bg-gradient-to-b from-brand-primary to-transparent" />
-      </motion.div>
     </section>
   )
 }
