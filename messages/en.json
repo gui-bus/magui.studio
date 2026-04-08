@@ -11,9 +11,7 @@
       "scroll": "Discover",
       "image_alt": "Abstraction of Precision and Power",
       "studio_info": "MAGUI.studio / Global Presence",
-      "studio_tagline": "Est. 2026 / Rigor & Excellence",
-      "trusted": "Partner to visionary brands",
-      "brand_alt": "Elite Brand"
+      "studio_tagline": "Est. 2026 / Rigor & Excellence"
     },
     "About": {
       "title": "The MAGUI Concept",
@@ -132,6 +130,14 @@
       "description": "Contact us now and discover how MAGUI can transform your digital presence.",
       "button": "Talk to Specialists"
     }
+  },
+  "Footer": {
+    "studio_title": "Studio",
+    "established": "Est. 2026 — Global Strategy",
+    "availability": "Available for International Projects",
+    "credits": "© {year} MAGUI.studio",
+    "policy": "Privacy Policy",
+    "standard": "Digital Authority Standard"
   },
   "Locale": {
     "en": "English",

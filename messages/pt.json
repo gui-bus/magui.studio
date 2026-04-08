@@ -11,9 +11,7 @@
       "scroll": "Descobrir",
       "image_alt": "Abstração de Precisão e Poder",
       "studio_info": "MAGUI.studio / Presença Global",
-      "studio_tagline": "Est. 2026 / Rigor & Excelência",
-      "trusted": "Parceiro de marcas visionárias",
-      "brand_alt": "Marca de Elite"
+      "studio_tagline": "Desde 2026 / Rigor & Excelência"
     },
     "About": {
       "title": "O Conceito MAGUI",
@@ -132,6 +130,14 @@
       "description": "Fale agora com nossos especialistas e descubra como a MAGUI pode transformar sua empresa.",
       "button": "Iniciar Projeto"
     }
+  },
+  "Footer": {
+    "studio_title": "O Estúdio",
+    "established": "Desde 2026 — Estratégia Global",
+    "availability": "Disponível para Projetos Internacionais",
+    "credits": "© {year} MAGUI.studio",
+    "policy": "Política de Privacidade",
+    "standard": "Padrão de Autoridade Digital"
   },
   "Locale": {
     "en": "English",

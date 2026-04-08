@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 import Image from "next/image"
 
 import { ArrowUpRight, Globe } from "@phosphor-icons/react"
-import { motion, useScroll, useSpring, useTransform } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion"
 
 import { Button } from "@/src/components/ui/button"
 
@@ -16,21 +16,61 @@ export function Hero(): React.JSX.Element {
   const t = useTranslations("Index.Hero")
   const [mounted, setMounted] = React.useState(false)
 
-  const { scrollY } = useScroll()
-  const yParallax = useTransform(scrollY, [0, 800], [0, 160])
-  const opacityFade = useTransform(scrollY, [0, 400], [1, 0])
+  // Item 7: Background Spotlight
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const spotlightX = useSpring(mouseX, { damping: 50, stiffness: 200 })
+  const spotlightY = useSpring(mouseY, { damping: 50, stiffness: 200 })
 
-  const scaleImage = useTransform(scrollY, [0, 1000], [1, 1.1])
-  const smoothScale = useSpring(scaleImage, { stiffness: 45, damping: 20 })
+  const { scrollY } = useScroll()
+  const opacityFade = useTransform(scrollY, [0, 400], [1, 0])
 
   React.useEffect(() => {
     setMounted(true)
   }, [])
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e
+    mouseX.set(clientX)
+    mouseY.set(clientY)
+  }
+
   if (!mounted) return <section className="relative w-full bg-background" />
 
+  const renderStaggeredText = (text: string, delayBase: number = 0) => {
+    return text.split(" ").map((word, i) => (
+      <span key={i} className="inline-block overflow-hidden mr-[0.2em] last:mr-0">
+        <motion.span
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ 
+            duration: 1.2, 
+            ease: EASE_APPLE, 
+            delay: delayBase + (i * 0.08) 
+          }}
+          className="inline-block"
+        >
+          {word}
+        </motion.span>
+      </span>
+    ))
+  }
+
   return (
-    <section className="relative w-full overflow-hidden bg-background">
+    <section 
+      onMouseMove={handleMouseMove}
+      className="relative w-full overflow-hidden bg-background"
+    >
+      {/* Item 7: Spotlight Background Effect */}
+      <motion.div 
+        style={{ 
+          background: `radial-gradient(600px circle at ${spotlightX}px ${spotlightY}px, var(--brand-primary), transparent 80%)`,
+          left: 0,
+          top: 0,
+        }}
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.08]"
+      />
+
       {/* NOISE OVERLAY - Premium Texture */}
       <div
         className="pointer-events-none absolute inset-0 z-50 opacity-[0.03] dark:opacity-[0.06]"
@@ -47,7 +87,11 @@ export function Hero(): React.JSX.Element {
           transition={{ duration: 0.8, ease: EASE_APPLE }}
           className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground"
         >
-          <Globe weight="bold" className="text-brand-primary h-3 w-3" />
+          <div className="relative flex h-3 w-3 items-center justify-center">
+            <Globe weight="bold" className="text-brand-primary h-3 w-3" />
+            {/* Item 5: Radar Micro-interaction */}
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-40" />
+          </div>
           <span>{t("studio_info")}</span>
         </motion.div>
         <motion.div
@@ -78,49 +122,40 @@ export function Hero(): React.JSX.Element {
               </motion.div>
 
               <h1 className="font-heading text-6xl md:text-9xl lg:text-[140px] font-black leading-[0.75] tracking-[-0.06em] text-foreground uppercase select-none">
-                <div className="overflow-hidden">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1.2, ease: EASE_APPLE }}
-                    className="block mix-blend-difference drop-shadow-sm"
-                  >
-                    {t("title_1")}
-                  </motion.span>
+                <div className="flex flex-wrap">
+                  {renderStaggeredText(t("title_1"), 0)}
                 </div>
-                <div className="overflow-hidden">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      delay: 0.1,
-                      duration: 1.2,
-                      ease: EASE_APPLE,
-                    }}
-                    className="block ml-[0.5em] text-brand-primary drop-shadow-xl"
-                  >
-                    {t("title_2")}
-                  </motion.span>
+                {/* Item 4: Shimmer effect on title_2 */}
+                <div className="flex flex-wrap ml-[0.5em] text-brand-primary drop-shadow-xl relative overflow-hidden group">
+                  <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "200%" }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 5 }}
+                    className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                  />
+                  {renderStaggeredText(t("title_2"), 0.2)}
                 </div>
-                <div className="overflow-hidden">
-                  <motion.span
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      delay: 0.2,
-                      duration: 1.2,
-                      ease: EASE_APPLE,
-                    }}
-                    className="block leading-[0.8] mt-2 mix-blend-difference drop-shadow-sm"
-                  >
-                    {t("title_3")}
-                  </motion.span>
+                <div className="flex flex-wrap leading-[0.8] mt-2">
+                  {renderStaggeredText(t("title_3"), 0.4)}
                 </div>
               </h1>
             </div>
 
-            {/* ARTISTIC IMAGE - Integrated Architectural Composition */}
-            <motion.div className="absolute top-1/2 right-0 -translate-y-[20%] lg:-translate-y-1/2 z-10 w-[80%] lg:w-[55%] aspect-[16/10] lg:aspect-[16/9] overflow-hidden shadow-2xl transition-all duration-1000">
+            {/* Item 2: Cinematic Image Entry */}
+            <motion.div 
+              initial={{ 
+                opacity: 0, 
+                clipPath: "inset(20% 40% 20% 40% round 2rem)", 
+                filter: "blur(20px) grayscale(1)" 
+              }}
+              animate={{ 
+                opacity: 1, 
+                clipPath: "inset(0% 0% 0% 0% round 2rem)", 
+                filter: "blur(0px) grayscale(0.5)" 
+              }}
+              transition={{ duration: 2, ease: EASE_APPLE, delay: 0.6 }}
+              className="absolute top-1/2 right-0 -translate-y-[20%] lg:-translate-y-1/2 z-10 w-[80%] lg:w-[55%] aspect-[16/10] lg:aspect-[16/9] overflow-hidden shadow-2xl"
+            >
               <Image
                 src="/utils/placeholder.svg"
                 alt={t("image_alt")}
@@ -139,7 +174,7 @@ export function Hero(): React.JSX.Element {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 1, ease: EASE_APPLE }}
+              transition={{ delay: 1, duration: 1, ease: EASE_APPLE }}
               className="lg:col-span-5 space-y-12"
             >
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight">
@@ -168,9 +203,22 @@ export function Hero(): React.JSX.Element {
                 </button>
               </div>
             </motion.div>
+
+            <div className="lg:col-span-7" />
           </div>
         </div>
       </div>
+
+      {/* SCROLL INDICATOR - Studio Style */}
+      <motion.div
+        style={{ opacity: opacityFade }}
+        className="absolute bottom-12 right-12 z-40 flex items-center gap-6"
+      >
+        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-muted-foreground/30 rotate-90 origin-right translate-y-12 whitespace-nowrap">
+          {t("scroll")}
+        </span>
+        <div className="w-[1px] h-32 bg-gradient-to-b from-brand-primary to-transparent" />
+      </motion.div>
     </section>
   )
 }

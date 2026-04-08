@@ -12,7 +12,8 @@ import { Plus } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
 
 export function Footer(): React.JSX.Element {
-  const t = useTranslations("Config")
+  const t = useTranslations("Footer")
+  const configT = useTranslations("Config")
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => setMounted(true), [])
@@ -41,7 +42,7 @@ export function Footer(): React.JSX.Element {
               )}
             </div>
             <p className="max-w-md text-2xl text-muted-foreground font-medium leading-tight tracking-tight">
-              {t("description")}
+              {configT("description")}
             </p>
           </div>
 
@@ -83,11 +84,11 @@ export function Footer(): React.JSX.Element {
             <div className="space-y-10 hidden md:block">
               <div className="flex items-center gap-3">
                  <Plus weight="bold" size={10} className="text-brand-primary" />
-                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-primary">Studio</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-primary">{t("studio_title")}</span>
               </div>
               <div className="space-y-6 text-sm font-medium text-muted-foreground leading-relaxed">
-                 <p>Est. 2026 — Global Strategy</p>
-                 <p>Available for International Projects</p>
+                 <p>{t("established")}</p>
+                 <p>{t("availability")}</p>
               </div>
             </div>
 
@@ -110,13 +111,13 @@ export function Footer(): React.JSX.Element {
         {/* BOTTOM CREDITS */}
         <div className="pt-12 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/30">
-            <span>© {new Date().getFullYear()} MAGUI.studio</span>
+            <span>{t("credits", { year: new Date().getFullYear() })}</span>
             <div className="h-1 w-1 rounded-full bg-foreground/10" />
-            <span>Privacy Policy</span>
+            <span>{t("policy")}</span>
           </div>
           
           <div className="flex items-center gap-4 group cursor-default">
-             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/20 group-hover:text-brand-primary transition-colors">Digital Authority Standard</span>
+             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/20 group-hover:text-brand-primary transition-colors">{t("standard")}</span>
              <motion.div 
                animate={{ rotate: 360 }}
                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
