@@ -9,6 +9,7 @@ import { m, AnimatePresence } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
 import { Service } from "@/src/types/sections"
+import { Section } from "@/src/components/ui/section"
 import { TRANSITION_MEDIUM } from "@/src/config/animations"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
@@ -46,11 +47,11 @@ export function Services(): React.JSX.Element {
   ], [t])
 
   return (
-    <section id={idT("services")} className="relative w-full bg-background overflow-hidden border-y border-foreground/5">
+    <Section id={idT("services")} className="border-y border-foreground/5" withContainer={false}>
       <div className="pointer-events-none absolute inset-0 z-50 opacity-[0.03] dark:opacity-[0.05]" 
            style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} aria-hidden="true" />
 
-      <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:h-[800px] w-full">
+      <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:h-[800px] w-full relative z-10">
         {services.map((service, index) => {
           const isActive = activeIndex === index
           const isOthersActive = activeIndex !== null && !isActive
@@ -188,6 +189,6 @@ export function Services(): React.JSX.Element {
           )
         })}
       </div>
-    </section>
+    </Section>
   )
 }

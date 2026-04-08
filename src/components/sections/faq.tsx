@@ -9,10 +9,11 @@ import { CaretRight } from "@phosphor-icons/react"
 import { AnimatePresence, m } from "framer-motion"
 
 import { StaggeredText } from "@/src/components/ui/staggeredText"
+import { Section } from "@/src/components/ui/section"
 
 import { cn } from "@/src/lib/utils/utils"
 
-import { TRANSITION_MEDIUM, VARIANTS_FADE_IN_UP } from "@/src/config/animations"
+import { TRANSITION_MEDIUM, VARIANTS_FADE_IN_UP, EASE_APPLE } from "@/src/config/animations"
 
 export function FAQ(): React.JSX.Element {
   const t = useTranslations("Index.FAQ")
@@ -21,9 +22,9 @@ export function FAQ(): React.JSX.Element {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0)
 
   return (
-    <section
+    <Section
       id={idT("faq")}
-      className="relative w-full py-32  bg-background overflow-hidden px-6 md:px-12 lg:px-24"
+      className="py-32"
     >
       {/* SECTION HEADER */}
       <div className="mb-24 space-y-6">
@@ -121,6 +122,6 @@ export function FAQ(): React.JSX.Element {
           )
         })}
       </div>
-    </section>
+    </Section>
   )
 }

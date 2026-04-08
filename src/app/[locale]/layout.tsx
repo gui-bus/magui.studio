@@ -121,7 +121,7 @@ export default async function RootLayout({
         </NextIntlClientProvider>
 
         {siteConfig.analytics.google && consent === "accepted" && (
-          <GoogleAnalytics gaId={siteConfig.analytics.google} strategy="lazyOnload" />
+          <GoogleAnalytics gaId={siteConfig.analytics.google} />
         )}
       </body>
     </html>

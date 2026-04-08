@@ -11,6 +11,7 @@ import { m, AnimatePresence } from "framer-motion"
 import { cn } from "@/src/lib/utils/utils"
 import { StaggeredText } from "@/src/components/ui/staggeredText"
 import { Project } from "@/src/types/sections"
+import { Section } from "@/src/components/ui/section"
 import { TRANSITION_MEDIUM, VARIANTS_FADE_IN_UP } from "@/src/config/animations"
 
 export function Showcase(): React.JSX.Element {
@@ -20,9 +21,8 @@ export function Showcase(): React.JSX.Element {
   const [activeIndex, setActiveIndex] = React.useState(0)
 
   return (
-    <section id={idT("portfolio")} className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24">
+    <Section id={idT("portfolio")} className="py-32 lg:py-64">
      
-        
         {/* SECTION HEADER */}
         <div className="mb-32 space-y-8">
           <m.div
@@ -112,8 +112,6 @@ export function Showcase(): React.JSX.Element {
           </div>
 
         </div>
-
-
-    </section>
+    </Section>
   )
 }

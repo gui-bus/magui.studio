@@ -3,11 +3,13 @@
 import * as React from "react"
 
 import { useTranslations } from "next-intl"
+import Image from "next/image"
 
 import { ProcessStep } from "@/src/types/sections"
 import { m } from "framer-motion"
 
 import { StaggeredText } from "@/src/components/ui/staggeredText"
+import { Section } from "@/src/components/ui/section"
 
 import { cn } from "@/src/lib/utils/utils"
 
@@ -19,9 +21,9 @@ export function Process(): React.JSX.Element {
   const steps = t.raw("steps") as ProcessStep[]
 
   return (
-    <section
+    <Section
       id={idT("process")}
-      className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24"
+      className="py-32 lg:py-64"
     >
       {/* SECTION HEADER */}
       <div className="mb-32 lg:mb-48 text-center space-y-8">
@@ -55,13 +57,26 @@ export function Process(): React.JSX.Element {
           />
         </div>
 
+        {/* Brand Anchor */}
+        <div className="hidden md:block absolute top-12 left-0 -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="bg-background p-2">
+            <Image 
+              src="/Logos/icon.png" 
+              alt="" 
+              width={24} 
+              height={24} 
+              className="object-contain"
+            />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 relative z-10">
           {steps.map((step, index) => (
             <StepNode key={index} step={step} index={index} />
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
 
