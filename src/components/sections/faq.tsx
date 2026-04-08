@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { useTranslations } from "next-intl"
 
-import { CaretDown } from "@phosphor-icons/react"
+import { CaretRight } from "@phosphor-icons/react"
 import { motion, AnimatePresence } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
@@ -17,66 +17,61 @@ export function FAQ(): React.JSX.Element {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0)
 
   return (
-    <section className="relative w-full py-32 lg:py-64 bg-background">
-      <div className="container mx-auto max-w-5xl px-6 relative z-10">
+    <section className="relative w-full py-32 lg:py-64 bg-background overflow-hidden px-6 md:px-12 lg:px-24">
+      <div className="mx-auto max-w-5xl">
         
-        {/* SECTION HEADER */}
-        <div className="mb-24 space-y-8 text-center">
+        {/* SECTION HEADER - Refined */}
+        <div className="mb-24 space-y-6">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: EASE_APPLE }}
-            className="flex items-center justify-center gap-4"
+            className="flex items-center gap-4"
           >
-            <div className="h-px w-8 bg-brand-primary/30" />
-            <span className="text-[11px] font-black uppercase tracking-[0.5em] text-brand-primary">
+            <div className="h-px w-12 bg-brand-primary" />
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-primary">
               {t("eyebrow")}
             </span>
-            <div className="h-px w-8 bg-brand-primary/30" />
           </motion.div>
           
-          <div className="overflow-hidden">
-            <motion.h2 
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: EASE_APPLE }}
-              className="font-heading text-6xl md:text-8xl font-black uppercase tracking-tight text-foreground"
-            >
-              {t("title")}
-            </motion.h2>
-          </div>
+          <h2 className="font-heading text-5xl md:text-7xl font-black uppercase tracking-tight text-foreground leading-none">
+            {t("title")}
+          </h2>
         </div>
 
-        {/* ACCORDION LIST */}
-        <div className="space-y-4">
+        {/* GUIDED LIST */}
+        <div className="flex flex-col border-t border-foreground/10">
           {items.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 1, ease: EASE_APPLE }}
-              className={cn(
-                "group rounded-3xl border transition-all duration-700",
-                openIndex === index 
-                  ? "bg-muted/30 border-brand-primary/20 shadow-xl shadow-brand-primary/5" 
-                  : "bg-background border-foreground/5 hover:border-foreground/10"
-              )}
+            <div 
+              key={index} 
+              className="border-b border-foreground/10"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-8 py-10 flex items-center justify-between text-left"
+                className="w-full py-10 flex items-center justify-between text-left group"
               >
-                <span className="text-xl md:text-2xl font-bold text-foreground tracking-tight group-hover:text-brand-primary transition-colors">
-                  {item.question}
-                </span>
+                <div className="flex items-center gap-8 lg:gap-12">
+                  <span className={cn(
+                    "font-heading text-xl font-black transition-colors duration-500",
+                    openIndex === index ? "text-brand-primary" : "text-foreground/20"
+                  )}>
+                    0{index + 1}
+                  </span>
+                  <span className={cn(
+                    "text-xl md:text-3xl font-bold tracking-tight transition-all duration-500",
+                    openIndex === index ? "text-brand-primary translate-x-2" : "text-foreground group-hover:translate-x-2"
+                  )}>
+                    {item.question}
+                  </span>
+                </div>
+
+                {/* ARROW INDICATOR */}
                 <div className={cn(
-                  "h-12 w-12 rounded-full border border-foreground/10 flex items-center justify-center transition-transform duration-700",
-                  openIndex === index ? "rotate-180 bg-brand-primary border-brand-primary text-white" : "text-foreground"
+                  "h-10 w-10 rounded-full border border-foreground/5 flex items-center justify-center transition-all duration-500 shrink-0",
+                  openIndex === index ? "rotate-90 bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20" : "text-muted-foreground group-hover:border-foreground/20 group-hover:text-foreground"
                 )}>
-                  <CaretDown weight="bold" size={20} />
+                  <CaretRight weight="bold" size={20} />
                 </div>
               </button>
 
@@ -86,18 +81,18 @@ export function FAQ(): React.JSX.Element {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.8, ease: EASE_APPLE }}
+                    transition={{ duration: 0.6, ease: EASE_APPLE }}
                     className="overflow-hidden"
                   >
-                    <div className="px-8 pb-10 border-t border-foreground/5 mt-2 pt-8">
-                      <p className="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium">
+                    <div className="pl-16 lg:pl-24 pb-12">
+                      <p className="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-medium max-w-2xl border-l border-foreground/10 pl-8">
                         {item.answer}
                       </p>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 
