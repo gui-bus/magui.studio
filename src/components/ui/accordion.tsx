@@ -23,29 +23,24 @@ export function AccordionItem({
   const buttonId = `accordion-button-${index}`
 
   return (
-    <div className="border-b border-foreground/10">
+    <div className="border-b border-foreground/10 last:border-0">
       <button
         id={buttonId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onClick}
-        className="w-full py-10 flex items-center justify-between text-left group focus-visible:outline-brand-primary focus-visible:outline-offset-4"
+        className="w-full py-10 lg:py-12 flex items-start justify-between text-left group focus-visible:outline-none"
       >
-        <div className="flex items-center gap-8 lg:gap-12">
-          <span
-            className={cn(
-              "font-heading text-xl font-black transition-colors duration-500",
-              isOpen ? "text-brand-primary" : "text-foreground/60"
-            )}
-          >
-            0{index + 1}
+        <div className="flex gap-8 lg:gap-16">
+          <span className="font-mono text-xs text-brand-primary/40 pt-2 lg:pt-3">
+            [ 0{index + 1} ]
           </span>
           <span
             className={cn(
-              "text-xl md:text-3xl font-bold tracking-tight transition-all duration-500",
+              "text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter transition-all duration-500 leading-tight",
               isOpen
-                ? "text-brand-primary"
-                : "text-foreground group-hover:text-brand-primary"
+                ? "text-foreground"
+                : "text-foreground/40 group-hover:text-foreground/70"
             )}
           >
             {question}
@@ -54,13 +49,13 @@ export function AccordionItem({
 
         <div
           className={cn(
-            "h-10 w-10 rounded-full border border-foreground/10 flex items-center justify-center transition-all duration-700 shrink-0",
+            "h-10 w-10 lg:h-12 lg:w-12 rounded-full border border-foreground/10 flex items-center justify-center transition-all duration-700 shrink-0 mt-1",
             isOpen
-              ? "rotate-90 bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20"
-              : "text-muted-foreground/80 group-hover:border-brand-primary group-hover:text-brand-primary"
+              ? "rotate-45 bg-brand-primary border-brand-primary text-white scale-110 shadow-lg shadow-brand-primary/20"
+              : "text-foreground/20 group-hover:border-foreground/30 group-hover:text-foreground/60"
           )}
         >
-          <CaretRight weight="bold" size={20} aria-hidden="true" />
+          <CaretRight weight="bold" className="w-5 h-5 lg:w-6 lg:h-6" aria-hidden="true" />
         </div>
       </button>
 
@@ -73,13 +68,16 @@ export function AccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={TRANSITION_MEDIUM}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="pl-16 lg:pl-24 pb-12">
-              <p className="text-lg md:text-xl text-muted-foreground/70 leading-relaxed font-medium max-w-2xl border-l border-foreground/10 pl-8">
-                {answer}
-              </p>
+            <div className="pl-20 lg:pl-32 pr-8 lg:pr-48 pb-12 lg:pb-16">
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium max-w-3xl">
+                  {answer}
+                </p>
+                <div className="h-px w-8 bg-brand-primary/40" />
+              </div>
             </div>
           </m.div>
         )}
