@@ -12,8 +12,6 @@ import { Button } from "@/src/components/ui/button"
 import { Section } from "@/src/components/ui/section"
 import { StaggeredText } from "@/src/components/ui/staggeredText"
 
-import { useSpotlight } from "@/src/lib/hooks/useSpotlight"
-
 import { TRANSITION_SLOW, VARIANTS_FADE_IN_UP } from "@/src/config/animations"
 
 export function Hero(): React.JSX.Element {
@@ -22,13 +20,11 @@ export function Hero(): React.JSX.Element {
   const [mounted, setMounted] = React.useState(false)
   const containerRef = React.useRef<HTMLElement>(null)
 
-  const { spotlightX, spotlightY, handleMouseMove } = useSpotlight(containerRef)
-
   React.useEffect(() => setMounted(true), [])
 
   if (!mounted)
     return (
-      <Section className="min-h-svh" withContainer={false}>
+      <Section  withContainer={false}>
         {" "}
         {null}{" "}
       </Section>
@@ -38,48 +34,10 @@ export function Hero(): React.JSX.Element {
     <Section
       id={idT("hero")}
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="flex items-center min-h-svh"
+      className="flex items-center"
       withContainer={false}
     >
-      <m.div
-        style={{
-          background: `radial-gradient(600px circle at ${spotlightX}px ${spotlightY}px, var(--brand-primary), transparent 80%)`,
-        }}
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.08] hidden lg:block"
-      />
-
-      {/* TOP HEADER INFO */}
-      <div className="absolute top-0 left-0 w-full z-40 px-6 lg:px-12 py-8 flex items-center justify-between backdrop-blur-sm">
-        <m.div
-          variants={VARIANTS_FADE_IN_UP}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground"
-        >
-          <div className="relative flex h-5 w-5 items-center justify-center">
-            <Image
-              src="/Logos/icon.png"
-              alt="MAGUI"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-          </div>
-          <span>{t("studio_info")}</span>
-        </m.div>
-        <m.div
-          variants={VARIANTS_FADE_IN_UP}
-          initial="hidden"
-          animate="visible"
-          custom={0.1}
-          className="hidden md:flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground"
-        >
-          <span>{t("studio_tagline")}</span>
-        </m.div>
-      </div>
-
-      <div className="relative z-10 pt-32 pb-32 w-full px-6 md:px-12 lg:px-24">
+      <div className="relative z-10 py-20 w-full px-6 md:px-12 lg:px-24">
         <div className="relative">
           {/* MAIN HEADLINE */}
           <div className="relative z-30">
@@ -137,12 +95,20 @@ export function Hero(): React.JSX.Element {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="lg:col-span-5 space-y-12"
+            className="lg:col-span-6 space-y-12"
           >
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium tracking-tight">
               {t("description")}
             </p>
+          </m.div>
 
+          <m.div
+            variants={VARIANTS_FADE_IN_UP}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            className="lg:col-span-6 space-y-12"
+          >
             <div className="flex flex-wrap items-center gap-10">
               <Button
                 size="lg"
