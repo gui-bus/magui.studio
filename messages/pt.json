@@ -84,19 +84,22 @@
       "eyebrow": "Trabalhos Selecionados",
       "title": "Projetos de Impacto.",
       "description": "Uma curadoria de sistemas que elevam o padrão de performance e design no ambiente digital.",
-      "view_project": "Explorar Caso",
+      "view_project": "Ver Projeto",
       "projects": [
         { 
           "title": "Apareça e venda",
-          "image": "/projects/thais.png"
+          "image": "/projects/thais.png",
+          "link": "https://aparecaevenda.com.br"
         },
         { 
           "title": "Powervet",
-          "image": "/projects/powervet.png"
+          "image": "/projects/powervet.png",
+          "link": "https://powervet.com.br"
         },
         { 
           "title": "Horizon Travels",
-          "image": "/projects/horizon.png"
+          "image": "/projects/horizon.png",
+          "link": "https://horizontravels.com.br"
         }
       ]
     },

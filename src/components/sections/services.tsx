@@ -4,16 +4,20 @@ import * as React from "react"
 
 import { useTranslations } from "next-intl"
 
-import { ArrowUpRight } from "@phosphor-icons/react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { m, AnimatePresence } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
 import { Service } from "@/src/types/sections"
 import { Section } from "@/src/components/ui/section"
 import { GrainyNoise } from "@/src/components/ui/grainyNoise"
-import { TRANSITION_MEDIUM } from "@/src/config/animations"
+import Image from "next/image"
 
-const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+const SERVICE_IMAGES = [
+  "/images/landing.webp",
+  "/images/sales.webp",
+  "/images/institutional.webp",
+]
 
 export function Services(): React.JSX.Element {
   const t = useTranslations("Index.Services")
@@ -34,8 +38,8 @@ export function Services(): React.JSX.Element {
       title: t("sales.title"),
       label: t("sales.label"),
       description: t("sales.description"),
-      color: "bg-foreground",
-      textColor: "text-background",
+      color: "bg-zinc-900",
+      textColor: "text-white",
     },
     {
       id: "03",
@@ -48,10 +52,10 @@ export function Services(): React.JSX.Element {
   ], [t])
 
   return (
-    <Section id={idT("services")} className="border-y border-foreground/5" withContainer={false}>
-      <GrainyNoise zIndex="z-50" />
+    <Section id={idT("services")} className="border-y border-foreground/5 overflow-hidden" withContainer={false}>
+      <GrainyNoise zIndex="z-50" opacity="opacity-[0.03] dark:opacity-[0.05]" />
 
-      <div className="flex flex-col lg:flex-row h-full min-h-[600px] lg:h-[800px] w-full relative z-10">
+      <div className="flex flex-col lg:flex-row h-full min-h-175 lg:h-225 w-full relative z-10">
         {services.map((service, index) => (
           <ServicePanel 
             key={service.id}
@@ -59,6 +63,7 @@ export function Services(): React.JSX.Element {
             index={index}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            image={SERVICE_IMAGES[index]}
           />
         ))}
       </div>
@@ -71,9 +76,10 @@ interface ServicePanelProps {
   index: number
   activeIndex: number | null
   setActiveIndex: (index: number | null) => void
+  image: string
 }
 
-function ServicePanel({ service, index, activeIndex, setActiveIndex }: ServicePanelProps) {
+function ServicePanel({ service, index, activeIndex, setActiveIndex, image }: ServicePanelProps) {
   const isActive = activeIndex === index
   const isOthersActive = activeIndex !== null && !isActive
 
@@ -83,33 +89,52 @@ function ServicePanel({ service, index, activeIndex, setActiveIndex }: ServicePa
       onMouseEnter={() => setActiveIndex(index)}
       onMouseLeave={() => setActiveIndex(null)}
       animate={{ 
-        width: activeIndex === null ? "33.33%" : isActive ? "60%" : "20%" 
+        width: activeIndex === null ? "33.33%" : isActive ? "65%" : "17.5%" 
       }}
-      transition={{ duration: 1, ease: EASE_APPLE }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/5 overflow-hidden transition-colors duration-1000 min-h-[200px] lg:min-h-0",
-        isActive ? service.color : "bg-background"
+        "relative h-full flex flex-col border-b lg:border-b-0 lg:border-r border-foreground/10 overflow-hidden transition-colors duration-700 min-h-75 lg:min-h-0",
+        isActive ? "z-20" : "z-10 bg-background"
       )}
     >
-      <div className="relative h-full w-full p-12 lg:p-20 flex flex-col justify-between">
-        <div className="flex items-center justify-between overflow-hidden">
+      {/* BACKGROUND IMAGE WITH ZOOM */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src={image}
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 100vw, 33vw"
+          className={cn(
+            "object-cover transition-all duration-[2s] ease-out",
+            isActive ? "scale-110 blur-0 opacity-40" : "scale-100 blur-sm opacity-0"
+          )}
+        />
+        <div className={cn(
+          "absolute inset-0 transition-opacity duration-700",
+          isActive ? service.color : "bg-transparent",
+          isActive ? "opacity-90" : "opacity-0"
+        )} />
+      </div>
+      <div className="relative h-full w-full p-10 lg:p-24 flex flex-col justify-between z-10">
+        <div className="flex items-center justify-between">
           <m.span 
             layout
             className={cn(
-              "font-heading text-4xl lg:text-6xl font-black transition-colors duration-500",
-              isActive ? service.textColor : "text-brand-primary/20"
+              "font-heading text-5xl lg:text-7xl font-black transition-colors duration-500 leading-none",
+              isActive ? "text-white" : "text-foreground/10"
             )}
           >
             {service.id}
           </m.span>
+          
           <AnimatePresence>
             {isActive && (
               <m.span
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5, ease: EASE_APPLE }}
-                className={cn("text-[10px] font-black uppercase tracking-[0.6em]", service.textColor)}
+                transition={{ duration: 0.5 }}
+                className="text-[11px] font-black uppercase tracking-[0.5em] text-white/60"
               >
                 {service.label}
               </m.span>
@@ -121,15 +146,14 @@ function ServicePanel({ service, index, activeIndex, setActiveIndex }: ServicePa
           {!isActive ? (
             <m.div
               key="vertical"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.1 }}
-              transition={TRANSITION_MEDIUM}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
               <h3 className={cn(
-                "font-heading text-5xl lg:text-7xl font-black uppercase tracking-tighter lg:rotate-[-90deg] whitespace-nowrap transition-colors duration-500",
-                isOthersActive ? "text-foreground/5" : "text-foreground/10"
+                "font-heading text-5xl lg:text-8xl font-black uppercase tracking-tighter lg:-rotate-90 whitespace-nowrap transition-all duration-500",
+                isOthersActive ? "text-foreground/3" : "text-foreground/[0.07]"
               )}>
                 {service.title}
               </h3>
@@ -150,21 +174,20 @@ function ServicePanel({ service, index, activeIndex, setActiveIndex }: ServicePa
             >
               <m.h3 
                 variants={{
-                  hidden: { opacity: 0, y: 30 },
+                  hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                transition={TRANSITION_MEDIUM}
-                className={cn("font-heading text-6xl md:text-8xl lg:text-[100px] font-black uppercase tracking-[-0.05em] leading-[0.85]", service.textColor)}
+                className="font-heading text-6xl md:text-8xl lg:text-[120px] font-black uppercase tracking-tighter leading-[0.8] text-white"
               >
                 {service.title}
               </m.h3>
+              
               <m.p 
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0 }
                 }}
-                transition={TRANSITION_MEDIUM}
-                className={cn("max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight opacity-80", service.textColor)}
+                className="max-w-2xl text-xl md:text-3xl font-medium leading-tight tracking-tight text-white/80"
               >
                 {service.description}
               </m.p>
@@ -174,37 +197,24 @@ function ServicePanel({ service, index, activeIndex, setActiveIndex }: ServicePa
                   hidden: { opacity: 0, scale: 0.8 },
                   visible: { opacity: 1, scale: 1 }
                 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={cn(
-                  "h-24 w-24 rounded-full border flex items-center justify-center transition-all duration-700 group cursor-pointer",
-                  service.textColor === "text-white" ? "border-white/20 hover:bg-white hover:text-brand-primary" : "border-background/20 hover:bg-background hover:text-foreground"
-                )}
+                className="flex items-center gap-8"
               >
-                 <ArrowUpRight size={40} weight="bold" aria-hidden="true" />
+                <div className="h-24 w-24 rounded-full border border-white/20 flex items-center justify-center transition-all duration-500 hover:bg-white hover:text-black cursor-pointer group/btn">
+                   <ArrowUpRightIcon size={40} weight="bold" className="transition-transform duration-500 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                </div>
+                <div className="h-px w-24 bg-white/20 hidden md:block" />
               </m.div>
             </m.div>
           )}
         </AnimatePresence>
 
-        <div className="flex items-end justify-between">
-           <m.div 
-             layout
-             className={cn(
-               "h-px transition-all duration-1000",
-               isActive ? "w-full bg-current opacity-20" : "w-12 bg-foreground/10"
-             )} 
-           />
+        <div className="flex items-center justify-between opacity-20">
+           <span className="text-[10px] font-mono font-bold text-current">
+             SERVICES // 2026
+           </span>
+           <div className="h-1 w-1 rounded-full bg-current" />
         </div>
       </div>
-
-      <div className={cn(
-        "absolute inset-0 z-0 opacity-10 transition-opacity duration-1000 pointer-events-none",
-        isActive ? "opacity-20" : "opacity-0"
-      )} 
-           style={{ backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
-           aria-hidden="true"
-      />
     </m.div>
   )
 }

@@ -2,133 +2,132 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 import { useTranslations } from "next-intl"
 
-import { ArrowRight } from "@phosphor-icons/react"
-import { m, AnimatePresence } from "framer-motion"
+import { ArrowUpRight } from "@phosphor-icons/react"
+import { m } from "framer-motion"
 
 import { cn } from "@/src/lib/utils/utils"
-import { StaggeredText } from "@/src/components/ui/staggeredText"
 import { Project } from "@/src/types/sections"
 import { Section } from "@/src/components/ui/section"
 import { SectionHeader } from "@/src/components/ui/sectionHeader"
-import { TRANSITION_MEDIUM, VARIANTS_FADE_IN_UP } from "@/src/config/animations"
+import { VARIANTS_FADE_IN_UP } from "@/src/config/animations"
 
 export function Showcase(): React.JSX.Element {
   const t = useTranslations("Index.Showcase")
   const idT = useTranslations("Index.Ids")
   const projects = t.raw("projects") as Project[]
-  const [activeIndex, setActiveIndex] = React.useState(0)
 
   return (
-    <Section id={idT("portfolio")} className="py-32 lg:py-64">
+    <Section id={idT("portfolio")} className="py-32 lg:py-64 relative overflow-hidden">
+        {/* DECORATIVE BACKGROUND TEXT */}
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 pointer-events-none select-none z-0">
+          <span className="text-9xl md:text-[200px] lg:text-[320px] font-black text-foreground/[0.02] uppercase leading-none">
+            Selected
+          </span>
+        </div>
+
         {/* SECTION HEADER */}
         <SectionHeader 
           eyebrow={t("eyebrow")}
           title={t("title")}
+          className="mb-24 lg:mb-40 relative z-10"
         />
 
-        {/* MAIN INTERACTION AREA */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center min-h-[600px]">
-          
-          {/* LEFT: THE LIST */}
-          <div className="lg:col-span-5 flex flex-col border-t border-foreground/10">
-            {projects.map((project, index) => (
-              <ProjectButton 
-                key={index}
-                project={project}
-                index={index}
-                isActive={activeIndex === index}
-                onActive={() => setActiveIndex(index)}
-              />
-            ))}
-          </div>
-
-          {/* RIGHT: THE LENS */}
-          <div className="lg:col-span-7 relative aspect-[4/3] lg:aspect-[16/10] w-full">
-            <ProjectLens 
-              activeProject={projects[activeIndex]} 
-              activeIndex={activeIndex} 
+        {/* PROJECTS GRID */}
+        <div className="grid grid-cols-1 gap-24 lg:gap-48 relative z-10">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={index}
+              project={project}
+              index={index}
+              viewProjectLabel={t("view_project")}
             />
-          </div>
+          ))}
         </div>
     </Section>
   )
 }
 
-interface ProjectButtonProps {
+interface ProjectCardProps {
   project: Project
   index: number
-  isActive: boolean
-  onActive: () => void
+  viewProjectLabel: string
 }
 
-function ProjectButton({ project, index, isActive, onActive }: ProjectButtonProps) {
+function ProjectCard({ project, index, viewProjectLabel }: ProjectCardProps) {
   return (
-    <button
-      aria-label={`View ${project.title} project`}
-      onMouseEnter={onActive}
-      onClick={onActive}
-      className="group relative w-full py-10 border-b border-foreground/10 text-left transition-all duration-500 focus-visible:outline-brand-primary"
+    <m.div
+      variants={VARIANTS_FADE_IN_UP}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      className="group grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center"
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <span className={cn(
-            "font-heading text-xl font-black transition-colors duration-500",
-            isActive ? "text-brand-primary" : "text-foreground/40"
-          )}>
-            0{index + 1}
-          </span>
-          <h3 className={cn(
-            "font-heading text-3xl md:text-5xl font-black uppercase tracking-tighter transition-all duration-500",
-            isActive ? "text-foreground translate-x-4" : "text-foreground/60"
-          )}>
+      {/* IMAGE SIDE WITH CUSTOM CLIP-PATH REVEAL */}
+      <div className={cn(
+        "lg:col-span-7 relative aspect-video group/img",
+        index % 2 !== 0 ? "lg:order-last" : ""
+      )}>
+        {/* Technical Corner Markers */}
+        <div className="absolute -top-4 -left-4 w-8 h-8 border-t border-l border-brand-primary/30 z-20 transition-transform duration-700 group-hover/img:-translate-x-2 group-hover/img:-translate-y-2" />
+        <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b border-r border-brand-primary/30 z-20 transition-transform duration-700 group-hover/img:translate-x-2 group-hover/img:translate-y-2" />
+
+        <m.div 
+          initial={{ clipPath: "inset(20% 20% 20% 20% round 3rem)" }}
+          whileInView={{ clipPath: "inset(0% 0% 0% 0% round 3rem)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="relative w-full h-full overflow-hidden bg-muted/10 border border-foreground/5 shadow-2xl"
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            className="object-cover transition-transform duration-[2s] ease-out group-hover/img:scale-110"
+          />
+          {/* Refined Overlays */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-700" />
+          
+          {/* Scanline / Digital Texture Detail */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20" />
+        </m.div>
+      </div>
+
+      {/* CONTENT SIDE */}
+      <div className={cn(
+        "lg:col-span-5 space-y-10",
+        index % 2 !== 0 ? "lg:pr-12" : "lg:pl-12"
+      )}>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-sm lg:text-xl text-brand-primary font-bold">
+              0{index + 1}
+            </span>
+            <div className="h-px w-12 bg-brand-primary/20" />
+          </div>
+          <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-foreground">
             {project.title}
-          </h3>
+          </h2>
         </div>
-        <div className={cn(
-          "h-12 w-12 rounded-full border flex items-center justify-center transition-all duration-500",
-          isActive ? "bg-brand-primary border-brand-primary text-white scale-110" : "border-foreground/10 text-transparent"
-        )}>
-          <ArrowRight weight="bold" size={20} aria-hidden="true" />
-        </div>
+
+        <Link 
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-6 group/btn"
+        >
+          <div className="h-16 w-16 lg:h-20 lg:w-20 rounded-full bg-brand-primary text-white flex items-center justify-center transition-all duration-500 group-hover/btn:scale-110 group-hover/btn:rotate-45 shadow-xl shadow-brand-primary/20">
+            <ArrowUpRight weight="bold" size={28} />
+          </div>
+          <span className="text-sm font-black uppercase tracking-[0.3em] border-b-2 border-transparent group-hover/btn:border-brand-primary transition-all duration-500 text-foreground">
+            {viewProjectLabel}
+          </span>
+        </Link>
       </div>
-    </button>
-  )
-}
-
-interface ProjectLensProps {
-  activeProject: Project
-  activeIndex: number
-}
-
-function ProjectLens({ activeProject, activeIndex }: ProjectLensProps) {
-  return (
-    <>
-      <div className="absolute inset-0 rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden border border-foreground/10 bg-muted/10 shadow-2xl">
-        <AnimatePresence mode="wait">
-          <m.div
-            key={activeIndex}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={TRANSITION_MEDIUM}
-            className="relative w-full h-full"
-          >
-            <Image
-              src={activeProject.image}
-              alt={`${activeProject.title} Case Study Visual`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/10 via-transparent to-transparent mix-blend-overlay" />
-          </m.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="absolute -inset-4 border border-foreground/[0.05] rounded-[3.5rem] lg:rounded-[4.5rem] pointer-events-none" aria-hidden="true" />
-    </>
+    </m.div>
   )
 }

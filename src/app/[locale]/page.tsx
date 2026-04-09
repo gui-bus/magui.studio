@@ -9,11 +9,10 @@ import { ScrollSpy } from "@/src/components/common/scrollSpy"
 
 const Showcase = dynamic(() => import("@/src/components/sections/showcase").then(mod => mod.Showcase))
 const Services = dynamic(() => import("@/src/components/sections/services").then(mod => mod.Services))
-const Process = dynamic(() => import("@/src/components/sections/process").then(mod => mod.Process))
 const FAQ = dynamic(() => import("@/src/components/sections/faq").then(mod => mod.FAQ))
 const Contact = dynamic(() => import("@/src/components/sections/contact").then(mod => mod.Contact))
 
-export default function Page(): React.JSX.Element {
+export default function Page() {
   return (
     <div className="relative min-h-svh w-full bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary overflow-x-hidden">
       <ScrollSpy />
@@ -23,7 +22,6 @@ export default function Page(): React.JSX.Element {
         <Value />
         <Showcase />
         <Services />
-        <Process />
         <FAQ />
         <Contact />
       </main>

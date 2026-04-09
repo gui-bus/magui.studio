@@ -84,25 +84,22 @@
       "eyebrow": "Selected Works",
       "title": "Impact Projects.",
       "description": "A curation of systems that elevate the standard of performance and design in the digital environment.",
-      "view_project": "Explore Case",
+      "view_project": "View Project",
       "projects": [
         { 
-          "title": "Global Fintech", 
-          "category": "Strategy & UX",
-          "year": "2025",
-          "image": "/projects/thais.png"
+          "title": "Apareça e venda", 
+          "image": "/projects/thais.png",
+          "link": "https://aparecaevenda.com.br"
         },
         { 
-          "title": "Elite Retail", 
-          "category": "E-commerce & Scale",
-          "year": "2026",
-          "image": "/projects/powervet.png"
+          "title": "Powervet", 
+          "image": "/projects/powervet.png",
+          "link": "https://powervet.com.br"
         },
         { 
-          "title": "Digital Infrastructure", 
-          "category": "Systems & Engineering",
-          "year": "2026",
-          "image": "/projects/horizon.png"
+          "title": "Horizon Travels", 
+          "image": "/projects/horizon.png",
+          "link": "https://horizontravels.com.br"
         }
       ]
     },

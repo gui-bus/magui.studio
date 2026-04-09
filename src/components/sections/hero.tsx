@@ -77,7 +77,7 @@ export function Hero(): React.JSX.Element {
             className="absolute top-1/2 right-0 -translate-y-[20%] lg:-translate-y-1/2 z-10 w-[80%] lg:w-[55%] aspect-16/10 lg:aspect-video overflow-hidden rounded-r-4xl"
           >
             <Image
-              src="/images/heroImg.png"
+              src="/images/hero.webp"
               alt={t("image_alt")}
               fill
               sizes="(max-width: 1024px) 80vw, 55vw"

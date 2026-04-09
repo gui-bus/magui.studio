@@ -27,9 +27,9 @@ export function Value(): React.JSX.Element {
   const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
   const disciplines = t.raw("disciplines") as Discipline[]
   const disciplineImages = [
-    "/images/strategy.avif",
-    "/images/code.jpg",
-    "/images/ui.avif",
+    "/images/strategy.webp",
+    "/images/code.webp",
+    "/images/ui.webp",
   ]
 
   return (
