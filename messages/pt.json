@@ -189,22 +189,25 @@
       "title": "Perguntas Frequentes.",
       "items": [
         {
-          "question": "Qual o tempo m�dio de entrega de um projeto?",
-          "answer": "Nossos projetos seguem um protocolo de 8 a 12 semanas, dependendo da complexidade do ecossistema e das integrações necessárias."
+          "question": "Qual é o tempo médio de entrega de um projeto?",
+          "answer": "Nossos projetos seguem um protocolo de 8 a 12 semanas, dependendo da complexidade do escopo e das integrações necessárias."
         },
         {
-          "question": "Como funciona o suporte p�s-lan�amento?",
-          "answer": "Oferecemos monitoramento de performance contínuo e atualizações de segurança críticas para garantir que o sistema permaneça na elite."
+          "question": "Como funciona o suporte pós-lançamento?",
+          "answer": "Oferecemos acompanhamento de performance e atualizações críticas para manter a experiência estável, segura e consistente."
         },
         {
-          "question": "O est�dio trabalha com tecnologias espec�ficas?",
-          "answer": "Focamos em tecnologias de ponta como Next.js, React para garantir a máxima performance e segurança do mercado."
+          "question": "O estúdio trabalha com tecnologias específicas?",
+          "answer": "Sim. Trabalhamos com tecnologias modernas como Next.js e React para garantir performance, qualidade visual e base técnica sólida."
         }
-      ]
+      ],
+      "summary_label": "FAQ",
+      "summary_description": "{count} respostas sobre processo, prazo e direção técnica.",
+      "question_label": "Pergunta"
     },
     "CTA": {
       "eyebrow": "Próximo Passo",
-      "title": "Pronto para elevar o n�vel?",
+      "title": "Pronto para elevar o nível?",
       "description": "Fale agora com nossos especialistas e descubra como a MAGUI pode transformar sua empresa.",
       "button": "Iniciar Projeto"
     }

@@ -200,7 +200,10 @@
           "question": "Does the studio work with specific technologies?",
           "answer": "We focus on cutting-edge technologies like Next.js, React to ensure the market's maximum performance and security."
         }
-      ]
+      ],
+      "summary_label": "FAQ",
+      "summary_description": "{count} answers about process, timeline, and technical direction.",
+      "question_label": "Question"
     },
     "CTA": {
       "eyebrow": "Next Step",
