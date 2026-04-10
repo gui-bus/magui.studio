@@ -54,7 +54,7 @@ export function Showcase(): React.JSX.Element {
     <Section 
       id={idT("portfolio")} 
       ref={containerRef}
-      className="py-32 lg:py-64 relative overflow-hidden" 
+      className="py-32 lg:pt-64 relative overflow-hidden" 
       withContainer={true}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
