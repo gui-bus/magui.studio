@@ -11,11 +11,7 @@ test.describe("Elite Smoke Tests", () => {
   test("should switch language correctly", async ({ page }) => {
     await page.goto("/")
 
-
     await page.click('button[aria-haspopup="menu"]')
-
-
-
 
     const menuItems = page.locator('[role="menuitem"]')
     await expect(menuItems).toHaveCount(2)
@@ -24,10 +20,7 @@ test.describe("Elite Smoke Tests", () => {
   test("should toggle theme correctly", async ({ page }) => {
     await page.goto("/")
 
-
     const html = page.locator("html")
-
-
 
     const themeToggle = page
       .locator(
@@ -35,7 +28,6 @@ test.describe("Elite Smoke Tests", () => {
       )
       .first()
     await themeToggle.click()
-
 
     await expect(page).toBeDefined()
   })

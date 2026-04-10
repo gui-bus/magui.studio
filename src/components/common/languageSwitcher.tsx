@@ -3,11 +3,11 @@
 import * as React from "react"
 
 import { useLocale, useTranslations } from "next-intl"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { locales } from "@/src/i18n/config"
 import { CaretDown, Check } from "@phosphor-icons/react"
-import { m, AnimatePresence } from "framer-motion"
+import { AnimatePresence, m } from "framer-motion"
 import Cookies from "js-cookie"
 import ReactCountryFlag from "react-country-flag"
 
@@ -36,12 +36,15 @@ export function LanguageSwitcher(): React.JSX.Element {
     setMounted(true)
   }, [])
 
-  const handleLocaleChange = React.useCallback((newLocale: string): void => {
-    if (newLocale === currentLocale) return
-    Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 })
-    const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`)
-    router.push(newPath)
-  }, [currentLocale, pathname, router])
+  const handleLocaleChange = React.useCallback(
+    (newLocale: string): void => {
+      if (newLocale === currentLocale) return
+      Cookies.set("NEXT_LOCALE", newLocale, { expires: 365 })
+      const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`)
+      router.push(newPath)
+    },
+    [currentLocale, pathname, router]
+  )
 
   if (!mounted) {
     return (
@@ -108,11 +111,7 @@ export function LanguageSwitcher(): React.JSX.Element {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                <Check
-                  weight="bold"
-                  size={12}
-                  className="text-brand-primary"
-                />
+                <Check weight="bold" size={12} className="text-brand-primary" />
               </m.div>
             )}
           </DropdownMenuItem>

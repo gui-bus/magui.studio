@@ -1,8 +1,12 @@
 import * as React from "react"
-import { m, HTMLMotionProps } from "framer-motion"
+
+import { HTMLMotionProps, m } from "framer-motion"
+
 import { cn } from "@/src/lib/utils/utils"
-import { StaggeredText } from "./staggeredText"
+
 import { VARIANTS_FADE_IN_UP } from "@/src/config/animations"
+
+import { StaggeredText } from "./staggeredText"
 
 interface SectionHeaderProps extends HTMLMotionProps<"div"> {
   eyebrow?: string
@@ -39,17 +43,19 @@ export function SectionHeader({
     >
       <div className="space-y-8">
         {eyebrow && (
-          <div className={cn(
-            "flex items-center gap-4",
-            align === "center" && "justify-center"
-          )}>
+          <div
+            className={cn(
+              "flex items-center gap-4",
+              align === "center" && "justify-center"
+            )}
+          >
             {(eyebrowType === "line" || eyebrowType === "double-line") && (
               <div className="h-px w-12 bg-brand-primary" />
             )}
             {eyebrowType === "dot" && (
               <div className="h-1.5 w-1.5 rounded-full bg-brand-primary" />
             )}
-            
+
             <span className="text-[11px] font-black uppercase tracking-[0.5em] text-brand-primary">
               {eyebrow}
             </span>
@@ -60,20 +66,24 @@ export function SectionHeader({
           </div>
         )}
 
-        <h2 className={cn(
-          "font-heading text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.9] tracking-tight text-foreground uppercase",
-          titleClassName
-        )}>
+        <h2
+          className={cn(
+            "font-heading text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.9] tracking-tight text-foreground uppercase",
+            titleClassName
+          )}
+        >
           <StaggeredText text={title} />
         </h2>
       </div>
 
       {description && (
-        <p className={cn(
-          "max-w-3xl text-xl md:text-2xl text-muted-foreground/70 font-medium leading-relaxed",
-          align === "left" && "border-l border-foreground/10 pl-8",
-          align === "center" && "mx-auto"
-        )}>
+        <p
+          className={cn(
+            "max-w-3xl text-xl md:text-2xl text-muted-foreground/70 font-medium leading-relaxed",
+            align === "left" && "border-l border-foreground/10 pl-8",
+            align === "center" && "mx-auto"
+          )}
+        >
           {description}
         </p>
       )}

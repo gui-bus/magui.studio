@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import { cn } from "@/src/lib/utils/utils"
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
@@ -9,7 +10,17 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const Section = React.forwardRef<HTMLElement, SectionProps>(
-  ({ id, children, className, containerClassName, withContainer = true, ...props }, ref) => {
+  (
+    {
+      id,
+      children,
+      className,
+      containerClassName,
+      withContainer = true,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <section
         id={id}
@@ -21,7 +32,12 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
         {...props}
       >
         {withContainer ? (
-          <div className={cn("px-6 md:px-12 lg:px-24 relative z-10", containerClassName)}>
+          <div
+            className={cn(
+              "px-6 md:px-12 lg:px-24 relative z-10",
+              containerClassName
+            )}
+          >
             {children}
           </div>
         ) : (

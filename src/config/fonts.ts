@@ -1,4 +1,4 @@
-import { Geist_Mono, Montserrat, Lexend, Syne } from "next/font/google"
+import { Geist_Mono, Lexend, Montserrat, Syne } from "next/font/google"
 
 const fontHeading = Lexend({
   subsets: ["latin"],

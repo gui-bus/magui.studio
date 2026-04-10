@@ -1,7 +1,10 @@
 import * as React from "react"
-import { m, AnimatePresence } from "framer-motion"
+
 import { CaretRight } from "@phosphor-icons/react"
+import { AnimatePresence, m } from "framer-motion"
+
 import { cn } from "@/src/lib/utils/utils"
+
 import { TRANSITION_MEDIUM } from "@/src/config/animations"
 
 interface AccordionItemProps {
@@ -55,7 +58,11 @@ export function AccordionItem({
               : "text-foreground/20 group-hover:border-foreground/30 group-hover:text-foreground/60"
           )}
         >
-          <CaretRight weight="bold" className="w-5 h-5 lg:w-6 lg:h-6" aria-hidden="true" />
+          <CaretRight
+            weight="bold"
+            className="w-5 h-5 lg:w-6 lg:h-6"
+            aria-hidden="true"
+          />
         </div>
       </button>
 

@@ -38,7 +38,7 @@ export function FAQ(): React.JSX.Element {
             </span>
           </m.div>
 
-          <h2 className="font-heading text-6xl md:text-9xl lg:text-[140px] font-black uppercase tracking-[-0.05em] leading-[0.8] text-foreground">
+          <h2 className="font-heading text-5xl md:text-9xl lg:text-[140px] font-black uppercase tracking-[-0.05em] leading-[0.8] text-foreground">
             <StaggeredText text={t("title")} />
           </h2>
         </div>

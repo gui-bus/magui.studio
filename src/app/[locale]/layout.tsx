@@ -6,9 +6,9 @@ import { cookies } from "next/headers"
 import { GoogleAnalytics } from "@next/third-parties/google"
 
 import { CookieConsent } from "@/src/components/common/cookieConsent"
-import { ThemeProvider } from "@/src/components/common/themeProvider"
 import { MotionProvider } from "@/src/components/common/motionProvider"
 import { Preloader } from "@/src/components/common/preloader"
+import { ThemeProvider } from "@/src/components/common/themeProvider"
 
 import { cn } from "@/src/lib/utils/utils"
 

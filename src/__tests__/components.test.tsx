@@ -24,7 +24,6 @@ describe("Components", () => {
     })
 
     it("should close the banner when clicking accept", () => {
-
       const reloadMock = vi.fn()
       Object.defineProperty(window, "location", {
         value: { reload: reloadMock },

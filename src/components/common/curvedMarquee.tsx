@@ -42,7 +42,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const [offset, setOffset] = useState(0)
   const uid = useId()
   const pathId = `curve-${uid}`
-  
+
   const pathD = `M-100,60 Q720,${60 + curveAmount} 1540,60`
 
   const [isDragging, setIsDragging] = useState(false)
@@ -121,15 +121,14 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     dirRef.current = velRef.current > 0 ? "right" : "left"
   }
 
-  const cursorStyle = interactive
-    ? isDragging
-      ? "grabbing"
-      : "grab"
-    : "auto"
+  const cursorStyle = interactive ? (isDragging ? "grabbing" : "grab") : "auto"
 
   return (
     <div
-      className={cn("flex items-center justify-center w-full py-20 overflow-hidden", className)}
+      className={cn(
+        "flex items-center justify-center w-full py-20 overflow-hidden",
+        className
+      )}
       style={{ visibility: ready ? "visible" : "hidden", cursor: cursorStyle }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -157,7 +156,10 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
           />
         </defs>
         {ready && (
-          <text xmlSpace="preserve" className="fill-foreground/10 dark:fill-white/3">
+          <text
+            xmlSpace="preserve"
+            className="fill-foreground/10 dark:fill-white/3"
+          >
             <textPath
               ref={textPathRef}
               href={`#${pathId}`}

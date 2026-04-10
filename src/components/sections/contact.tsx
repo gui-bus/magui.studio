@@ -9,8 +9,8 @@ import { ArrowUpRight } from "@phosphor-icons/react"
 import { m } from "framer-motion"
 
 import { Button } from "@/src/components/ui/button"
-import { StaggeredText } from "@/src/components/ui/staggeredText"
 import { Section } from "@/src/components/ui/section"
+import { StaggeredText } from "@/src/components/ui/staggeredText"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
@@ -21,14 +21,13 @@ export function Contact(): React.JSX.Element {
   const containerRef = React.useRef<HTMLDivElement>(null)
 
   return (
-    <Section 
+    <Section
       id={idT("contact")}
-      ref={containerRef} 
+      ref={containerRef}
       className="py-48 lg:py-72 border-t border-foreground/5"
       withContainer={true}
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-end">
-
         <div className="lg:col-span-8 space-y-12">
           <m.div
             initial={{ opacity: 0, y: 20 }}
@@ -38,15 +37,15 @@ export function Contact(): React.JSX.Element {
             className="space-y-8"
           >
             <div className="relative h-12 w-48 lg:h-16 lg:w-64">
-              <Image 
-                src="/logos/LOGO_VAR_03_DM.svg" 
-                alt={configT("name")} 
+              <Image
+                src="/logos/LOGO_VAR_03_DM.svg"
+                alt={configT("name")}
                 fill
                 className="object-contain object-left dark:hidden"
               />
-              <Image 
-                src="/logos/LOGO_VAR_03_LM.svg" 
-                alt={configT("name")} 
+              <Image
+                src="/logos/LOGO_VAR_03_LM.svg"
+                alt={configT("name")}
                 fill
                 className="object-contain object-left hidden dark:block"
               />
@@ -61,13 +60,12 @@ export function Contact(): React.JSX.Element {
           </m.div>
 
           <h2 className="font-heading text-6xl md:text-9xl lg:text-[140px] font-black leading-[0.8] tracking-[-0.06em] text-foreground uppercase max-w-5xl">
-
             <StaggeredText text={t("title")} />
           </h2>
         </div>
 
         <div className="lg:col-span-4 space-y-16">
-          <m.p 
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -77,7 +75,7 @@ export function Contact(): React.JSX.Element {
             {t("description")}
           </m.p>
 
-          <m.div 
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -91,12 +89,16 @@ export function Contact(): React.JSX.Element {
               <div className="absolute inset-0 bg-brand-primary translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]" />
               <span className="relative z-10 flex items-center gap-6 text-xs font-black uppercase tracking-[0.4em]">
                 {t("button")}
-                <ArrowUpRight weight="bold" size={24} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-500" aria-hidden="true" />
+                <ArrowUpRight
+                  weight="bold"
+                  size={24}
+                  className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-500"
+                  aria-hidden="true"
+                />
               </span>
             </Button>
           </m.div>
         </div>
-
       </div>
     </Section>
   )

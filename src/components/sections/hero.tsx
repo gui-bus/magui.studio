@@ -22,13 +22,7 @@ export function Hero(): React.JSX.Element {
 
   React.useEffect(() => setMounted(true), [])
 
-  if (!mounted)
-    return (
-      <Section  withContainer={false}>
-        {" "}
-        {null}{" "}
-      </Section>
-    )
+  if (!mounted) return <Section withContainer={false}> {null} </Section>
 
   return (
     <Section

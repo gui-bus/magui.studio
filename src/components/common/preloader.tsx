@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { useTranslations } from "next-intl"
+
 import { AnimatePresence, Variants, m } from "framer-motion"
 
 export function Preloader(): React.JSX.Element {

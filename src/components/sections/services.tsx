@@ -181,7 +181,13 @@ function ServicePanel({
       onMouseLeave={() => !isMobile && setActiveIndex(null)}
       onClick={() => isMobile && setActiveIndex(index)}
       animate={{
-        width: isMobile ? "100%" : (activeIndex === null ? "33.33%" : isActive ? "65%" : "17.5%"),
+        width: isMobile
+          ? "100%"
+          : activeIndex === null
+            ? "33.33%"
+            : isActive
+              ? "65%"
+              : "17.5%",
         height: isMobile ? (isActive ? "70%" : "15%") : "100%",
       }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -193,9 +199,13 @@ function ServicePanel({
       <AnimatePresence>
         {isActive && (
           <m.div
-            initial={{ clipPath: isMobile ? "inset(100% 0 0 0)" : "inset(0 100% 0 0)" }}
+            initial={{
+              clipPath: isMobile ? "inset(100% 0 0 0)" : "inset(0 100% 0 0)",
+            }}
             animate={{ clipPath: "inset(0 0 0 0)" }}
-            exit={{ clipPath: isMobile ? "inset(100% 0 0 0)" : "inset(0 0 0 100%)" }}
+            exit={{
+              clipPath: isMobile ? "inset(100% 0 0 0)" : "inset(0 0 0 100%)",
+            }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 z-0 pointer-events-none"
           >
@@ -246,7 +256,12 @@ function ServicePanel({
           </AnimatePresence>
         </div>
 
-        <div className={cn("relative flex-1 flex justify-start", isActive ? "" : "ml-16 md:ml-0")}>
+        <div
+          className={cn(
+            "relative flex-1 flex justify-start",
+            isActive ? "" : "ml-16 md:ml-0"
+          )}
+        >
           <AnimatePresence mode="wait">
             {!isActive ? (
               <m.div
@@ -258,8 +273,7 @@ function ServicePanel({
               >
                 <h3
                   className={cn(
-                    "font-heading text-lg md:text-5xl font-black uppercase tracking-tighter lg:-rotate-90 whitespace-nowrap transition-all duration-500 text-white -mt-8 md:mt-0",
-                    
+                    "font-heading text-lg md:text-5xl font-black uppercase tracking-tighter lg:-rotate-90 whitespace-nowrap transition-all duration-500 text-white -mt-8 md:mt-0"
                   )}
                 >
                   {service.title}
