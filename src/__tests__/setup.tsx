@@ -19,18 +19,29 @@ vi.mock("next/navigation", () => ({
   usePathname: () => "/",
 }))
 
+const motionDiv = ({
+  children,
+  ...props
+}: { children?: React.ReactNode } & Record<string, unknown>) =>
+  React.createElement(
+    "div",
+    props as React.HTMLAttributes<HTMLDivElement>,
+    children
+  )
+
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({
-      children,
-      ...props
-    }: { children?: React.ReactNode } & Record<string, unknown>) =>
-      React.createElement(
-        "div",
-        props as React.HTMLAttributes<HTMLDivElement>,
-        children
-      ),
+    div: motionDiv,
+  },
+  m: {
+    div: motionDiv,
+    span: motionDiv,
+    h2: motionDiv,
   },
   AnimatePresence: ({ children }: { children?: React.ReactNode }) =>
     React.createElement(React.Fragment, null, children),
+  useScroll: () => ({
+    scrollYProgress: 0,
+  }),
+  useTransform: () => "0%",
 }))
