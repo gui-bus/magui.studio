@@ -35,9 +35,10 @@ export const Footer = React.memo(function Footer(): React.JSX.Element {
   }, [])
 
   const navigationLinks = React.useMemo(() => [
+    { id: "about", label: navT("about") },
     { id: "services", label: navT("services") },
     { id: "portfolio", label: navT("portfolio") },
-    { id: "about", label: navT("about") }
+    { id: "faq", label: navT("faq") }
   ], [navT])
 
   const socialLinks = ["Instagram", "LinkedIn", "Behance"]
@@ -137,10 +138,9 @@ export const Footer = React.memo(function Footer(): React.JSX.Element {
         <div className="pt-12 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/70">
             <span>{t("credits", { year: new Date().getFullYear() })}</span>
-            <div className="h-1 w-1 rounded-full bg-foreground/10 hidden md:block" aria-hidden="true" />
-            <Link href="#" className="hover:text-brand-primary transition-colors">{t("policy")}</Link>
             
-            <div className="h-1 w-1 rounded-full bg-foreground/10 hidden md:block" aria-hidden="true" />
+            <div className="h-px w-8 bg-foreground/10 hidden md:block" aria-hidden="true" />
+            
             <button 
               onClick={scrollToTop}
               className="flex items-center gap-2 text-brand-primary hover:text-foreground transition-all duration-500 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-full px-2"
@@ -149,18 +149,6 @@ export const Footer = React.memo(function Footer(): React.JSX.Element {
               <span>{t("back_to_top")}</span>
               <ArrowUp weight="bold" className="transition-transform group-hover:-translate-y-1" aria-hidden="true" />
             </button>
-          </div>
-          
-          <div className="flex items-center gap-4 group cursor-default">
-             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/70 group-hover:text-brand-primary transition-colors">{t("standard")}</span>
-             <m.div 
-               animate={{ rotate: 360 }}
-               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-               className="h-10 w-10 border border-foreground/5 rounded-full flex items-center justify-center"
-               aria-hidden="true"
-             >
-                <Plus weight="bold" size={14} className="text-brand-primary/40" />
-             </m.div>
           </div>
         </div>
 

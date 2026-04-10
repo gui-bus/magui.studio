@@ -40,8 +40,8 @@ export function FAQ(): React.JSX.Element {
           </h2>
         </div>
 
-        {/* TECHNICAL MODULE GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-foreground/10 border border-foreground/10 overflow-hidden rounded-3xl lg:rounded-[3rem]">
+        {/* QUESTIONS LIST */}
+        <div className="flex flex-col gap-px bg-foreground/10 border border-foreground/10 overflow-hidden rounded-3xl lg:rounded-[3rem]">
           {items.map((item, index) => (
             <FAQModule 
               key={index}
@@ -49,15 +49,6 @@ export function FAQ(): React.JSX.Element {
               item={item}
             />
           ))}
-        </div>
-
-        {/* SECTION FOOTER - DATA ONLY */}
-        <div className="mt-12 flex items-center justify-between opacity-30 font-mono text-[10px] uppercase tracking-widest px-4">
-           <div className="flex items-center gap-4">
-              <span className="flex h-2 w-2 rounded-full bg-brand-primary animate-pulse" />
-              <span>Database // Index: {items.length}</span>
-           </div>
-           <span>System Status: Optimal</span>
         </div>
       </div>
     </Section>
@@ -79,17 +70,9 @@ function FAQModule({ item, index }: { item: FAQItem, index: number }) {
         isOpen ? "bg-foreground/5" : "hover:bg-foreground/[0.02]"
       )}
     >
-      {/* MODULE CORNER CLIP */}
-      <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-         <div className="absolute top-0 right-0 w-full h-full bg-foreground/5" style={{ clipPath: "polygon(100% 0, 100% 100%, 0 0)" }} />
-      </div>
-
-      <div className="relative z-10 flex flex-col gap-12">
+      <div className="relative z-10 flex flex-col gap-12"> 
         <div className="flex items-start justify-between gap-8">
           <div className="space-y-6">
-            <span className="font-mono text-xs font-bold text-brand-primary/40 uppercase tracking-widest">
-              Entry // 0{index + 1}
-            </span>
             <h3 className={cn(
               "text-2xl md:text-3xl lg:text-4xl font-heading font-black uppercase tracking-tighter leading-tight transition-colors duration-500",
               isOpen ? "text-brand-primary" : "text-foreground"
@@ -126,12 +109,6 @@ function FAQModule({ item, index }: { item: FAQItem, index: number }) {
                 <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed max-w-2xl">
                   {item.answer}
                 </p>
-                
-                {/* Technical "Scan" Detail */}
-                <div className="flex items-center gap-4 opacity-20 font-mono text-[9px] uppercase tracking-widest pt-4">
-                   <div className="h-1 w-1 bg-brand-primary" />
-                   <span>Analysis Complete // Retrieval Successful</span>
-                </div>
               </div>
             </m.div>
           )}
