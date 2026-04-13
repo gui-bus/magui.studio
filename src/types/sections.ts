@@ -1,7 +1,5 @@
-import { PortfolioProjectId } from "@/src/content/projects"
-
 export interface Project {
-  id: PortfolioProjectId
+  id: string
   slug: string
   image: string
   liveUrl: string
