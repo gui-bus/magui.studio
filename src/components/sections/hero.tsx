@@ -119,7 +119,10 @@ export function Hero(): React.JSX.Element {
                 </Link>
               </Button>
 
-              <Link href="/#portfolio" className="flex items-start gap-1 group flex-col">
+              <Link
+                href="/#portfolio"
+                className="flex items-start gap-1 group flex-col"
+              >
                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground group-hover:text-brand-primary transition-colors">
                   {t("secondary_cta")}
                 </span>

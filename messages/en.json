@@ -189,20 +189,32 @@
       "title": "Frequently Asked Questions.",
       "items": [
         {
-          "question": "What is the average project delivery time?",
-          "answer": "Our projects follow an 8 to 12-week protocol, depending on the ecosystem's complexity and required integrations."
+          "question": "How long does a project usually take?",
+          "answer": "The timeline depends on scope, number of pages, integrations, and the level of customization. Leaner projects can move in a few weeks, while more ambitious experiences require a broader schedule and more detailed validation stages."
         },
         {
-          "question": "How does post-launch support work?",
-          "answer": "We offer continuous performance monitoring and critical security updates to ensure the system remains at the elite level."
+          "question": "How do you define the budget?",
+          "answer": "Pricing is shaped by project goals, technical complexity, content volume, integrations, and deliverables. After the brief, the proposal makes it clear what is included in each stage."
         },
         {
-          "question": "Does the studio work with specific technologies?",
-          "answer": "We focus on cutting-edge technologies like Next.js, React to ensure the market's maximum performance and security."
+          "question": "What do I need to have ready before we start?",
+          "answer": "You do not need to arrive with everything solved. References, copy, brand assets, or business goals help speed things up, but we can also guide the process from the early direction stage and shape an initial idea into a solid scope."
+        },
+        {
+          "question": "Can I request changes during the project?",
+          "answer": "Yes. We work with alignment and refinement rounds throughout the delivery process. Adjustments are expected; larger scope changes are reassessed so we can protect timeline, quality, and predictability."
+        },
+        {
+          "question": "How does support work after delivery?",
+          "answer": "After launch, we can continue with monitoring, iterative maintenance, and strategic adjustments when needed. The goal is to keep the project evolving based on real usage, performance, and new business goals."
+        },
+        {
+          "question": "Which technologies does the studio use?",
+          "answer": "We work with modern technologies focused on performance, scalability, and experience, such as Next.js and React. Every technical decision considers the project context, the brand's moment, and what best supports the intended outcome."
         }
       ],
       "summary_label": "FAQ",
-      "summary_description": "{count} answers about process, timeline, and technical direction.",
+      "summary_description": "{count} answers about process, budget, scope, and technical direction.",
       "question_label": "Question"
     },
     "CTA": {

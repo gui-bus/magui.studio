@@ -61,7 +61,6 @@ interface FAQModuleProps {
 }
 
 function FAQModule({ item, index }: FAQModuleProps): React.JSX.Element {
-  const t = useTranslations("Index.FAQ")
   const [isOpen, setIsOpen] = React.useState(false)
   const panelId = React.useId()
   const itemNumber = String(index + 1).padStart(2, "0")
@@ -94,13 +93,10 @@ function FAQModule({ item, index }: FAQModuleProps): React.JSX.Element {
               {itemNumber}
             </span>
 
-            <div className="min-w-0 space-y-3">
-              <span className="text-[10px] font-black uppercase tracking-[0.42em] text-brand-primary">
-                {t("question_label")}
-              </span>
+            <div className="min-w-0">
               <h3
                 className={cn(
-                  "font-heading text-xl font-black uppercase leading-tight tracking-[-0.04em] transition-colors duration-500 sm:text-2xl md:text-3xl lg:text-4xl",
+                  "font-heading text-lg font-black uppercase leading-tight tracking-[-0.04em] transition-colors duration-500 sm:text-xl md:text-2xl lg:text-3xl",
                   isOpen
                     ? "text-brand-primary"
                     : "text-foreground dark:text-white"
@@ -144,7 +140,7 @@ function FAQModule({ item, index }: FAQModuleProps): React.JSX.Element {
             <div className="border-t border-foreground/8 px-6 py-7 md:px-8 md:py-8 lg:px-10 dark:border-white/10">
               <div className="space-y-5 md:ml-[3.6rem]">
                 <div className="h-px w-16 bg-brand-primary/40" />
-                <p className="max-w-3xl text-lg font-medium leading-relaxed text-foreground/72 md:text-xl lg:text-2xl dark:text-white/72">
+                <p className="w-full text-lg font-medium leading-relaxed text-foreground/72 md:text-xl lg:text-2xl dark:text-white/72">
                   {item.answer}
                 </p>
               </div>

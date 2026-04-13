@@ -45,7 +45,23 @@ export const Footer = React.memo(function Footer(): React.JSX.Element {
     [navT]
   )
 
-  const socialLinks = ["Instagram"]
+  const socialLinks = [
+    {
+      href: "https://www.instagram.com/_magui.studio",
+      isExternal: true,
+      label: "Instagram",
+    },
+    {
+      href: "http://linkedin.com/company/magui-studio",
+      isExternal: true,
+      label: "LinkedIn",
+    },
+    {
+      href: "https://x.com/magui_studio",
+      isExternal: true,
+      label: "X (Twitter)",
+    },
+  ]
 
   return (
     <footer
@@ -111,8 +127,14 @@ export const Footer = React.memo(function Footer(): React.JSX.Element {
               </div>
               <ul className="space-y-6">
                 {socialLinks.map((link) => (
-                  <li key={link} className="group overflow-hidden">
-                    <NavLink href="#" label={link} variant="footer" />
+                  <li key={link.label} className="group overflow-hidden">
+                    <NavLink
+                      href={link.href}
+                      label={link.label}
+                      variant="footer"
+                      rel={link.isExternal ? "noreferrer" : undefined}
+                      target={link.isExternal ? "_blank" : undefined}
+                    />
                   </li>
                 ))}
               </ul>

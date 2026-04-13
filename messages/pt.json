@@ -189,20 +189,32 @@
       "title": "Perguntas Frequentes.",
       "items": [
         {
-          "question": "Qual é o tempo médio de entrega de um projeto?",
-          "answer": "Nossos projetos seguem um protocolo de 8 a 12 semanas, dependendo da complexidade do escopo e das integrações necessárias."
+          "question": "Quanto tempo leva para um projeto ficar pronto?",
+          "answer": "O prazo varia conforme escopo, quantidade de páginas, integrações e nível de personalização. Projetos mais enxutos avançam em poucas semanas, enquanto experiências mais robustas pedem um cronograma maior e etapas de validação mais detalhadas."
         },
         {
-          "question": "Como funciona o suporte pós-lançamento?",
-          "answer": "Oferecemos acompanhamento de performance e atualizações críticas para manter a experiência estável, segura e consistente."
+          "question": "Como vocês definem o orçamento?",
+          "answer": "O investimento é calculado a partir dos objetivos do projeto, complexidade técnica, volume de conteúdo, integrações e entregáveis envolvidos. Depois do briefing, a proposta deixa claro o que está incluído em cada etapa."
         },
         {
-          "question": "O estúdio trabalha com tecnologias específicas?",
-          "answer": "Sim. Trabalhamos com tecnologias modernas como Next.js e React para garantir performance, qualidade visual e base técnica sólida."
+          "question": "O que eu preciso ter pronto antes de começar?",
+          "answer": "Você não precisa chegar com tudo resolvido. Referências, textos, identidade visual ou metas comerciais ajudam a acelerar, mas também podemos conduzir o processo desde a fase de direção para transformar uma ideia inicial em escopo consistente."
+        },
+        {
+          "question": "Posso pedir ajustes durante o projeto?",
+          "answer": "Sim. Trabalhamos com rodadas de alinhamento e refinamento ao longo das entregas. Ajustes fazem parte do processo; mudanças muito grandes de escopo são reavaliadas para proteger prazo, qualidade e previsibilidade."
+        },
+        {
+          "question": "Como funciona o suporte depois da entrega?",
+          "answer": "Após o lançamento, podemos seguir com acompanhamento, manutenção evolutiva e ajustes estratégicos conforme a necessidade. A ideia é não deixar o projeto parado e permitir otimizações com base em uso real, performance e novas metas."
+        },
+        {
+          "question": "Quais tecnologias o estúdio utiliza?",
+          "answer": "Trabalhamos com tecnologias modernas focadas em performance, escalabilidade e experiência, como Next.js e React. A direção técnica sempre considera o contexto do projeto, o momento da marca e o que faz mais sentido para o resultado esperado."
         }
       ],
       "summary_label": "FAQ",
-      "summary_description": "{count} respostas sobre processo, prazo e direção técnica.",
+      "summary_description": "{count} respostas sobre processo, investimento, escopo e direção técnica.",
       "question_label": "Pergunta"
     },
     "CTA": {
