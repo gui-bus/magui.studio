@@ -206,8 +206,6 @@
       "eyebrow": "Contato",
       "title": "Seu projeto começa aqui",
       "description": "Abra o briefing e envie o contexto essencial para transformar a ideia em uma direção clara.",
-      "button": "Abrir Briefing",
-      "cardEyebrow": "Próximo passo",
       "cardTitle": "Clareza antes da execução.",
       "cardDescription": "Um bom projeto começa com um briefing objetivo, bem estruturado e sem ruído."
     },
@@ -282,27 +280,7 @@
     },
     "ContactPage": {
       "metaTitle": "Contato",
-      "metaDescription": "Envie o briefing do seu projeto e alinhe escopo, prazo e objetivo em uma página dedicada de contato.",
-      "eyebrow": "Contato",
-      "title": "Contato",
-      "description": "Uma pagina pensada para organizar o contexto do projeto com clareza, ritmo e direcao desde o primeiro envio.",
-      "pill1Label": "Escopo",
-      "pill1Text": "Defina o tipo de projeto e o resultado esperado.",
-      "pill2Label": "Prazo",
-      "pill2Text": "Sinalize a janela ideal para estruturar a entrega.",
-      "pill3Label": "Contexto",
-      "pill3Text": "Compartilhe referencias, objetivo e momento atual.",
-      "sideEyebrow": "Fluxo",
-      "sideTitle": "Mais clareza logo no inicio.",
-      "sideDescription": "A pagina concentra o briefing em um unico lugar para tornar o primeiro contato mais objetivo.",
-      "miniCardLabel": "Direcao",
-      "miniCardText": "Um envio bem estruturado acelera escopo, leitura e proximos passos.",
-      "imageAlt": "Composicao visual da pagina de contato da MAGUI.studio",
-      "imageCardLabel": "Leitura",
-      "imageCardTitle": "Contexto organizado.",
-      "imageCardText": "A combinacao entre imagem, ritmo e estrutura reforca a experiencia antes mesmo do envio.",
-      "formEyebrow": "Formulario",
-      "formTitle": "Envie o briefing"
+      "metaDescription": "Envie o briefing do seu projeto e alinhe escopo, prazo e objetivo em uma página dedicada de contato."
     }
   },
   "ProjectCases": {

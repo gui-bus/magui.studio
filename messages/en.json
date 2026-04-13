@@ -206,8 +206,6 @@
       "eyebrow": "Contact",
       "title": "Your project starts here",
       "description": "Open the brief and send the essential context needed to turn the idea into clear direction.",
-      "button": "Open Brief",
-      "cardEyebrow": "Next step",
       "cardTitle": "Clarity before execution.",
       "cardDescription": "A strong project starts with an objective brief, structured well and without noise."
     },
@@ -282,27 +280,7 @@
     },
     "ContactPage": {
       "metaTitle": "Contact",
-      "metaDescription": "Send your project brief and align scope, timeline, and goals on a dedicated contact page.",
-      "eyebrow": "Contact",
-      "title": "Contact",
-      "description": "A page designed to organize project context with clarity, pace, and direction from the very first submission.",
-      "pill1Label": "Scope",
-      "pill1Text": "Define the project type and the outcome you expect.",
-      "pill2Label": "Timeline",
-      "pill2Text": "Signal the ideal delivery window for the work.",
-      "pill3Label": "Context",
-      "pill3Text": "Share references, goals, and the current moment of the project.",
-      "sideEyebrow": "Flow",
-      "sideTitle": "More clarity from the start.",
-      "sideDescription": "The page concentrates the brief in one place to make first contact more objective.",
-      "miniCardLabel": "Direction",
-      "miniCardText": "A structured submission speeds up scope review, reading, and next steps.",
-      "imageAlt": "Visual composition for the MAGUI.studio contact page",
-      "imageCardLabel": "Reading",
-      "imageCardTitle": "Organized context.",
-      "imageCardText": "The combination of image, rhythm, and structure reinforces the experience before the form is even submitted.",
-      "formEyebrow": "Form",
-      "formTitle": "Send the brief"
+      "metaDescription": "Send your project brief and align scope, timeline, and goals on a dedicated contact page."
     }
   },
   "ProjectCases": {

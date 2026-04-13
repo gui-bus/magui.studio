@@ -3,7 +3,7 @@ import * as React from "react"
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
-import { ContactPageExperience } from "@/src/components/common/contactPageExperience"
+import { Contact } from "@/src/components/sections/contact"
 import { Footer } from "@/src/components/common/footer"
 import { Header } from "@/src/components/common/header"
 
@@ -50,8 +50,8 @@ export default async function ContactPage(): Promise<React.JSX.Element> {
   return (
     <div className="relative min-h-svh w-full overflow-x-hidden bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary">
       <Header />
-      <main className="pt-24 md:pt-32">
-        <ContactPageExperience />
+      <main className="pt-12 md:pt-20">
+        <Contact />
       </main>
       <Footer />
     </div>
