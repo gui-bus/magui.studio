@@ -15,7 +15,6 @@ import { Contact } from "@/src/components/sections/contact"
 import { FAQ } from "@/src/components/sections/faq"
 import { Hero } from "@/src/components/sections/hero"
 import { Manifesto } from "@/src/components/sections/manifesto"
-import { Process } from "@/src/components/sections/process"
 import { Services } from "@/src/components/sections/services"
 import { Value } from "@/src/components/sections/value"
 
@@ -94,7 +93,6 @@ export default function Page(): React.JSX.Element {
         <Value />
         <Manifesto />
         <Showcase />
-        <Process />
         <Services />
 
         <div className="pt-44!">

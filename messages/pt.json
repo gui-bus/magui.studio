@@ -365,34 +365,35 @@
     "metaDescription": "MAGUI.studio é um estúdio de engenharia visual fundado por Guilherme Bustamante, focado em clareza, estética e funcionalidade técnica.",
     "eyebrow": "Manifesto",
     "title": "O Estúdio",
-    "description": "Somos um estúdio boutique focado em entregar qualidade artesanal e soluções técnicas bem resolvidas para quem valoriza o impacto do digital.",
-    "founder_label": "O Fundador",
+    "description": "Somos uma boutique de engenharia visual focada em qualidade artesanal. Criamos para marcas que entendem que o digital é seu ativo mais valioso.",
+    "founder_label": "Direção Técnica",
     "founder_title": "Guilherme Bustamante",
-    "founder_description": "Desenvolvedor e designer com foco em interfaces. Fundou a MAGUI para aplicar seu olhar técnico e estético na criação de produtos que buscam ser autênticos e funcionais.",
-    "approach_label": "Nossa Abordagem",
+    "founder_description": "Desenvolvedor e designer com obsessão por interface. Com anos de experiência no mercado, fundou a MAGUI para preencher o gap entre o design que impressiona e a engenharia que escala.",
+    "approach_label": "Visão",
     "approach_title": "Estética intencional, engenharia aplicada.",
-    "approach_description": "Acreditamos que design deve servir ao propósito do negócio. Na MAGUI, cada detalhe busca um equilíbrio entre ser visualmente interessante e tecnicamente eficiente.",
-    "values": [
-      "Código autoral escrito para cada necessidade.",
-      "Foco constante na melhor performance possível.",
-      "Atenção aos detalhes técnicos e visuais.",
-      "Design que busca transmitir seriedade e valor."
-    ],
+    "approach_description": "Acreditamos que design deve servir ao propósito do negócio. Na MAGUI, eliminamos o óbvio e focamos no excepcional, onde cada detalhe tem uma intenção estratégica.",
     "philosophy_title": "Critério Visual",
     "philosophy_description": "Design é comunicação. Aplicamos princípios de organização e ritmo visual para criar experiências que sejam claras, diretas e memoráveis.",
     "philosophy_items": [
       {
-        "title": "Simplicidade",
-        "description": "Focar no que importa para que a mensagem do cliente seja ouvida."
+        "title": "Minimalismo Funcional",
+        "description": "Remover o excesso para que o essencial brilhe com autoridade máxima."
       },
       {
-        "title": "Clareza Tipográfica",
-        "description": "Uso da tipografia para criar hierarquias de leitura eficientes."
+        "title": "Rigor Tipográfico",
+        "description": "A tipografia como espinha dorsal da hierarquia e do ritmo visual."
       },
       {
         "title": "Consistência Técnica",
-        "description": "Garantir que a visão de design seja executada com precisão no código."
+        "description": "O que é desenhado no Figma é exatamente o que é entregue no código final."
       }
+    ],
+    "values_label": "Valores Inegociáveis",
+    "values": [
+      "Sem templates, código 100% autoral.",
+      "Performance não é opcional, é fundamento.",
+      "Rigor técnico em cada detalhe visível.",
+      "Design focado em percepção de valor."
     ]
   },
   "ProjectCases": {

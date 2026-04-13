@@ -308,7 +308,7 @@
     "phases": [
       {
         "id": "01",
-        "title": "Alignment & Strategy",
+        "title": "Strategy & Alignment",
         "label": "The first layer",
         "description": "We map the main goals, define the feasible scope, and establish the communication channels for the project. The focus here is absolute clarity on what will be built.",
         "details": [
