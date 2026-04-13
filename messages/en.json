@@ -347,12 +347,12 @@
     "quote_label": "Editorial read",
     "closing_label": "Closing note",
     "live_project": "View live project",
-    "open_brief": "Open brief",
+    "open_brief": "Request proposal",
     "more_projects": "More projects",
     "next_project": "Next project",
     "previous_project": "Previous project",
     "cta_title": "Want a project with this level of direction?",
-    "cta_description": "Open the brief and share the context of what you need. From there, MAGUI can organize scope, visual language, and the execution path."
+    "cta_description": "Request a proposal and share the context of what you need. From there, MAGUI can organize scope, visual language, and the execution path."
   },
   "Footer": {
     "studio_title": "Studio",

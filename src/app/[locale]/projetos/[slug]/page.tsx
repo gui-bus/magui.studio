@@ -203,7 +203,7 @@ export default async function ProjectCasePage({
           </header>
 
           <figure className="overflow-hidden bg-white shadow-[0_38px_120px_rgba(15,23,42,0.1)]">
-            <div className="relative aspect-[16/9] overflow-hidden bg-[#f5f4ef]">
+            <div className="relative aspect-video overflow-hidden bg-[#f5f4ef]">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -235,8 +235,8 @@ export default async function ProjectCasePage({
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-foreground/8 bg-foreground/[0.01] px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
-          <div className="absolute inset-0 z-0 opacity-[0.03] [background-image:radial-gradient(circle_at_center,currentColor_1px,transparent_1px)] [background-size:32px_32px]" />
+        <section className="relative overflow-hidden border-t border-foreground/8 bg-foreground/1 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+          <div className="absolute inset-0 z-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,currentColor_1px,transparent_1px)] bg-size-[32px_32px]" />
 
           <div className="relative z-10 grid gap-16 lg:grid-cols-2 lg:gap-24">
             <article className="group space-y-8">
@@ -300,7 +300,7 @@ export default async function ProjectCasePage({
                 {project.typography.map((font) => (
                   <div key={font.name} className="relative space-y-4">
                     <div
-                      className="pointer-events-none absolute -top-12 -left-4 select-none text-[12rem] leading-none text-foreground/[0.03]"
+                      className="pointer-events-none absolute -top-12 -left-4 select-none text-[12rem] leading-none text-foreground/3"
                       style={{ fontFamily: font.name }}
                     >
                       Aa
@@ -338,7 +338,7 @@ export default async function ProjectCasePage({
                       className="aspect-video w-full transition-transform duration-700 md:aspect-square"
                       style={{ backgroundColor: color.hex }}
                     />
-                    <div className="space-y-4 p-6 transition-colors group-hover:bg-foreground/[0.02]">
+                    <div className="space-y-4 p-6 transition-colors group-hover:bg-foreground/2">
                       <div className="space-y-1">
                         <p className="text-[11px] font-black uppercase tracking-widest">
                           {color.name}
@@ -359,7 +359,7 @@ export default async function ProjectCasePage({
 
         <section className="space-y-6 border-t border-foreground/8 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
           <figure className="overflow-hidden bg-white shadow-[0_34px_110px_rgba(15,23,42,0.1)]">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#f5f4ef]">
+            <div className="relative aspect-16/10 overflow-hidden bg-[#f5f4ef]">
               <Image
                 src={project.gallery[0] ?? "/utils/placeholder.svg"}
                 alt={project.title}
@@ -372,7 +372,7 @@ export default async function ProjectCasePage({
 
           <div className="grid gap-6 lg:grid-cols-2">
             <figure className="overflow-hidden bg-white shadow-[0_30px_96px_rgba(15,23,42,0.09)]">
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#f5f4ef]">
+              <div className="relative aspect-4/5 overflow-hidden bg-[#f5f4ef]">
                 <Image
                   src={project.gallery[1] ?? "/utils/placeholder.svg"}
                   alt={project.title}
@@ -384,7 +384,7 @@ export default async function ProjectCasePage({
             </figure>
 
             <figure className="overflow-hidden bg-white shadow-[0_30px_96px_rgba(15,23,42,0.09)]">
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#f5f4ef]">
+              <div className="relative aspect-4/5 overflow-hidden bg-[#f5f4ef]">
                 <Image
                   src={project.gallery[2] ?? "/utils/placeholder.svg"}
                   alt={project.title}
@@ -443,7 +443,7 @@ export default async function ProjectCasePage({
                 href={item.href}
                 className="group overflow-hidden bg-white shadow-[0_24px_84px_rgba(15,23,42,0.08)] transition-transform duration-200 hover:-translate-y-1"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#f5f4ef]">
+                <div className="relative aspect-4/3 overflow-hidden bg-[#f5f4ef]">
                   <Image
                     src="/utils/placeholder.svg"
                     alt={item.project.title}
