@@ -266,8 +266,8 @@ export const Header = React.memo(function Header(): React.JSX.Element {
             className="fixed inset-0 z-190 overflow-y-auto overflow-x-hidden bg-background px-6 pt-24 pb-8 md:px-12"
           >
             <div className="absolute top-0 right-0 h-full w-1/4 border-l border-foreground/5 bg-muted/20 -z-10 hidden md:block" />
-            <div className="absolute -bottom-10 -right-10 -z-10 opacity-[0.03] select-none pointer-events-none">
-              <span className="text-[20rem] font-black uppercase tracking-tighter rotate-90 origin-bottom-right">
+            <div className="absolute -bottom-10 right-0 -z-10 opacity-[0.03] select-none pointer-events-none">
+              <span className="text-[130px] font-black uppercase tracking-tighter rotate-90 origin-bottom-right">
                 MAGUI
               </span>
             </div>
