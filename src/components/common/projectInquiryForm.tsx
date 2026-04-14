@@ -289,6 +289,20 @@ export function ProjectInquiryForm({
   const selectedProjectType = watch("projectType")
   const selectedBudget = watch("budget")
   const selectedDeadline = watch("deadline")
+  const optionLabels = React.useMemo(
+    () => ({
+      budget: Object.fromEntries(
+        budgetOptions.map((option) => [option.value, option.label])
+      ) as Record<string, string>,
+      deadline: Object.fromEntries(
+        deadlineOptions.map((option) => [option.value, option.label])
+      ) as Record<string, string>,
+      projectType: Object.fromEntries(
+        projectTypes.map((option) => [option.value, option.label])
+      ) as Record<string, string>,
+    }),
+    [budgetOptions, deadlineOptions, projectTypes]
+  )
 
   React.useEffect(() => {
     if (
@@ -399,24 +413,26 @@ export function ProjectInquiryForm({
 
       try {
         const formData = new FormData()
+        const budgetLabel = optionLabels.budget[data.budget] ?? data.budget
+        const deadlineLabel =
+          optionLabels.deadline[data.deadline] ?? data.deadline
+        const projectTypeLabel =
+          data.projectType === "other"
+            ? `${optionLabels.projectType.other ?? t("projectTypes.other")}: ${data.projectTypeOther}`
+            : (optionLabels.projectType[data.projectType] ?? data.projectType)
 
         formData.append("access_key", web3FormsAccessKey)
         formData.append("name", data.name)
         formData.append("email", data.email)
         formData.append("phone", data.phone)
-        formData.append("link", data.link || "Not provided")
+        formData.append("link", data.link || t("notProvided"))
         formData.append("message", data.message)
-        formData.append("subject", `New project inquiry: ${data.name}`)
+        formData.append("subject", t("emailSubject", { name: data.name }))
         formData.append("replyto", data.email)
-        formData.append("company", data.company || "Not provided")
-        formData.append("budget", data.budget)
-        formData.append("deadline", data.deadline)
-        formData.append(
-          "project_type",
-          data.projectType === "other"
-            ? `other (${data.projectTypeOther})`
-            : data.projectType
-        )
+        formData.append("company", data.company || t("notProvided"))
+        formData.append("budget", budgetLabel)
+        formData.append("deadline", deadlineLabel)
+        formData.append("project_type", projectTypeLabel)
         formData.append("origin", origin)
         formData.append("botcheck", "")
 
