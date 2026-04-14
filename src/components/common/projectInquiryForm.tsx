@@ -99,7 +99,7 @@ function FormSection({
   children,
 }: FormSectionProps): React.JSX.Element {
   return (
-    <section className="space-y-5">
+    <section className="space-y-5 rounded-[2rem] bg-background/92 md:p-5 shadow-[0_18px_50px_rgba(15,23,42,0.05)]">
       <header className="space-y-2">
         <p className="text-[10px] font-black uppercase tracking-[0.34em] text-brand-primary/80">
           {eyebrow}
