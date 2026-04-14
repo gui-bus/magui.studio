@@ -28,6 +28,6 @@ describe("siteConfig", () => {
   })
 
   it("should expose the portfolio route", () => {
-    expect(siteConfig.projects.path).toBe("/projetos")
+    expect(siteConfig.projects.path).toBe("/#portfolio")
   })
 })

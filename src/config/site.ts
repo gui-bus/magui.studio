@@ -44,7 +44,7 @@ export const siteConfig = {
     path: "/contato" as const,
   },
   projects: {
-    path: "/projetos" as const,
+    path: "/#portfolio" as const,
   },
   method: {
     path: "/metodo" as const,

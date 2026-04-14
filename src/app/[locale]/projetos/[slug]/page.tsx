@@ -171,13 +171,13 @@ export default async function ProjectCasePage({
 
       <main className="overflow-x-hidden pt-24 md:pt-32">
         <section className="space-y-10 px-6 pb-16 md:px-12 md:pb-20 lg:px-16 lg:pb-24">
-          <Link
+          <NextLink
             href={siteConfig.projects.path}
             className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.34em] text-brand-primary transition-colors hover:text-foreground"
           >
             {t("back_to_projects")}
             <ArrowUpRightIcon size={16} weight="bold" />
-          </Link>
+          </NextLink>
 
           <header className="space-y-8">
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-[10px] font-black uppercase tracking-[0.28em] text-foreground/46">
