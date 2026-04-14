@@ -215,15 +215,15 @@ export default async function ProjectCasePage({
             </div>
           </header>
 
-          <figure className="overflow-hidden bg-white shadow-[0_38px_120px_rgba(15,23,42,0.1)]">
-            <div className="relative aspect-video overflow-hidden bg-[#f5f4ef]">
+          <figure className="overflow-hidden">
+            <div className="relative aspect-video overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </figure>
@@ -371,54 +371,43 @@ export default async function ProjectCasePage({
         </section>
 
         <section className="space-y-6 border-t border-foreground/8 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
-          <figure className="overflow-hidden bg-white shadow-[0_34px_110px_rgba(15,23,42,0.1)]">
-            <div className="relative aspect-16/10 overflow-hidden bg-[#f5f4ef]">
+          <figure className="overflow-hidden">
+            <div className="relative aspect-16/10 overflow-hidden">
               <Image
                 src={project.gallery[0] ?? "/utils/placeholder.svg"}
                 alt={project.title}
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </figure>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <figure className="overflow-hidden bg-white shadow-[0_30px_96px_rgba(15,23,42,0.09)]">
-              <div className="relative aspect-4/5 overflow-hidden bg-[#f5f4ef]">
+            <figure className="overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={project.gallery[1] ?? "/utils/placeholder.svg"}
                   alt={project.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </figure>
 
-            <figure className="overflow-hidden bg-white shadow-[0_30px_96px_rgba(15,23,42,0.09)]">
-              <div className="relative aspect-4/5 overflow-hidden bg-[#f5f4ef]">
+            <figure className="overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={project.gallery[2] ?? "/utils/placeholder.svg"}
                   alt={project.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </figure>
           </div>
-
-          <article className="grid gap-5 border-t border-foreground/8 pt-6 md:grid-cols-3">
-            {project.notes.map((item) => (
-              <p
-                key={item}
-                className="text-sm leading-relaxed text-foreground/72 md:text-base"
-              >
-                {item}
-              </p>
-            ))}
-          </article>
         </section>
 
         <section className="space-y-10 border-t border-foreground/8 px-6 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
@@ -460,22 +449,22 @@ export default async function ProjectCasePage({
               <Link
                 key={item.label}
                 href={item.href}
-                className="group overflow-hidden bg-white shadow-[0_24px_84px_rgba(15,23,42,0.08)] transition-transform duration-200 hover:-translate-y-1"
+                className="group overflow-hidden transition-transform duration-200 hover:-translate-y-1"
               >
-                <div className="relative aspect-4/3 overflow-hidden bg-[#f5f4ef]">
+                <div className="relative aspect-4/3 overflow-hidden">
                   <Image
-                    src="/utils/placeholder.svg"
+                    src={item.project.image}
                     alt={item.project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 48vw"
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
                 <div className="space-y-3 px-5 py-5">
                   <p className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-primary">
                     {item.label}
                   </p>
-                  <p className="font-heading text-2xl font-black uppercase tracking-[-0.05em]">
+                  <p className="font-heading text-2xl lg:text-5xl font-black uppercase tracking-[-0.05em]">
                     {item.project.title}
                   </p>
                   <p className="text-sm leading-relaxed text-muted-foreground">

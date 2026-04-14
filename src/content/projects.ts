@@ -24,7 +24,6 @@ export interface ProjectCaseContent {
   role: string
   year: string
   stack: string[]
-  notes: string[]
 }
 
 export interface ProjectCaseRecord {
@@ -33,7 +32,6 @@ export interface ProjectCaseRecord {
   image: string
   gallery: string[]
   liveUrl: string
-  accent: string
   colors: ProjectColor[]
   typography: ProjectTypography[]
   content: Record<AppLocale, ProjectCaseContent>
@@ -43,182 +41,203 @@ export const projectCases: readonly ProjectCaseRecord[] = [
   {
     id: "aparecaEVenda",
     slug: "apareca-e-venda",
-    image: "/projects/thais.png",
-    gallery: ["/utils/placeholder.svg", "/utils/placeholder.svg"],
-    liveUrl: "https://aparecaevenda.com.br",
-    accent: "from-[#ff7a18] via-[#ff8f3f] to-[#ffb36b]",
+    image: "/projects/thais/cover.webp",
+    gallery: [
+      "/projects/thais/01.webp",
+      "/projects/thais/02.webp",
+      "/projects/thais/03.webp",
+    ],
+    liveUrl: "http://thaiscrisley.com.br/",
     colors: [
-      { hex: "#ff7a18", name: "Brand Orange", oklch: "68% 0.18 45" },
-      { hex: "#1a1a1a", name: "Deep Charcoal", oklch: "19% 0 0" },
-      { hex: "#f5f5f5", name: "Soft Grey", oklch: "97% 0 0" },
+      {
+        hex: "#bf4200",
+        name: "Laranja Queimado",
+        oklch: "oklch(0.547 0.211 46.36)",
+      },
+      { hex: "#F3E3D3", name: "Amêndoa", oklch: "oklch(0.9244 0.0277 67.48)" },
+      {
+        hex: "#623828",
+        name: "Café Profundo",
+        oklch: "oklch(0.3884 0.0655 41.44)",
+      },
     ],
     typography: [
-      { name: "Satoshi", category: "Heading & Body" },
-      { name: "Clash Display", category: "Display" },
+      { name: "Playfair Display", category: "Heading" },
+      { name: "Montserrat", category: "Body" },
+      { name: "Geist Mono", category: "Detail" },
     ],
     content: {
       pt: {
-        title: "Apareça e venda",
+        title: "Apareça e Venda",
         summary:
-          "Uma landing page pensada para transformar posicionamento em clareza comercial, com hierarquia forte, ritmo visual e uma chamada direta para ação.",
+          "Landing page estratégica desenvolvida para o infoproduto de Thaís Crisley, focada em converter autoridade visual em faturamento através de uma narrativa de desbloqueio emocional.",
         intro:
-          "Este projeto foi desenvolvido para demonstrar como a MAGUI estrutura páginas que precisam vender percepção antes de vender oferta.",
+          "Este projeto demonstra a expertise da MAGUI em criar experiências que resolvem dores latentes (como o medo de se expor) através de um design que transmite segurança e profissionalismo imediato.",
         challenge:
-          "O desafio era criar uma narrativa que transmitisse autoridade imediata em um mercado saturado, onde a primeira impressão define a taxa de conversão.",
+          "O desafio era estruturar uma página que fosse além da venda de um curso, criando uma jornada de consciência para empreendedoras que 'travam' diante da câmera, exigindo um equilíbrio entre empatia e autoridade.",
         solution:
-          "Implementamos uma direção de arte de alto contraste, utilizando tipografia display para criar pontos de impacto e uma estrutura de copy baseada em níveis de consciência.",
-        sector: "Posicionamento digital",
-        scope: "Landing page estratégica",
+          "Implementamos uma interface de alto impacto com tipografia display, animações fluidas via Framer Motion para guiar o ritmo de leitura e uma arquitetura de conversão baseada em gatilhos mentais e prova social.",
+        sector: "Infoprodutos e Posicionamento",
+        scope: "Landing Page de Alta Conversão",
         role: "Direção visual, interface e front-end",
         year: "2026",
-        stack: ["Next.js", "Tailwind CSS", "Framer Motion"],
-        notes: [
-          "Leitura direta com seções de decisão rápida",
-          "Tipografia e contraste desenhados para percepção de valor",
-          "Estrutura preparada para campanhas e aquisição",
-        ],
+        stack: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
       },
       en: {
-        title: "Apareça e venda",
+        title: "Apareça e Venda",
         summary:
-          "A landing page was designed to turn positioning into commercial clarity, with strong hierarchy, visual rhythm, and a direct call to action.",
+          "A strategic landing page developed for Thaís Crisley's digital product, focused on converting visual authority into revenue through an emotional breakthrough narrative.",
         intro:
-          "This project was built to demonstrate how MAGUI structures pages that need to sell perception before they sell the offer itself.",
+          "This project showcases MAGUI's expertise in creating experiences that address latent pain points (like the fear of public exposure) through a design that conveys immediate security and professionalism.",
         challenge:
-          "The challenge was to create a narrative that conveyed immediate authority in a saturated market, where the first impression defines the conversion rate.",
+          "The challenge was to structure a page that went beyond selling a course, creating a consciousness journey for entrepreneurs who 'freeze' in front of the camera, requiring a balance between empathy and authority.",
         solution:
-          "We implemented a high-contrast art direction, using display typography to create impact points and a copy structure based on levels of awareness.",
-        sector: "Digital positioning",
-        scope: "Strategic landing page",
+          "We implemented a high-impact interface with display typography, fluid animations via Framer Motion to guide the reading rhythm, and a conversion architecture based on mental triggers and social proof.",
+        sector: "Digital Products & Positioning",
+        scope: "High-Conversion Landing Page",
         role: "Visual direction, interface, and front-end",
         year: "2026",
-        stack: ["Next.js", "Tailwind CSS", "Framer Motion"],
-        notes: [
-          "Direct reading flow with quick decision sections",
-          "Typography and contrast shaped for perceived value",
-          "Structure prepared for campaigns and acquisition",
-        ],
+        stack: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
       },
     },
   },
   {
     id: "powervet",
     slug: "powervet",
-    image: "/projects/powervet.png",
-    gallery: ["/utils/placeholder.svg", "/utils/placeholder.svg"],
-    liveUrl: "https://powervet.com.br",
-    accent: "from-[#4f46e5] via-[#2563eb] to-[#38bdf8]",
+    image: "/projects/powervet/cover.webp",
+    gallery: [
+      "/projects/powervet/01.webp",
+      "/projects/powervet/02.webp",
+      "/projects/powervet/03.webp",
+    ],
+    liveUrl: "https://powervet.guibus.dev/",
     colors: [
-      { hex: "#4f46e5", name: "Indigo Primary", oklch: "46% 0.23 277" },
-      { hex: "#0f172a", name: "Slate Dark", oklch: "18% 0.03 261" },
-      { hex: "#e2e8f0", name: "Slate Light", oklch: "91% 0.01 255" },
+      {
+        hex: "#087750",
+        name: "Verde Esmeralda Escuro",
+        oklch: "oklch(0.5582 0.101975 178.9916)",
+      },
+      {
+        hex: "#1A2421",
+        name: "Verde Petróleo Negro",
+        oklch: "oklch(0.2496 0.0152 174.74)",
+      },
+      {
+        hex: "#F8FAFB",
+        name: "Branco Gelo",
+        oklch: "oklch(0.9839 0.0025 228.78)",
+      },
     ],
     typography: [
-      { name: "Inter", category: "Systemic UI" },
-      { name: "Plus Jakarta Sans", category: "Headings" },
+      { name: "Libre Baskerville", category: "Heading" },
+      { name: "Manrope", category: "Body" },
     ],
     content: {
       pt: {
-        title: "Powervet",
+        title: "PowerVet",
         summary:
-          "Uma interface criada para um universo técnico e confiável, equilibrando clareza institucional, linguagem de produto e uma apresentação visual mais precisa.",
+          "Interface técnica para uma clínica veterinária especializada em medicina felina, focada em precisão clínica e um ambiente de baixo estresse.",
         intro:
-          "A proposta do projeto foi construir uma presença digital com tom mais sólido e profissional, capaz de organizar informação técnica sem parecer fria.",
+          "O PowerVet foi projetado para elevar o padrão digital da saúde animal, utilizando uma abordagem baseada em evidências para transmitir autoridade e cuidado especializado.",
         challenge:
-          "Organizar uma grande quantidade de dados técnicos e serviços em uma navegação que fosse intuitiva tanto para veterinários quanto para gestores.",
+          "Equilibrar a densidade de informações técnicas e protocolos médicos com uma experiência de usuário acolhedora, reduzindo a fricção no agendamento de consultas.",
         solution:
-          "Desenvolvemos um sistema de cards e grids modulares que permitem uma leitura escaneável, mantendo a sobriedade necessária para o setor de saúde.",
-        sector: "Saúde animal",
-        scope: "Site institucional de produto",
+          "Implementamos uma arquitetura de informação modular e visualmente sóbria, utilizando animações suaves e um sistema de agendamento intuitivo que prioriza a triagem clínica.",
+        sector: "Saúde Felina Especializada",
+        scope: "Site Institucional e Plataforma de Agendamento",
         role: "Estrutura, direção visual e interface",
         year: "2026",
-        stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-        notes: [
-          "Tom visual mais confiável e controlado",
-          "Organização de conteúdo técnico com boa escaneabilidade",
-          "Direção pensada para marca, produto e contexto institucional",
-        ],
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       },
       en: {
-        title: "Powervet",
+        title: "PowerVet",
         summary:
-          "The interface was created for a technical and trustworthy space, balancing institutional clarity, product language, and a more precise visual presentation.",
+          "A technical interface for a veterinary clinic specializing in feline medicine, focused on clinical precision and a low-stress environment.",
         intro:
-          "The goal of this project was to build a stronger, more professional digital presence capable of organizing technical information without feeling cold.",
+          "PowerVet was designed to elevate the digital standard of animal health, using an evidence-based approach to convey authority and specialized care.",
         challenge:
-          "To organize a large amount of technical data and services into a navigation that was intuitive for both veterinarians and managers.",
+          "To balance dense technical information and medical protocols with a welcoming user experience, reducing friction in the appointment booking process.",
         solution:
-          "We developed a system of cards and modular grids that allow for scannable reading while maintaining the sobriety required for the health sector.",
-        sector: "Animal health",
-        scope: "Institutional product website",
+          "We implemented a modular and visually sober information architecture, using smooth animations and an intuitive booking system that prioritizes clinical triage.",
+        sector: "Specialized Feline Health",
+        scope: "Institutional Website & Booking Platform",
         role: "Structure, visual direction, and interface",
         year: "2026",
-        stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-        notes: [
-          "A more trustworthy and controlled visual tone",
-          "Technical content organized with strong scannability",
-          "Direction designed for brand, product, and institutional context",
-        ],
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       },
     },
   },
   {
     id: "horizonTravels",
     slug: "horizon-travels",
-    image: "/projects/horizon.png",
-    gallery: ["/utils/placeholder.svg", "/utils/placeholder.svg"],
-    liveUrl: "https://horizontravels.com.br",
-    accent: "from-[#0f766e] via-[#14b8a6] to-[#7dd3fc]",
+    image: "/projects/horizon/cover.webp",
+    gallery: [
+      "/projects/horizon/01.webp",
+      "/projects/horizon/02.webp",
+      "/projects/horizon/03.webp",
+    ],
+    liveUrl: "https://horizon.guibus.dev/",
     colors: [
-      { hex: "#0f766e", name: "Teal Deep", oklch: "43% 0.10 195" },
-      { hex: "#f0fdfa", name: "Mint Breath", oklch: "98% 0.01 180" },
-      { hex: "#134e4a", name: "Forest Dark", oklch: "28% 0.06 195" },
+      {
+        hex: "#4F4024",
+        name: "Bronze Oliva Escuro",
+        oklch: "oklch(0.3802 0.0474 82.11)",
+      },
+      {
+        hex: "#1A1C1E",
+        name: "Preto Fosco Azulado",
+        oklch: "oklch(0.2252 0.0049 248.05)",
+      },
+      {
+        hex: "#FDFCFB",
+        name: "Branco Neve Quente",
+        oklch: "oklch(0.9916 0.0017 67.8)",
+      },
     ],
     typography: [
-      { name: "Playfair Display", category: "Editorial" },
-      { name: "Outfit", category: "Modern Body" },
+      { name: "Playfair Display", category: "Heading" },
+      { name: "Montserrat", category: "Body" },
+      { name: "Sora", category: "Detail" },
     ],
     content: {
       pt: {
         title: "Horizon Travels",
         summary:
-          "Uma página com atmosfera editorial e foco aspiracional, criada para demonstrar como viagem e sofisticação podem conviver com leitura clara.",
+          "Uma landing page de luxo com atmosfera editorial, concebida para demonstrar como o design sensorial e a fluidez de movimento podem elevar a percepção de uma marca de turismo premium.",
         intro:
-          "Este projeto explora um território mais sensorial. A intenção foi desenhar uma experiência que transmitisse escapismo, curadoria e valor percebido.",
+          "O projeto foca na curadoria e no escapismo. Através de uma interface que 'respira', buscamos transformar a reserva de uma viagem em uma experiência de descoberta, unindo sofisticação técnica e leitura clara.",
         challenge:
-          "Vender experiências intangíveis e de alto valor agregado através de uma tela, fugindo do padrão 'tabela de preços' do turismo tradicional.",
+          "Vender experiências intangíveis e de alto valor através de uma tela, equilibrando uma carga visual imersiva com performance impecável e navegação intuitiva.",
         solution:
-          "Utilizamos fotografia imersiva em conjunto com uma escala tipográfica generosa, criando um ritmo de leitura que mimetiza uma revista de luxo.",
-        sector: "Viagens e experiência",
-        scope: "Landing page de marca",
-        role: "Conceito visual, interface e composição",
+          "Utilizamos máscaras de revelação (Mask Reveal) e animações de scroll refinadas com Framer Motion. A tipografia generosa, integrada ao HeroUI, cria um ritmo de leitura que mimetiza o folhear de uma revista de luxo internacional.",
+        sector: "Viagens e Estilo de Vida",
+        scope: "Landing Page Internacional",
+        role: "Conceito Visual, UI Design e Desenvolvimento Full-stack",
         year: "2026",
-        stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        notes: [
-          "Escala tipográfica usada como elemento de cenário",
-          "Narrativa visual mais sensorial e menos utilitária",
-          "Equilíbrio entre impacto aspiracional e leitura objetiva",
+        stack: [
+          "Next.js",
+          "Framer Motion",
+          "Tailwind CSS",
         ],
       },
       en: {
         title: "Horizon Travels",
         summary:
-          "The page brings an editorial atmosphere and an aspirational focus, showing how travel and sophistication can coexist with clear reading.",
+          "A luxury landing page with an editorial atmosphere, designed to demonstrate how sensory design and fluid motion can elevate a premium travel brand's perception.",
         intro:
-          "This project explores a more sensory territory. The goal was to design an experience that conveyed escapism, curation, and perceived value.",
+          "The project focuses on curation and escapism. Through a 'breathing' interface, we aimed to transform travel booking into a discovery experience, merging technical sophistication with clear readability.",
         challenge:
-          "To sell intangible and high-value experiences through a screen, breaking away from the traditional travel industry's 'price table' standard.",
+          "To sell intangible, high-value experiences through a screen, balancing immersive visuals with flawless performance and intuitive navigation.",
         solution:
-          "We used immersive photography combined with a generous typographic scale, creating a reading rhythm that mimics a luxury magazine.",
-        sector: "Travel and experience",
-        scope: "Brand landing page",
-        role: "Visual concept, interface, and composition",
+          "We implemented mask reveal effects and refined scroll animations using Framer Motion. The generous typography, integrated with HeroUI, creates a reading rhythm that mimics flipping through an international luxury magazine.",
+        sector: "Travel and Lifestyle",
+        scope: "International Landing Page",
+        role: "Visual Concept, UI Design, and Full-stack Development",
         year: "2026",
-        stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        notes: [
-          "Typographic scale used as part of the scenery",
-          "A more sensory visual narrative and less utilitarian feel",
-          "Balance between aspirational impact and objective reading",
+        stack: [
+          "Next.js",
+          "Framer Motion",
+          "Tailwind CSS",
         ],
       },
     },
@@ -231,7 +250,6 @@ export interface LocalizedProjectCase extends ProjectCaseContent {
   image: string
   gallery: string[]
   liveUrl: string
-  accent: string
   colors: ProjectColor[]
   typography: ProjectTypography[]
 }
@@ -247,7 +265,6 @@ export function getProjectCases(locale: AppLocale): LocalizedProjectCase[] {
     image: projectCase.image,
     gallery: [...projectCase.gallery],
     liveUrl: projectCase.liveUrl,
-    accent: projectCase.accent,
     colors: [...projectCase.colors],
     typography: [...projectCase.typography],
     ...projectCase.content[locale],
@@ -270,7 +287,6 @@ export function getProjectCaseBySlug(
     image: projectCase.image,
     gallery: [...projectCase.gallery],
     liveUrl: projectCase.liveUrl,
-    accent: projectCase.accent,
     colors: [...projectCase.colors],
     typography: [...projectCase.typography],
     ...projectCase.content[locale],
