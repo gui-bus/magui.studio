@@ -29,10 +29,9 @@ import {
   createProjectInquirySchema,
 } from "@/src/lib/validations/projectInquiry"
 
-import { submitProjectInquiryAction } from "@/src/app/actions/projectInquiry"
-
 interface ProjectInquiryFormProps {
   origin: "hero" | "contact" | "contactPage"
+  web3FormsAccessKey: string
 }
 
 interface ProjectInquiryOption {
@@ -70,6 +69,7 @@ interface TextFieldProps {
 }
 
 interface Web3FormsClientResponse {
+  message?: string
   success: boolean
 }
 
@@ -187,6 +187,7 @@ function TextField({
 
 export function ProjectInquiryForm({
   origin,
+  web3FormsAccessKey,
 }: ProjectInquiryFormProps): React.JSX.Element {
   const t = useTranslations("Index.ContactDrawer")
   const searchParams = useSearchParams()
@@ -400,13 +401,42 @@ export function ProjectInquiryForm({
       setSubmissionError(null)
 
       try {
-        const result = (await submitProjectInquiryAction({
-          ...data,
-          origin,
-          referral,
-        })) as Web3FormsClientResponse
+        const formData = new FormData()
 
-        if (!result.success) {
+        formData.append("access_key", web3FormsAccessKey)
+        formData.append("name", data.name)
+        formData.append("email", data.email)
+        formData.append("phone", data.phone)
+        formData.append("link", data.link || "Not provided")
+        formData.append("message", data.message)
+        formData.append("subject", `New project inquiry: ${data.name}`)
+        formData.append("replyto", data.email)
+        formData.append("company", data.company || "Not provided")
+        formData.append("budget", data.budget)
+        formData.append("deadline", data.deadline)
+        formData.append(
+          "project_type",
+          data.projectType === "other"
+            ? `other (${data.projectTypeOther})`
+            : data.projectType
+        )
+        formData.append("origin", origin)
+        formData.append("botcheck", "")
+
+        if (referral) {
+          formData.append("referral_source", referral)
+        }
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+          method: "POST",
+        })
+        const result = (await response.json()) as Web3FormsClientResponse
+
+        if (!response.ok || !result.success) {
           throw new Error("web3forms_submission_failed")
         }
 
@@ -431,7 +461,7 @@ export function ProjectInquiryForm({
         setIsSubmitting(false)
       }
     },
-    [origin, referral, reset, t]
+    [origin, referral, reset, t, web3FormsAccessKey]
   )
 
   return isSuccess ? (

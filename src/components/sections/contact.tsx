@@ -6,9 +6,12 @@ import { Section } from "@/src/components/ui/section"
 
 import { ProjectInquiryForm } from "@/src/components/common/projectInquiryForm"
 
+import { getServerEnv } from "@/src/config/env"
+
 export async function Contact(): Promise<React.JSX.Element> {
   const t = await getTranslations("Index.CTA")
   const idT = await getTranslations("Index.Ids")
+  const serverEnv = getServerEnv()
 
   return (
     <Section
@@ -36,7 +39,10 @@ export async function Contact(): Promise<React.JSX.Element> {
         </header>
 
         <React.Suspense fallback={null}>
-          <ProjectInquiryForm origin="contact" />
+          <ProjectInquiryForm
+            origin="contact"
+            web3FormsAccessKey={serverEnv.WEB3FORMS_ACCESS_KEY}
+          />
         </React.Suspense>
       </div>
     </Section>
