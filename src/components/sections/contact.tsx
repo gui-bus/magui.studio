@@ -35,7 +35,9 @@ export async function Contact(): Promise<React.JSX.Element> {
           </div>
         </header>
 
-        <ProjectInquiryForm origin="contact" />
+        <React.Suspense fallback={null}>
+          <ProjectInquiryForm origin="contact" />
+        </React.Suspense>
       </div>
     </Section>
   )

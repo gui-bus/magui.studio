@@ -24,17 +24,11 @@ describe("Components", () => {
     })
 
     it("should close the banner when clicking accept", () => {
-      const reloadMock = vi.fn()
-      Object.defineProperty(window, "location", {
-        value: { reload: reloadMock },
-        writable: true,
-      })
-
       render(<CookieConsent />)
       const acceptButton = screen.getByText("accept")
       fireEvent.click(acceptButton)
 
-      expect(reloadMock).toHaveBeenCalled()
+      expect(screen.queryByText("message")).not.toBeInTheDocument()
     })
   })
 })

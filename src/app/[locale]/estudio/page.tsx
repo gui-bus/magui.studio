@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { Metadata } from "next"
-import { getLocale, getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import Image from "next/image"
 
 import { getPathname } from "@/src/i18n/navigation"
@@ -14,8 +14,17 @@ import { Manifesto } from "@/src/components/sections/manifesto"
 
 import { siteConfig } from "@/src/config/site"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
+interface StudioPageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export async function generateMetadata({
+  params,
+}: StudioPageProps): Promise<Metadata> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("StudioPage")
   const url = new URL(
     getPathname({
@@ -40,7 +49,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function StudioPage(): Promise<React.JSX.Element> {
+export default async function StudioPage({
+  params,
+}: StudioPageProps): Promise<React.JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("StudioPage")
   const founders = t.raw("founders") as Array<{
     name: string

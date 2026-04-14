@@ -13,7 +13,7 @@ export function Preloader(): React.JSX.Element {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1200)
+    }, 900)
 
     return () => clearTimeout(timer)
   }, [])

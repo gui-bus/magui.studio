@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { Metadata } from "next"
-import { getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import Image from "next/image"
 import NextLink from "next/link"
 import { notFound } from "next/navigation"
@@ -51,6 +51,7 @@ export async function generateMetadata({
   params,
 }: ProjectCasePageProps): Promise<Metadata> {
   const { locale, slug } = await params
+  setRequestLocale(locale)
   const project = getProjectCaseBySlug(slug, locale as AppLocale)
 
   if (!project) {
@@ -143,6 +144,7 @@ export default async function ProjectCasePage({
   params,
 }: ProjectCasePageProps): Promise<React.JSX.Element> {
   const { locale, slug } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("ProjectCases")
   const project = getProjectCaseBySlug(slug, locale as AppLocale)
 

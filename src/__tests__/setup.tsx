@@ -4,8 +4,7 @@ import "@testing-library/jest-dom/vitest"
 import { vi } from "vitest"
 
 process.env.NEXT_PUBLIC_SITE_URL = "https://example.com"
-process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY =
-  "4fc93430-7b53-491f-a7ed-8cb2c3b3fd46"
+process.env.WEB3FORMS_ACCESS_KEY = "4fc93430-7b53-491f-a7ed-8cb2c3b3fd46"
 
 const translationData: Record<string, Record<string, unknown>> = {
   "Index.About": {
@@ -179,10 +178,14 @@ vi.mock("next-intl", () => ({
 vi.mock("next-intl/server", () => ({
   getLocale: async () => "pt",
   getMessages: async () => serverMessages,
+  setRequestLocale: vi.fn(),
   getTranslations: async (namespace?: string) => {
     const scopedData = namespace ? (translationData[namespace] ?? {}) : {}
 
-    return (key: string, values?: Record<string, string | number>): string => {
+    const translate = (
+      key: string,
+      values?: Record<string, string | number>
+    ): string => {
       const value = scopedData[key]
 
       if (typeof value !== "string") {
@@ -199,6 +202,10 @@ vi.mock("next-intl/server", () => ({
         value
       )
     }
+
+    translate.raw = (key: string): unknown => scopedData[key] ?? []
+
+    return translate
   },
 }))
 

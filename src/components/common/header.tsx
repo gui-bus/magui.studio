@@ -24,6 +24,11 @@ export const Header = React.memo(function Header(): React.JSX.Element {
   const idT = useTranslations("Index.Ids")
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
+  const menuRef = React.useRef<HTMLDivElement>(null)
+  const toggleButtonRef = React.useRef<HTMLButtonElement>(null)
+  const lastFocusedElementRef = React.useRef<HTMLElement | null>(null)
+  const previousBodyOverflowRef = React.useRef("")
+
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -35,9 +40,72 @@ export const Header = React.memo(function Header(): React.JSX.Element {
 
   React.useEffect(() => {
     if (isOpen) {
+      previousBodyOverflowRef.current = document.body.style.overflow
+      lastFocusedElementRef.current =
+        document.activeElement as HTMLElement | null
       document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = previousBodyOverflowRef.current
+    }
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflowRef.current
+    }
+  }, [isOpen])
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      lastFocusedElementRef.current?.focus()
+      return
+    }
+
+    const menuElement = menuRef.current
+
+    if (!menuElement) {
+      return
+    }
+
+    const focusableElements = Array.from(
+      menuElement.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    )
+    const firstFocusableElement = focusableElements[0]
+    const lastFocusableElement =
+      focusableElements[focusableElements.length - 1] ?? firstFocusableElement
+
+    firstFocusableElement?.focus()
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault()
+        setIsOpen(false)
+        toggleButtonRef.current?.focus()
+        return
+      }
+
+      if (event.key !== "Tab" || focusableElements.length === 0) {
+        return
+      }
+
+      const activeElement = document.activeElement as HTMLElement | null
+
+      if (event.shiftKey && activeElement === firstFocusableElement) {
+        event.preventDefault()
+        lastFocusableElement?.focus()
+        return
+      }
+
+      if (!event.shiftKey && activeElement === lastFocusableElement) {
+        event.preventDefault()
+        firstFocusableElement?.focus()
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
     }
   }, [isOpen])
 
@@ -144,6 +212,8 @@ export const Header = React.memo(function Header(): React.JSX.Element {
           </div>
 
           <button
+            ref={toggleButtonRef}
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary xl:hidden"
             aria-label={isOpen ? t("close_menu") : t("open_menu")}
@@ -184,6 +254,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
       <AnimatePresence>
         {isOpen && (
           <m.div
+            ref={menuRef}
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -201,7 +272,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               </span>
             </div>
 
-            <nav className="flex flex-col gap-4 md:gap-6 relative">
+            <nav className="relative flex flex-col gap-4 md:gap-6">
               <m.div variants={itemVariants} className="mb-8">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary">
                   {t("main_nav_label")}

@@ -22,14 +22,14 @@ import { useForm } from "react-hook-form"
 
 import { Button } from "@/src/components/ui/button"
 
-import { MotionProvider } from "@/src/components/common/motionProvider"
-
 import { trackEvent } from "@/src/lib/analytics"
 import { cn } from "@/src/lib/utils/utils"
 import {
   ProjectInquiryFormData,
   createProjectInquirySchema,
 } from "@/src/lib/validations/projectInquiry"
+
+import { submitProjectInquiryAction } from "@/src/app/actions/projectInquiry"
 
 interface ProjectInquiryFormProps {
   origin: "hero" | "contact" | "contactPage"
@@ -70,11 +70,8 @@ interface TextFieldProps {
 }
 
 interface Web3FormsClientResponse {
-  message?: string
-  success?: boolean
+  success: boolean
 }
-
-const web3FormsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
 
 function formatPhoneNumber(value: string): string {
   const digits = value.replace(/\D/g, "").slice(0, 11)
@@ -404,47 +401,14 @@ export function ProjectInquiryForm({
       setSubmissionError(null)
 
       try {
-        if (!web3FormsAccessKey) {
-          throw new Error("missing_access_key")
-        }
+        const result = (await submitProjectInquiryAction({
+          ...data,
+          origin,
+          referral,
+        })) as Web3FormsClientResponse
 
-        const formData = new FormData()
-
-        formData.append("access_key", web3FormsAccessKey)
-        formData.append("name", data.name)
-        formData.append("email", data.email)
-        formData.append("phone", data.phone)
-        formData.append("link", data.link || t("notProvided"))
-        formData.append("message", data.message)
-        formData.append("subject", t("emailSubject", { name: data.name }))
-        formData.append("replyto", data.email)
-        formData.append("company", data.company || t("notProvided"))
-        formData.append("budget", t(`budgets.${data.budget}`))
-        formData.append("deadline", t(`deadlines.${data.deadline}`))
-        formData.append(
-          "project_type",
-          data.projectType === "other"
-            ? `${t("projectTypes.other")} (${data.projectTypeOther})`
-            : t(`projectTypes.${data.projectType}`)
-        )
-        formData.append("origin", origin)
-        formData.append("botcheck", "")
-
-        if (referral) {
-          formData.append("referral_source", referral)
-        }
-
-        const response = await fetch("https://api.web3forms.com/submit", {
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
-          method: "POST",
-        })
-        const result = (await response.json()) as Web3FormsClientResponse
-
-        if (!response.ok || !result.success) {
-          throw new Error(result.message || "web3forms_submission_failed")
+        if (!result.success) {
+          throw new Error("web3forms_submission_failed")
         }
 
         trackEvent("generate_lead", {
@@ -748,56 +712,52 @@ export function ProjectInquiryForm({
                   }
                 />
 
-                <MotionProvider>
-                  <AnimatePresence>
-                    {selectedProjectType === "other" ? (
-                      <m.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="overflow-hidden"
+                <AnimatePresence>
+                  {selectedProjectType === "other" ? (
+                    <m.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <label
+                        className="block space-y-3 pt-1"
+                        htmlFor={`${idPrefix}-projectTypeOther`}
                       >
-                        <label
-                          className="block space-y-3 pt-1"
-                          htmlFor={`${idPrefix}-projectTypeOther`}
-                        >
-                          <span className="text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">
-                            {t("fields.projectTypeOther.label")}
-                            <span className="ml-1 text-red-500">*</span>
-                          </span>
-                          <TextField
-                            hasError={Boolean(errors.projectTypeOther)}
+                        <span className="text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">
+                          {t("fields.projectTypeOther.label")}
+                          <span className="ml-1 text-red-500">*</span>
+                        </span>
+                        <TextField hasError={Boolean(errors.projectTypeOther)}>
+                          <input
+                            {...register("projectTypeOther")}
+                            id={`${idPrefix}-projectTypeOther`}
+                            placeholder={t(
+                              "fields.projectTypeOther.placeholder"
+                            )}
+                            aria-describedby={
+                              errors.projectTypeOther
+                                ? `${idPrefix}-project-type-other-error`
+                                : undefined
+                            }
+                            aria-invalid={Boolean(errors.projectTypeOther)}
+                            className="h-10 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/45"
+                          />
+                        </TextField>
+                        {errors.projectTypeOther ? (
+                          <span
+                            id={`${idPrefix}-project-type-other-error`}
+                            className="flex items-center gap-2 text-sm text-red-600"
                           >
-                            <input
-                              {...register("projectTypeOther")}
-                              id={`${idPrefix}-projectTypeOther`}
-                              placeholder={t(
-                                "fields.projectTypeOther.placeholder"
-                              )}
-                              aria-describedby={
-                                errors.projectTypeOther
-                                  ? `${idPrefix}-project-type-other-error`
-                                  : undefined
-                              }
-                              aria-invalid={Boolean(errors.projectTypeOther)}
-                              className="h-10 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/45"
-                            />
-                          </TextField>
-                          {errors.projectTypeOther ? (
-                            <span
-                              id={`${idPrefix}-project-type-other-error`}
-                              className="flex items-center gap-2 text-sm text-red-600"
-                            >
-                              <WarningCircleIcon size={16} weight="fill" />
-                              {errors.projectTypeOther.message}
-                            </span>
-                          ) : null}
-                        </label>
-                      </m.div>
-                    ) : null}
-                  </AnimatePresence>
-                </MotionProvider>
+                            <WarningCircleIcon size={16} weight="fill" />
+                            {errors.projectTypeOther.message}
+                          </span>
+                        ) : null}
+                      </label>
+                    </m.div>
+                  ) : null}
+                </AnimatePresence>
 
                 <label
                   className="block space-y-3"

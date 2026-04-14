@@ -1,8 +1,7 @@
 import * as React from "react"
 
 import { Metadata } from "next"
-import { useTranslations } from "next-intl"
-import { getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { FAQItem } from "@/src/types/sections"
 
@@ -19,7 +18,17 @@ import { Value } from "@/src/components/sections/value"
 
 import { siteConfig } from "@/src/config/site"
 
-export async function generateMetadata(): Promise<Metadata> {
+interface HomePageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("Config")
   const title = t("name")
   const description = t("description")
@@ -57,9 +66,13 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function Page(): React.JSX.Element {
-  const t = useTranslations("Index.Marquee")
-  const faqT = useTranslations("Index.FAQ")
+export default async function Page({
+  params,
+}: HomePageProps): Promise<React.JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations("Index.Marquee")
+  const faqT = await getTranslations("Index.FAQ")
   const faqItems = faqT.raw("items") as FAQItem[]
   const faqJsonLd = {
     "@context": "https://schema.org",

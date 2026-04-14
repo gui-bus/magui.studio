@@ -1,4 +1,4 @@
-import { env } from "./env"
+import { publicEnv } from "./env"
 
 export const siteConfig = {
   name: "MAGUI.studio",
@@ -6,8 +6,8 @@ export const siteConfig = {
   legalName: "MAGUI.studio",
   manifestDescription:
     "Est\u00fadio de dire\u00e7\u00e3o visual, interface e experi\u00eancias digitais com foco em performance, clareza e autoridade.",
-  url: env.NEXT_PUBLIC_SITE_URL,
-  ogImage: `${env.NEXT_PUBLIC_SITE_URL}/og.png`,
+  url: publicEnv.NEXT_PUBLIC_SITE_URL,
+  ogImage: `${publicEnv.NEXT_PUBLIC_SITE_URL}/og.png`,
   authors: [
     {
       name: "MAGUI.studio",
@@ -55,7 +55,7 @@ export const siteConfig = {
   locales: ["pt", "en"],
   defaultLocale: "pt",
   analytics: {
-    google: env.NEXT_PUBLIC_GA_ID || "",
+    google: publicEnv.NEXT_PUBLIC_GA_ID || "",
   },
 }
 

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { Metadata } from "next"
-import { getLocale, getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { getPathname } from "@/src/i18n/navigation"
 
@@ -11,8 +11,17 @@ import { Contact } from "@/src/components/sections/contact"
 
 import { siteConfig } from "@/src/config/site"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
+interface ContactPageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export async function generateMetadata({
+  params,
+}: ContactPageProps): Promise<Metadata> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("ContactPage")
   const configT = await getTranslations("Config")
   const url = new URL(
@@ -55,7 +64,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function ContactPage(): Promise<React.JSX.Element> {
+export default async function ContactPage({
+  params,
+}: ContactPageProps): Promise<React.JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   return (
     <div className="relative min-h-svh w-full overflow-x-hidden bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary">
       <Header />

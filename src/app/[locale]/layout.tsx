@@ -1,9 +1,12 @@
 import { Metadata, Viewport } from "next"
 import { NextIntlClientProvider } from "next-intl"
-import { getLocale, getMessages, getTranslations } from "next-intl/server"
-import { cookies } from "next/headers"
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server"
 
-import { GoogleAnalytics } from "@next/third-parties/google"
+import { locales } from "@/src/i18n/config"
 
 import { CookieConsent } from "@/src/components/common/cookieConsent"
 import { MotionProvider } from "@/src/components/common/motionProvider"
@@ -24,8 +27,22 @@ export const viewport: Viewport = {
   ],
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
+interface LocaleLayoutProps {
+  children: React.ReactNode
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export function generateStaticParams(): Array<{ locale: string }> {
+  return locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({
+  params,
+}: Omit<LocaleLayoutProps, "children">): Promise<Metadata> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("Config")
   const ogUrl = new URL(`${siteConfig.url}/api/og`)
   ogUrl.searchParams.set("title", t("name"))
@@ -86,14 +103,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>): Promise<React.JSX.Element> {
-  const locale = await getLocale()
+  params,
+}: Readonly<LocaleLayoutProps>): Promise<React.JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const messages = await getMessages()
   const t = await getTranslations("Config")
-  const cookieStore = await cookies()
-  const consent = cookieStore.get("cookie-consent")?.value
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -141,13 +156,9 @@ export default async function RootLayout({
               <Preloader />
               {children}
             </MotionProvider>
-            <CookieConsent />
+            <CookieConsent gaId={siteConfig.analytics.google} />
           </ThemeProvider>
         </NextIntlClientProvider>
-
-        {siteConfig.analytics.google && consent === "accepted" && (
-          <GoogleAnalytics gaId={siteConfig.analytics.google} />
-        )}
       </body>
     </html>
   )

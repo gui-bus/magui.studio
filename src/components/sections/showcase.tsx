@@ -14,7 +14,7 @@ import {
   ArrowSquareOutIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react"
-import { AnimatePresence, m, useScroll, useTransform } from "framer-motion"
+import { AnimatePresence, m } from "framer-motion"
 
 import { Section } from "@/src/components/ui/section"
 
@@ -31,18 +31,13 @@ export function Showcase(): React.JSX.Element {
   const locale = useLocale()
   const t = useTranslations("Index.Showcase")
   const idT = useTranslations("Index.Ids")
-  const projects = getProjectCases(locale as AppLocale)
+  const projects = React.useMemo(
+    () => getProjectCases(locale as AppLocale),
+    [locale]
+  )
   const hasMultipleProjects = projects.length > 1
 
   const [currentIndex, setCurrentIndex] = React.useState(0)
-  const containerRef = React.useRef<HTMLElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const backgroundX = useTransform(scrollYProgress, [0, 1], ["18%", "-18%"])
   const activeProject = projects[currentIndex]
 
   const projectMeta: ProjectMetaItem[] = [
@@ -78,18 +73,14 @@ export function Showcase(): React.JSX.Element {
   return (
     <Section
       id={idT("portfolio")}
-      ref={containerRef}
       className="relative overflow-hidden py-20 lg:py-32"
       withContainer={true}
     >
-      <m.div
-        style={{ x: backgroundX }}
-        className="pointer-events-none absolute right-0 top-10 z-0 hidden select-none lg:block"
-      >
+      <div className="pointer-events-none absolute right-0 top-10 z-0 hidden select-none lg:block">
         <span className="whitespace-nowrap text-[220px] font-black uppercase leading-none tracking-[-0.08em] text-foreground/3">
           {t("background_text")}
         </span>
-      </m.div>
+      </div>
 
       <div className="relative z-10 space-y-10 lg:space-y-14">
         <header className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-end">
@@ -120,11 +111,40 @@ export function Showcase(): React.JSX.Element {
           </aside>
         </header>
 
+        {hasMultipleProjects ? (
+          <div
+            className="flex flex-wrap gap-3"
+            role="tablist"
+            aria-label={t("projects_nav_label")}
+          >
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                role="tab"
+                aria-selected={currentIndex === index}
+                aria-controls={`showcase-panel-${project.id}`}
+                id={`showcase-tab-${project.id}`}
+                onClick={() => handleProjectSelect(index)}
+                className={
+                  currentIndex === index
+                    ? "rounded-full bg-foreground px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-background"
+                    : "rounded-full border border-border/60 bg-background px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+                }
+              >
+                {project.title}
+              </button>
+            ))}
+          </div>
+        ) : null}
+
         <AnimatePresence mode="wait" initial={false}>
           <m.article
             key={activeProject.id}
             id={`showcase-panel-${activeProject.id}`}
             role="tabpanel"
+            aria-labelledby={`showcase-tab-${activeProject.id}`}
+            tabIndex={0}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
@@ -152,7 +172,7 @@ export function Showcase(): React.JSX.Element {
                     fill
                     sizes="(max-width: 1024px) 100vw, 60vw"
                     className="object-contain"
-                    priority
+                    priority={currentIndex === 0}
                   />
                 </div>
               </Link>

@@ -43,6 +43,7 @@ export function ThemeToggle(): React.JSX.Element {
       />
 
       <button
+        type="button"
         onClick={() => (isLight ? null : toggleTheme())}
         className={cn(
           "relative z-10 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full transition-colors duration-200",
@@ -50,6 +51,7 @@ export function ThemeToggle(): React.JSX.Element {
             ? "text-foreground"
             : "text-muted-foreground/50 hover:text-muted-foreground"
         )}
+        aria-label={t("light")}
         title={t("light")}
       >
         <Sun
@@ -60,6 +62,7 @@ export function ThemeToggle(): React.JSX.Element {
       </button>
 
       <button
+        type="button"
         onClick={() => (!isLight ? null : toggleTheme())}
         className={cn(
           "relative z-10 ml-auto flex h-7 w-7 cursor-pointer items-center justify-center rounded-full transition-colors duration-200",
@@ -67,6 +70,7 @@ export function ThemeToggle(): React.JSX.Element {
             ? "text-foreground"
             : "text-muted-foreground/50 hover:text-muted-foreground"
         )}
+        aria-label={t("dark")}
         title={t("dark")}
       >
         <Moon

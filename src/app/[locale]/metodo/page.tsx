@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { Metadata } from "next"
-import { getLocale, getTranslations } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { getPathname } from "@/src/i18n/navigation"
 
@@ -11,8 +11,17 @@ import { Process } from "@/src/components/sections/process"
 
 import { siteConfig } from "@/src/config/site"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
+interface MethodPageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+export async function generateMetadata({
+  params,
+}: MethodPageProps): Promise<Metadata> {
+  const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations("MethodPage")
   const url = new URL(
     getPathname({
@@ -37,7 +46,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function MethodPage(): Promise<React.JSX.Element> {
+export default async function MethodPage({
+  params,
+}: MethodPageProps): Promise<React.JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   return (
     <div className="relative min-h-svh w-full overflow-x-hidden bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary">
       <Header />
