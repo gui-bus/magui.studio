@@ -24,12 +24,14 @@ describe("project cases content", () => {
 
     expect(cases).toHaveLength(3)
     expect(cases[0]).toMatchObject({
-      sector: "Posicionamento digital",
-      scope: "Landing page estratégica",
+      sector: "Infoprodutos e Posicionamento",
+      scope: "Landing Page de Alta Conversão",
       year: "2026",
     })
-    expect(cases[1]?.notes).toHaveLength(3)
-    expect(cases[2]?.role).toBe("Conceito visual, interface e composição")
+    expect(cases[1]?.stack).toHaveLength(4)
+    expect(cases[2]?.role).toBe(
+      "Conceito Visual, UI Design e Desenvolvimento Full-stack"
+    )
     expect(adjacent?.previousProject.slug).toBe("apareca-e-venda")
     expect(adjacent?.nextProject.slug).toBe("horizon-travels")
   })

@@ -30,16 +30,14 @@ describe("project case routes", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: "Powervet",
+        name: "PowerVet",
       })
     ).toBeInTheDocument()
     expect(screen.getByText("Style guide")).toBeInTheDocument()
     expect(screen.getByText("Desafio")).toBeInTheDocument()
     expect(screen.getByText("Solução")).toBeInTheDocument()
-    expect(screen.getAllByAltText("Powervet").length).toBeGreaterThanOrEqual(3)
-    expect(
-      screen.getByText("Tom visual mais confiável e controlado")
-    ).toBeInTheDocument()
+    expect(screen.getAllByAltText("PowerVet").length).toBeGreaterThanOrEqual(3)
+    expect(screen.getByText(/saúde animal/i)).toBeInTheDocument()
     expect(screen.getByText("Outros projetos")).toBeInTheDocument()
   })
 
@@ -65,8 +63,8 @@ describe("project case routes", () => {
       }),
     })
 
-    expect(projectMetadata.title).toBe("Apareça e venda")
-    expect(projectMetadata.description).toContain("clareza comercial")
-    expect(projectMetadata.openGraph?.title).toBe("Apareça e venda")
+    expect(projectMetadata.title).toBe("Apareça e Venda")
+    expect(projectMetadata.description).toContain("faturamento")
+    expect(projectMetadata.openGraph?.title).toBe("Apareça e Venda")
   })
 })

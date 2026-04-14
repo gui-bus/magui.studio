@@ -214,11 +214,7 @@ export const projectCases: readonly ProjectCaseRecord[] = [
         scope: "Landing Page Internacional",
         role: "Conceito Visual, UI Design e Desenvolvimento Full-stack",
         year: "2026",
-        stack: [
-          "Next.js",
-          "Framer Motion",
-          "Tailwind CSS",
-        ],
+        stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
       },
       en: {
         title: "Horizon Travels",
@@ -234,11 +230,7 @@ export const projectCases: readonly ProjectCaseRecord[] = [
         scope: "International Landing Page",
         role: "Visual Concept, UI Design, and Full-stack Development",
         year: "2026",
-        stack: [
-          "Next.js",
-          "Framer Motion",
-          "Tailwind CSS",
-        ],
+        stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
       },
     },
   },

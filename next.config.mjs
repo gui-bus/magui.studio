@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "img.freepik.com",
       },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
     ],
   },
   async headers() {
@@ -31,7 +35,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://flagcdn.com https://images.unsplash.com https://img.freepik.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self'; object-src 'none';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://flagcdn.com https://images.unsplash.com https://img.freepik.com https://raw.githubusercontent.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self'; object-src 'none';",
           },
           {
             key: "X-Content-Type-Options",
