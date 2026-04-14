@@ -40,3 +40,4 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_SITE_URL: "https://example.com"
+          WEB3FORMS_ACCESS_KEY: "00000000-0000-0000-0000-000000000000"
