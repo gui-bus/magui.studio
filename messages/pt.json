@@ -49,7 +49,7 @@
       "description": "A MAGUI une direção visual, critério estético e um olhar técnico minucioso para criar produtos digitais que buscam equilibrar impacto visual e funcionalidade real.",
       "eyebrow": "Manifesto do Estúdio",
       "title_1": "Precisão",
-      "title_2": "Visual.",
+      "title_2": "Visual",
       "badge": "Direção de Interface",
       "image_alt": "Composição visual da MAGUI.studio",
       "highlights": [
@@ -105,8 +105,8 @@
         }
       ],
       "eyebrow": "Protocolo MAGUI",
-      "title_1": "Protocolo",
-      "title_2": "de Execução.",
+      "title_1": "Método",
+      "title_2": "MAGUI",
       "description": "Um processo claro e cadenciado para transformar necessidades em sistemas visuais funcionais.",
       "step_label": "Etapa {step}",
       "method_label": "Método MAGUI"
@@ -469,7 +469,7 @@
     "vision_image_alt": "Painel visual do posicionamento do estúdio",
     "founder_image_alt": "Retrato da direção técnica da MAGUI",
     "team_label": "Fundadores",
-    "team_title": "A liderança por trás do design.",
+    "team_title": "A liderança por trás de tudo",
     "team_description": "A dupla por trás da MAGUI.studio, unindo repertório visual, visão estratégica e presença próxima no dia a dia do estúdio.",
     "founders": [
       {
@@ -481,7 +481,7 @@
       },
       {
         "name": "Guilherme",
-        "role": "Design + Desenvolvimento",
+        "role": "Desenvolvimento + Design",
         "description": "Desenvolvedor e designer, Guilherme conduz a construção das interfaces e garante que a direção criativa chegue ao código com precisão e consistência.",
         "image": "/images/profile_guilherme.jpg",
         "imageAlt": "Retrato de Guilherme, fundador da MAGUI"

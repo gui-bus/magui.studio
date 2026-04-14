@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server"
 import Image from "next/image"
 
 import { Section } from "@/src/components/ui/section"
+
 import { ProjectInquiryForm } from "@/src/components/common/projectInquiryForm"
 
 export async function Contact(): Promise<React.JSX.Element> {
@@ -14,7 +15,7 @@ export async function Contact(): Promise<React.JSX.Element> {
   return (
     <Section
       id={idT("contact")}
-      className="border-t border-foreground/5 py-24 md:py-32 lg:py-40"
+      className="py-24 md:py-32 lg:py-40"
       withContainer={true}
     >
       <div className="grid gap-16 lg:grid-cols-[1fr_minmax(0,1.2fr)] lg:items-start lg:gap-24">

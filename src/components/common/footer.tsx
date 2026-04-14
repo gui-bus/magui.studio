@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { getTranslations } from "next-intl/server"
+import { Onest } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -9,11 +10,16 @@ import { ArrowUpIcon, PlusIcon } from "@/src/components/ui/serverIcons"
 
 import { siteConfig } from "@/src/config/site"
 
+export const onest = Onest({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-onest",
+})
+
 export async function Footer(): Promise<React.JSX.Element> {
   const t = await getTranslations("Footer")
   const configT = await getTranslations("Config")
   const navT = await getTranslations("Index.Nav")
-  const idT = await getTranslations("Index.Ids")
 
   const navigationLinks = [
     { href: siteConfig.studio.path, label: navT("about") },
@@ -24,11 +30,11 @@ export async function Footer(): Promise<React.JSX.Element> {
 
   return (
     <footer
-      className="w-full overflow-hidden border-t border-foreground/5 bg-background pb-12 pt-32"
+      className="w-full overflow-hidden bg-background pb-12 pt-32"
       aria-label={t("site_footer_label")}
     >
       <div className="px-6 lg:px-12">
-        <div className="mb-48 grid grid-cols-1 items-start gap-24 lg:grid-cols-12 lg:gap-12">
+        <div className="mb-20 md:mb-48 grid grid-cols-1 items-start gap-24 lg:grid-cols-12 lg:gap-12">
           <div className="space-y-16 lg:col-span-5">
             <div className="relative h-12 w-64">
               <Image
@@ -124,13 +130,15 @@ export async function Footer(): Promise<React.JSX.Element> {
           </div>
         </div>
 
-        <div className="relative mb-24 w-full overflow-hidden py-12">
-          <h2 className="relative select-none text-center font-black uppercase leading-none tracking-[-0.08em] text-foreground text-7xl md:text-[160px] lg:text-[280px] xl:text-[360px]">
+        <div className="relative mb-20 md:mb-24 w-full overflow-hidden md:py-12">
+          <h2
+            className={`${onest.className} relative select-none text-center font-black uppercase leading-none tracking-[-0.08em] text-foreground text-7xl md:text-[160px] lg:text-[280px] xl:text-[360px]`}
+          >
             {configT("name").split(".")[0]}
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-8 border-t border-foreground/5 pt-12 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-8 md:pt-12 md:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/70 md:justify-start">
             <span>{t("credits", { year: new Date().getFullYear() })}</span>
 

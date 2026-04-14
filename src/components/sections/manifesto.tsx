@@ -8,7 +8,6 @@ import { Discipline } from "@/src/types/sections"
 import { Section } from "@/src/components/ui/section"
 import {
   ArrowUpRightIcon,
-  SparkleIcon,
   SquaresFourIcon,
 } from "@/src/components/ui/serverIcons"
 import { StaggeredText } from "@/src/components/ui/staggeredText"
@@ -22,11 +21,7 @@ export async function Manifesto(): Promise<React.JSX.Element> {
   const pillars = messages.Index.About.pillars as string[]
 
   return (
-    <Section
-      id={idT("about")}
-      className="border-t border-foreground/5 py-24"
-      withContainer={true}
-    >
+    <Section id={idT("about")} className="py-10 md:py-20" withContainer={true}>
       <div className="space-y-14 lg:space-y-20">
         <div className="max-w-6xl space-y-8">
           <div className="flex items-center gap-4">
@@ -46,7 +41,7 @@ export async function Manifesto(): Promise<React.JSX.Element> {
               </span>
             </h2>
 
-            <p className="max-w-5xl text-xl font-medium leading-tight tracking-tight text-foreground/72 md:text-3xl lg:text-[2.2rem] dark:text-white/72">
+            <p className="max-w-5xl text-xl leading-tight tracking-tight md:text-3xl lg:text-[2.2rem]">
               {t("description")}
             </p>
           </div>
@@ -72,25 +67,16 @@ export async function Manifesto(): Promise<React.JSX.Element> {
                   />
                 </div>
 
-                <div className="pointer-events-none absolute inset-x-6 bottom-6 top-6 border border-white/45 mix-blend-screen" />
-
-                <div className="absolute left-6 top-6 flex items-center gap-3 rounded-full border border-white/45 bg-background/22 px-4 py-2 text-white backdrop-blur-sm">
-                  <SparkleIcon size={16} weight="fill" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">
-                    MAGUI.studio
-                  </span>
-                </div>
-
                 <div className="absolute bottom-0 left-0 right-0 grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
                   {highlights.map((highlight) => (
                     <div
                       key={highlight.id}
-                      className="bg-black/18 px-6 py-6 text-white backdrop-blur-[2px]"
+                      className="bg-black/18 px-6 py-12 md:py-10 text-white md:text-black dark:text-white backdrop-blur-[2px]"
                     >
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/72">
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em]">
                         {highlight.label}
                       </p>
-                      <p className="mt-3 max-w-md text-lg font-medium leading-snug text-white">
+                      <p className="mt-3 max-w-md text-lg font-medium leading-snug">
                         {highlight.description}
                       </p>
                     </div>
@@ -99,8 +85,8 @@ export async function Manifesto(): Promise<React.JSX.Element> {
               </div>
 
               <div className="flex flex-col justify-between gap-6">
-                <div className="space-y-4 border border-foreground/8 bg-background px-7 py-7">
-                  <span className="inline-flex rounded-full border border-border/70 px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-foreground/72 dark:border-white/12 dark:text-white/70">
+                <div className="space-y-4  bg-background px-7 py-7">
+                  <span className="inline-flex rounded-full  px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-foreground/72 dark:border-white/12 dark:text-white/70">
                     {t("badge")}
                   </span>
 
@@ -129,9 +115,9 @@ export async function Manifesto(): Promise<React.JSX.Element> {
           </article>
 
           <aside className="xl:col-span-4">
-            <div className="flex h-full flex-col justify-between gap-6 border border-foreground/8 bg-foreground px-8 py-8 text-background dark:border-white/10 dark:bg-white dark:text-black">
+            <div className="flex h-full flex-col justify-between gap-6  bg-foreground px-8 py-8 text-background dark:border-white/10 dark:bg-white dark:text-black">
               <div className="space-y-8">
-                <span className="inline-flex rounded-full border border-white/16 px-4 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-white/68 dark:border-black/12 dark:text-black/62">
+                <span className="inline-flex rounded-full  px-4 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-white/68 dark:border-black/12 dark:text-black/62">
                   {t("panel_eyebrow")}
                 </span>
 

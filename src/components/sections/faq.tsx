@@ -17,7 +17,7 @@ export async function FAQ(): Promise<React.JSX.Element> {
   return (
     <Section
       id={idT("faq")}
-      className="relative overflow-hidden border-t border-foreground/5 py-24 md:py-36 lg:py-48"
+      className="relative overflow-hidden py-24 md:py-36 lg:py-48"
       withContainer={true}
     >
       <div className="space-y-12 lg:space-y-16">

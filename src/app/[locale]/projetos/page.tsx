@@ -21,9 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("archive_title"),
     description: t("archive_description"),
-    alternates: {
-      canonical: url.toString(),
-    },
+    alternates: { canonical: url.toString() },
     openGraph: {
       title: t("archive_title"),
       description: t("archive_description"),
@@ -39,108 +37,116 @@ export default async function ProjectsPage(): Promise<React.JSX.Element> {
   const projects = getProjectCases(locale as "pt" | "en")
 
   return (
-    <div className="relative min-h-svh w-full overflow-x-hidden bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary">
+    <div className="relative min-h-svh w-full bg-background font-sans text-foreground selection:bg-brand-primary/30">
       <Header />
-      <main className="pt-24 md:pt-32">
-        <section className="border-b border-foreground/5 px-6 py-18 md:px-12 md:py-24 lg:px-24 lg:py-32">
-          <div className="mx-auto max-w-7xl space-y-12">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="h-px w-12 bg-brand-primary" />
-                <span className="text-[11px] font-black uppercase tracking-[0.45em] text-brand-primary">
+
+      <main className="relative pt-32 md:pt-48">
+        <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-150 w-full -translate-x-1/2 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-brand-primary/10 via-transparent to-transparent blur-3xl" />
+
+        <section className="px-6 pb-32 md:px-12">
+          <div className="mb-24 flex flex-col items-start justify-between gap-8 border-b border-foreground/5 pb-16 lg:flex-row lg:items-end">
+            <div className="max-w-3xl space-y-6">
+              <div className="flex items-center gap-2 text-brand-primary">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">
                   {t("archive_eyebrow")}
                 </span>
               </div>
-
-              <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.7fr)] lg:items-end">
-                <h1 className="font-heading text-5xl font-black uppercase leading-[0.8] tracking-[-0.06em] md:text-7xl lg:text-[112px]">
-                  {t("archive_title")}
-                </h1>
-                <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-xl">
-                  {t("archive_description")}
-                </p>
-              </div>
+              <h1 className="font-heading text-7xl font-black uppercase leading-[0.8] tracking-tighter md:text-9xl lg:text-[150px]">
+                {t("archive_title")}
+                <span className="text-brand-primary">.</span>
+              </h1>
             </div>
+            <p className="max-w-xs text-sm font-medium leading-relaxed text-muted-foreground/80 md:text-base">
+              {t("archive_description")}
+            </p>
+          </div>
 
-            <div className="grid gap-6 lg:grid-cols-3">
-              {projects.map((project) => (
-                <article
-                  key={project.slug}
-                  className="group overflow-hidden border border-foreground/8 bg-background"
-                >
-                  <div className="relative aspect-[1.08] overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div
-                      className={`absolute inset-0 bg-linear-to-br ${project.accent} opacity-20`}
-                    />
-                  </div>
-
-                  <div className="space-y-6 p-6 md:p-7">
-                    <div className="space-y-3">
-                      <h2 className="font-heading text-3xl font-black uppercase leading-[0.88] tracking-[-0.04em] md:text-4xl">
-                        {project.title}
-                      </h2>
-                      <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                        {project.summary}
-                      </p>
-                    </div>
-
-                    <div className="grid gap-3 border-t border-foreground/8 pt-5 text-sm text-muted-foreground">
-                      <div className="flex items-center justify-between gap-4">
-                        <span className="font-black uppercase tracking-[0.25em] text-foreground/45">
-                          {t("facts_sector")}
-                        </span>
-                        <span>{project.sector}</span>
-                      </div>
-                      <div className="flex items-center justify-between gap-4">
-                        <span className="font-black uppercase tracking-[0.25em] text-foreground/45">
-                          {t("facts_scope")}
-                        </span>
-                        <span>{project.scope}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-3 sm:flex-row">
-                      <Link
-                        href={`${siteConfig.projects.path}/${project.slug}`}
-                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-[11px] font-black uppercase tracking-[0.32em] text-background transition-colors hover:bg-brand-primary"
-                      >
-                        {t("archive_open")}
-                        <ArrowUpRightIcon size={16} weight="bold" />
-                      </Link>
-
-                      <Link
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex flex-1 items-center justify-center rounded-full border border-foreground/10 px-5 py-3 text-[11px] font-black uppercase tracking-[0.32em] text-foreground transition-colors hover:border-brand-primary hover:text-brand-primary"
-                      >
-                        {t("archive_live")}
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="pt-4">
-              <Link
-                href="/#portfolio"
-                className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.35em] text-brand-primary transition-colors hover:text-foreground"
+          <div className="grid gap-x-6 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, index) => (
+              <article
+                key={project.slug}
+                className="group relative flex flex-col"
               >
+                <Link
+                  href={`${siteConfig.projects.path}/${project.slug}`}
+                  className="relative aspect-4/5 w-full overflow-hidden bg-muted transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-brand-primary/10"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    priority={index < 3}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                    <div className="translate-y-4 scale-90 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
+                      <div className="rounded-full bg-white p-5 text-black">
+                        <ArrowUpRightIcon size={24} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-6 left-6">
+                    <span className="bg-brand-primary px-2 py-1 text-[9px] font-black uppercase tracking-widest text-white">
+                      {project.sector}
+                    </span>
+                  </div>
+                </Link>
+
+                <div className="mt-8 space-y-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <h2 className="font-heading text-2xl font-black uppercase leading-none tracking-tight md:text-3xl">
+                      {project.title}
+                    </h2>
+                    <span className="text-[10px] font-mono text-muted-foreground/50">
+                      / 0{index + 1}
+                    </span>
+                  </div>
+
+                  <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground/80">
+                    {project.summary}
+                  </p>
+
+                  <div className="flex gap-6 pt-2">
+                    <Link
+                      href={`${siteConfig.projects.path}/${project.slug}`}
+                      className="group/link flex items-center gap-1 text-[10px] font-black uppercase tracking-widest transition-colors hover:text-brand-primary"
+                    >
+                      {t("archive_open")}
+                      <ArrowUpRightIcon
+                        size={14}
+                        className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                      />
+                    </Link>
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      className="text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {t("archive_live")}
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-32 flex justify-center border-t border-foreground/5 pt-20">
+            <Link
+              href="/#portfolio"
+              className="group relative overflow-hidden border border-foreground/10 px-12 py-5 text-[11px] font-black uppercase tracking-[0.3em] transition-all hover:border-brand-primary"
+            >
+              <span className="relative z-10 transition-colors group-hover:text-white">
                 {t("archive_back_home")}
-                <ArrowUpRightIcon size={16} weight="bold" />
-              </Link>
-            </div>
+              </span>
+              <div className="absolute inset-0 z-0 translate-y-full bg-brand-primary transition-transform duration-300 group-hover:translate-y-0" />
+            </Link>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   )

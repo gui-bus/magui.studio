@@ -37,7 +37,7 @@ export async function Process(): Promise<React.JSX.Element> {
   return (
     <Section
       id={idT("process")}
-      className="border-t border-foreground/5 py-24 md:py-36 lg:py-48"
+      className="py-24 md:py-36 lg:py-48"
       withContainer={true}
     >
       <div className="mb-14 flex flex-col gap-10 lg:mb-20 lg:flex-row lg:items-end lg:justify-between">

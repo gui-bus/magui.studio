@@ -49,7 +49,7 @@
       "description": "MAGUI combines visual direction, aesthetic judgment, and a meticulous technical eye to create digital products that seek to balance visual impact and real functionality.",
       "eyebrow": "Studio Manifesto",
       "title_1": "Editorial",
-      "title_2": "Precision.",
+      "title_2": "Precision",
       "badge": "Interface Direction",
       "image_alt": "MAGUI.studio visual composition",
       "highlights": [
@@ -105,8 +105,8 @@
         }
       ],
       "eyebrow": "MAGUI Protocol",
-      "title_1": "Execution",
-      "title_2": "Protocol.",
+      "title_1": "MAGUI",
+      "title_2": "Method",
       "description": "A clear and paced process to transform needs into functional visual systems.",
       "step_label": "Step {step}",
       "method_label": "MAGUI Method"
@@ -469,7 +469,7 @@
     "vision_image_alt": "Studio positioning visual panel",
     "founder_image_alt": "Portrait of MAGUI technical direction",
     "team_label": "Founders",
-    "team_title": "The leadership behind the design.",
+    "team_title": "The leadership behind everything.",
     "team_description": "The duo behind MAGUI.studio, combining visual repertoire, strategic vision, and close involvement in the studio's daily work.",
     "founders": [
       {
@@ -481,7 +481,7 @@
       },
       {
         "name": "Guilherme",
-        "role": "Design + Development",
+        "role": "Development + Design",
         "description": "A developer and designer, Guilherme leads interface implementation and ensures the creative direction reaches the code with precision and consistency.",
         "image": "/images/profile_guilherme.jpg",
         "imageAlt": "Portrait of Guilherme, MAGUI founder"

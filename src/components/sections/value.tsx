@@ -31,7 +31,7 @@ export async function Value(): Promise<React.JSX.Element> {
   return (
     <Section
       id={idT("value")}
-      className="border-t border-foreground/5 pt-24 md:pt-32 lg:pt-40"
+      className="pt-24 md:pt-32 lg:pt-40"
       withContainer={true}
     >
       <div className="space-y-16 lg:space-y-24">

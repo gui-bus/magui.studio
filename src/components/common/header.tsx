@@ -20,7 +20,6 @@ const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 export const Header = React.memo(function Header(): React.JSX.Element {
   const t = useTranslations("Index.Nav")
-  const idT = useTranslations("Index.Ids")
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
   React.useEffect(() => {
@@ -47,7 +46,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
       { href: siteConfig.studio.path, label: t("about") },
       { href: siteConfig.contact.path, label: t("contact") },
     ],
-    [idT, t]
+    [t]
   )
 
   const menuVariants = {
@@ -81,11 +80,11 @@ export const Header = React.memo(function Header(): React.JSX.Element {
     <>
       <header
         className={cn(
-          "fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-440 flex h-24 items-center justify-between px-6 md:px-10 xl:px-20 border-b transition-all duration-700",
-          isOpen ? "z-[220]" : "z-100",
+          "fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-440 flex h-24 items-center justify-between px-6 md:px-10 xl:px-20 transition-all duration-700",
+          isOpen ? "z-220" : "z-100",
           scrolled || isOpen
-            ? "border-foreground/5 bg-background/80 backdrop-blur-xl"
-            : "border-transparent bg-transparent backdrop-blur-none"
+            ? "bg-background/80 backdrop-blur-xl"
+            : " bg-transparent backdrop-blur-none"
         )}
       >
         <Link
@@ -136,7 +135,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-[220] flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary xl:hidden"
+            className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary xl:hidden"
             aria-label={isOpen ? t("close_menu") : t("open_menu")}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -147,7 +146,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 y: isOpen ? 4 : 0,
                 width: isOpen ? 24 : 16,
               }}
-              className="h-[2px] bg-foreground rounded-full origin-center"
+              className="h-0.5 bg-foreground rounded-full origin-center"
               aria-hidden="true"
             />
             <m.span
@@ -156,7 +155,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 x: isOpen ? 10 : 0,
                 width: 24,
               }}
-              className="h-[2px] bg-foreground rounded-full"
+              className="h-0.5 bg-foreground rounded-full"
               aria-hidden="true"
             />
             <m.span
@@ -165,7 +164,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 y: isOpen ? -4 : 0,
                 width: isOpen ? 24 : 16,
               }}
-              className="h-[2px] bg-foreground rounded-full origin-center"
+              className="h-0.5 bg-foreground rounded-full origin-center"
               aria-hidden="true"
             />
           </button>
@@ -183,9 +182,8 @@ export const Header = React.memo(function Header(): React.JSX.Element {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-[190] bg-background flex flex-col justify-center px-6 md:px-12 pt-24 overflow-hidden"
+            className="fixed inset-0 z-190 bg-background flex flex-col justify-center px-6 md:px-12 pt-24 overflow-hidden"
           >
-            {/* Decorative elements */}
             <div className="absolute top-0 right-0 h-full w-1/4 border-l border-foreground/5 bg-muted/20 -z-10 hidden md:block" />
             <div className="absolute -bottom-10 -right-10 -z-10 opacity-[0.03] select-none pointer-events-none">
               <span className="text-[20rem] font-black uppercase tracking-tighter rotate-90 origin-bottom-right">
@@ -227,7 +225,6 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               </div>
             </m.div>
 
-            {/* Bottom info */}
             <m.div
               variants={itemVariants}
               className="absolute bottom-10 left-6 md:left-12 flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40"

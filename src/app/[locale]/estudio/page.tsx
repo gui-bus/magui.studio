@@ -31,6 +31,7 @@ export default async function StudioPage(): Promise<React.JSX.Element> {
   return (
     <div className="relative min-h-svh w-full overflow-x-hidden bg-background font-sans text-foreground selection:bg-brand-primary/30 selection:text-brand-primary">
       <Header />
+      
       <main className="pt-24 md:pt-32">
         <Manifesto />
         <Section className="py-14 md:py-20 lg:py-24" withContainer>
@@ -59,7 +60,7 @@ export default async function StudioPage(): Promise<React.JSX.Element> {
                       index % 2 !== 0 ? "md:pt-10" : ""
                     }`}
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-border/60 bg-muted/20">
+                    <div className="relative aspect-4/5 overflow-hidden rounded-4xl border border-border/60 bg-muted/20">
                       <Image
                         src={founder.image}
                         alt={founder.imageAlt}
