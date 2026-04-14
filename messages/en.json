@@ -218,15 +218,20 @@
     },
     "CTA": {
       "eyebrow": "Contact",
-      "title": "Your project starts here",
-      "description": "Start your inquiry and send the context so we can transform the idea into a clear technical direction.",
-      "cardTitle": "Clarity at the start.",
-      "cardDescription": "A strong project starts with an objective inquiry and a well-structured approach."
+      "title": "Let’s talk about your project.",
+      "description": "Share the essentials so the studio can understand the request clearly.",
+      "cardTitle": "What to expect",
+      "cardDescription": "A direct form built to understand scope, timing, and priority without turning the first contact into a tiring task.",
+      "highlights": {
+        "alignment": "A quick reading of the context to respond with stronger direction.",
+        "response": "An initial reply with clearer scope, timing, and next steps.",
+        "scope": "Questions designed to reduce rework from the very beginning."
+      }
     },
     "ContactDrawer": {
       "eyebrow": "Proposal",
       "title": "Request Proposal",
-      "description": "Fill in the key points so we can align scope and goals from the very first contact.",
+      "description": "Fill in the essentials so we can align scope, priority, and timing from the very first contact.",
       "close": "Close form",
       "referralLabel": "Referral active",
       "referralText": "{name} referred you. That information will be considered in our contact.",
@@ -303,8 +308,46 @@
         "projectTypeOtherRequired": "Please specify the project type.",
         "budgetRequired": "Select a budget range.",
         "deadlineRequired": "Select a timeline.",
-        "messageMin": "Add at least 10 characters of context."
-      }
+        "messageMin": "Add at least 10 characters of context.",
+        "stepError": "Review the highlighted fields before continuing."
+      },
+      "sections": {
+        "identity": {
+          "eyebrow": "Contact",
+          "title": "Who is leading this request?",
+          "description": "The key details the studio needs to know who to contact and how to reply."
+        },
+        "scope": {
+          "eyebrow": "Project",
+          "title": "What do you need right now?",
+          "description": "Share the main goal and the format that best matches what you want to build."
+        },
+        "delivery": {
+          "eyebrow": "Scope",
+          "title": "What is the timing of this request?",
+          "description": "These choices help calibrate proposal, priority, and delivery rhythm."
+        }
+      },
+      "stepper": {
+        "identity": {
+          "title": "Contact"
+        },
+        "scope": {
+          "title": "Project"
+        },
+        "delivery": {
+          "title": "Scope"
+        }
+      },
+      "submitBlock": {
+        "eyebrow": "Submit",
+        "note": "After submission, the studio reviews the context and replies with clear direction on next steps.",
+        "previous": "Back",
+        "next": "Continue"
+      },
+      "requiredNote": "Fields marked with * are required.",
+      "requiredNotePrefix": "Fields marked with",
+      "requiredNoteSuffix": "are required."
     }
   },
   "ContactPage": {

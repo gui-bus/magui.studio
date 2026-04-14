@@ -218,15 +218,20 @@
     },
     "CTA": {
       "eyebrow": "Contato",
-      "title": "Seu projeto começa aqui",
-      "description": "Inicie sua solicitação e envie o contexto para transformarmos a ideia em uma direção técnica clara.",
-      "cardTitle": "Clareza no início.",
-      "cardDescription": "Um bom projeto começa com um direcionamento objetivo e bem estruturado."
+      "title": "Vamos conversar sobre o seu projeto.",
+      "description": "Compartilhe o essencial para o estúdio entender a demanda com clareza.",
+      "cardTitle": "O que você pode esperar",
+      "cardDescription": "Um formulário direto para entender escopo, momento e prioridade sem transformar o primeiro contato em uma tarefa cansativa.",
+      "highlights": {
+        "alignment": "Leitura rápida do contexto para responder com mais direção.",
+        "response": "Contato inicial com escopo, momento e próximos passos mais claros.",
+        "scope": "Perguntas pensadas para reduzir retrabalho logo no começo."
+      }
     },
     "ContactDrawer": {
       "eyebrow": "Proposta",
       "title": "Solicitar Proposta",
-      "description": "Preencha os pontos principais para alinharmos escopo e objetivo logo no primeiro contato.",
+      "description": "Preencha o essencial para alinhar escopo, prioridade e momento do projeto logo no primeiro contato.",
       "close": "Fechar formulário",
       "referralLabel": "Indicação ativa",
       "referralText": "{name} indicou você. Essa informação será considerada no nosso contato.",
@@ -303,8 +308,46 @@
         "projectTypeOtherRequired": "Por favor, especifique o tipo de projeto.",
         "budgetRequired": "Selecione a faixa de investimento.",
         "deadlineRequired": "Selecione o prazo esperado.",
-        "messageMin": "Explique o contexto com pelo menos 10 caracteres."
-      }
+        "messageMin": "Explique o contexto com pelo menos 10 caracteres.",
+        "stepError": "Revise os campos destacados antes de continuar."
+      },
+      "sections": {
+        "identity": {
+          "eyebrow": "Contato",
+          "title": "Quem está à frente da demanda?",
+          "description": "Os dados principais para o estúdio entender com quem falar e como retornar."
+        },
+        "scope": {
+          "eyebrow": "Projeto",
+          "title": "O que você precisa agora?",
+          "description": "Conte o objetivo principal e o formato que mais se aproxima do que você quer construir."
+        },
+        "delivery": {
+          "eyebrow": "Escopo",
+          "title": "Qual é o momento da demanda?",
+          "description": "Essas escolhas ajudam a calibrar proposta, prioridade e ritmo de entrega."
+        }
+      },
+      "stepper": {
+        "identity": {
+          "title": "Contato"
+        },
+        "scope": {
+          "title": "Projeto"
+        },
+        "delivery": {
+          "title": "Escopo"
+        }
+      },
+      "submitBlock": {
+        "eyebrow": "Envio",
+        "note": "Depois do envio, o estúdio revisa o contexto e responde com direção clara sobre próximos passos.",
+        "previous": "Voltar",
+        "next": "Continuar"
+      },
+      "requiredNote": "Campos com * são obrigatórios.",
+      "requiredNotePrefix": "Campos com",
+      "requiredNoteSuffix": "são obrigatórios."
     }
   },
   "ContactPage": {

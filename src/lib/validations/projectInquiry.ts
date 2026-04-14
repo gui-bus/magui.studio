@@ -18,7 +18,13 @@ export function createProjectInquirySchema(
     .object({
       name: z.string().trim().min(2, messages.nameMin),
       email: z.string().trim().email(messages.emailInvalid),
-      phone: z.string().trim().min(8, messages.phoneMin),
+      phone: z
+        .string()
+        .trim()
+        .refine(
+          (value) => value.replace(/\D/g, "").length >= 10,
+          messages.phoneMin
+        ),
       link: z.string().trim().optional(),
       company: z.string().trim().optional(),
       projectType: z.string().min(1, messages.projectTypeRequired),

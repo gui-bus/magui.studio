@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { getTranslations } from "next-intl/server"
 import Image from "next/image"
+import Link from "next/link"
 
 import { Section } from "@/src/components/ui/section"
 import { ArrowUpRightIcon } from "@/src/components/ui/serverIcons"
@@ -11,6 +12,7 @@ import { cn } from "@/src/lib/utils/utils"
 
 interface ServiceShowcaseItem {
   id: string
+  inquiryValue: "institutional" | "landing" | "sales"
   title: string
   label: string
   description: string
@@ -31,6 +33,7 @@ export async function Services(): Promise<React.JSX.Element> {
   const services: ServiceShowcaseItem[] = [
     {
       id: "01",
+      inquiryValue: "landing",
       title: t("landing.title"),
       label: t("landing.label"),
       description: t("landing.description"),
@@ -40,6 +43,7 @@ export async function Services(): Promise<React.JSX.Element> {
     },
     {
       id: "02",
+      inquiryValue: "sales",
       title: t("sales.title"),
       label: t("sales.label"),
       description: t("sales.description"),
@@ -48,6 +52,7 @@ export async function Services(): Promise<React.JSX.Element> {
     },
     {
       id: "03",
+      inquiryValue: "institutional",
       title: t("institutional.title"),
       label: t("institutional.label"),
       description: t("institutional.description"),
@@ -123,7 +128,7 @@ export async function Services(): Promise<React.JSX.Element> {
                 </div>
 
                 <div className="space-y-8">
-                  <h3 className="max-w-[11ch] font-heading text-4xl font-black uppercase leading-[0.84] tracking-[-0.05em] md:text-6xl">
+                  <h3 className="max-w-[11ch] font-heading text-4xl font-black uppercase leading-[0.84] tracking-[-0.05em] md:text-5xl">
                     <StaggeredText text={service.title} />
                   </h3>
 
@@ -131,9 +136,13 @@ export async function Services(): Promise<React.JSX.Element> {
                     {service.description}
                   </p>
 
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/18 bg-white/8 text-white transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:border-white/35 group-hover:bg-white/14">
+                  <Link
+                    href={`/?service=${service.inquiryValue}#${idT("contact")}`}
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/18 bg-white/8 text-white transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:border-white/35 group-hover:bg-white/14"
+                    aria-label={`${t("selection")} ${service.title}`}
+                  >
                     <ArrowUpRightIcon size={20} weight="bold" />
-                  </div>
+                  </Link>
                 </div>
               </div>
             </article>

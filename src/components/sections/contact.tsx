@@ -16,35 +16,24 @@ export async function Contact(): Promise<React.JSX.Element> {
       className="py-24 md:py-32 lg:py-40"
       withContainer={true}
     >
-      <div className="grid gap-16 lg:grid-cols-[1fr_minmax(0,1.2fr)] lg:items-start lg:gap-24">
-        <div className="space-y-12">
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="h-px w-10 bg-brand-primary" />
-              <span className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-primary">
-                {t("eyebrow")}
-              </span>
-            </div>
-
-            <div className="space-y-6">
-              <h2 className="font-heading text-5xl font-black uppercase leading-[0.85] tracking-[-0.06em] text-foreground md:text-7xl lg:text-8xl">
-                {t("title")}
-              </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                {t("description")}
-              </p>
-            </div>
+      <div className="space-y-10">
+        <header className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-10 bg-brand-primary" />
+            <span className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-primary">
+              {t("eyebrow")}
+            </span>
           </div>
 
-          <div className="rounded-3xl border border-border/60 bg-foreground/2 p-8">
-            <p className="font-heading text-2xl font-black uppercase tracking-tight text-foreground">
-              {t("cardTitle")}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {t("cardDescription")}
+          <div className="space-y-4">
+            <h2 className="max-w-3xl font-heading text-4xl font-black uppercase leading-[0.9] tracking-[-0.06em] text-foreground md:text-6xl">
+              {t("title")}
+            </h2>
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {t("description")}
             </p>
           </div>
-        </div>
+        </header>
 
         <ProjectInquiryForm origin="contact" />
       </div>

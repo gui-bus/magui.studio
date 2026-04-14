@@ -22,7 +22,7 @@ export const StaggeredText = React.memo(function StaggeredText({
       {words.map((word, i) => (
         <span
           key={`${word}-${i}`}
-          className="inline-block overflow-hidden mr-[0.2em] last:mr-0 py-0 md:py-5"
+          className="inline-block overflow-hidden mr-[0.2em] last:mr-0"
         >
           <span className="inline-block">{word}</span>
         </span>
