@@ -30,7 +30,7 @@ export async function FAQ(): Promise<React.JSX.Element> {
           </div>
 
           <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.65fr)] xl:items-end">
-            <h2 className="max-w-6xl font-heading text-5xl font-black uppercase leading-[0.8] tracking-[-0.05em] text-foreground md:text-7xl xl:text-[112px]">
+            <h2 className="font-heading text-5xl font-black uppercase leading-[0.74] tracking-[-0.06em] text-foreground md:text-8xl 2xl:text-[136px]">
               <StaggeredText text={t("title")} />
             </h2>
           </div>

@@ -78,7 +78,7 @@ export async function Services(): Promise<React.JSX.Element> {
               </span>
             </div>
 
-            <h2 className="max-w-7xl font-heading text-5xl font-black uppercase leading-[0.74] tracking-[-0.06em] text-foreground md:text-7xl lg:text-[136px]">
+            <h2 className="font-heading text-5xl font-black uppercase leading-[0.74] tracking-[-0.06em] text-foreground md:text-8xl 2xl:text-[136px]">
               <span className="block">
                 <StaggeredText text={t("title_1")} />
               </span>
@@ -93,7 +93,7 @@ export async function Services(): Promise<React.JSX.Element> {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-px border border-foreground/8 bg-foreground/8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px border border-foreground/8 bg-foreground/8 2xl:grid-cols-3">
           {services.map((service) => (
             <article
               key={service.id}
@@ -128,7 +128,7 @@ export async function Services(): Promise<React.JSX.Element> {
                 </div>
 
                 <div className="space-y-8">
-                  <h3 className="max-w-[11ch] font-heading text-4xl font-black uppercase leading-[0.84] tracking-[-0.05em] md:text-5xl">
+                  <h3 className="max-w-[11ch] font-heading text-4xl font-black uppercase leading-[0.84] tracking-[-0.05em] md:text-7xl">
                     <StaggeredText text={service.title} />
                   </h3>
 

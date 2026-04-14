@@ -44,7 +44,7 @@ export async function Value(): Promise<React.JSX.Element> {
               </span>
             </div>
 
-            <h2 className="font-heading text-5xl font-black uppercase leading-[0.78] tracking-[-0.06em] text-foreground md:text-6xl lg:text-[136px]">
+            <h2 className="font-heading text-5xl font-black uppercase leading-[0.74] tracking-[-0.06em] text-foreground md:text-8xl 2xl:text-[136px]">
               <span className="block">
                 <StaggeredText text={t("title_1")} />
               </span>

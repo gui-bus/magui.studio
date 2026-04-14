@@ -263,7 +263,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-190 bg-background flex flex-col justify-center px-6 md:px-12 pt-24 overflow-hidden"
+            className="fixed inset-0 z-190 overflow-y-auto overflow-x-hidden bg-background px-6 pt-24 pb-8 md:px-12"
           >
             <div className="absolute top-0 right-0 h-full w-1/4 border-l border-foreground/5 bg-muted/20 -z-10 hidden md:block" />
             <div className="absolute -bottom-10 -right-10 -z-10 opacity-[0.03] select-none pointer-events-none">
@@ -272,48 +272,52 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               </span>
             </div>
 
-            <nav className="relative flex flex-col gap-4 md:gap-6">
-              <m.div variants={itemVariants} className="mb-8">
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary">
-                  {t("main_nav_label")}
-                </span>
+            <div className="relative flex min-h-full flex-col">
+              <nav className="flex flex-col gap-3 md:gap-4">
+                <m.div variants={itemVariants} className="mb-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-primary">
+                    {t("main_nav_label")}
+                  </span>
+                </m.div>
+
+                {navLinks.map((link) => (
+                  <m.div key={link.href} variants={itemVariants}>
+                    <NavLink
+                      href={link.href}
+                      label={link.label}
+                      variant="mobile"
+                      onClick={() => setIsOpen(false)}
+                    />
+                  </m.div>
+                ))}
+              </nav>
+
+              <m.div
+                variants={itemVariants}
+                className="mt-10 border-t border-foreground/10 pt-6 md:mt-14 md:pt-8"
+              >
+                <div className="flex flex-col gap-4">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/60">
+                    {t("preferences")}
+                  </span>
+                  <div className="flex items-center gap-4">
+                    <LanguageSwitcher />
+                    <ThemeToggle />
+                  </div>
+                </div>
               </m.div>
 
-              {navLinks.map((link) => (
-                <m.div key={link.href} variants={itemVariants}>
-                  <NavLink
-                    href={link.href}
-                    label={link.label}
-                    variant="mobile"
-                    onClick={() => setIsOpen(false)}
-                  />
-                </m.div>
-              ))}
-            </nav>
-
-            <m.div
-              variants={itemVariants}
-              className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-foreground/10 flex flex-wrap items-center gap-6 md:gap-10"
-            >
-              <div className="flex flex-col gap-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/60">
-                  {t("preferences")}
-                </span>
-                <div className="flex items-center gap-4">
-                  <LanguageSwitcher />
-                  <ThemeToggle />
+              <m.div
+                variants={itemVariants}
+                className="mt-auto pt-10 text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40"
+              >
+                <div className="flex flex-wrap items-center gap-4">
+                  <span>{t("studio_year")}</span>
+                  <span className="h-1 w-1 rounded-full bg-brand-primary/40" />
+                  <span>{t("technical_rigor")}</span>
                 </div>
-              </div>
-            </m.div>
-
-            <m.div
-              variants={itemVariants}
-              className="absolute bottom-10 left-6 md:left-12 flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40"
-            >
-              <span>{t("studio_year")}</span>
-              <span className="h-1 w-1 rounded-full bg-brand-primary/40" />
-              <span>{t("technical_rigor")}</span>
-            </m.div>
+              </m.div>
+            </div>
           </m.div>
         )}
       </AnimatePresence>

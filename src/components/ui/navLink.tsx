@@ -31,7 +31,7 @@ export function NavLink({
         href={href as never}
         onClick={onClick}
         className={cn(
-          "text-5xl md:text-7xl font-heading font-black uppercase tracking-tighter text-foreground hover:text-brand-primary transition-colors",
+          "text-3xl sm:text-4xl md:text-5xl font-heading font-black uppercase tracking-tight text-foreground hover:text-brand-primary transition-colors",
           className
         )}
         {...props}

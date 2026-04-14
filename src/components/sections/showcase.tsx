@@ -83,7 +83,7 @@ export function Showcase(): React.JSX.Element {
       </div>
 
       <div className="relative z-10 space-y-10 lg:space-y-14">
-        <header className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-end">
+        <header className="grid gap-8 2xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] 2xl:items-end">
           <div className="max-w-4xl space-y-6">
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="h-px w-10 bg-brand-primary sm:w-12" />
@@ -111,33 +111,6 @@ export function Showcase(): React.JSX.Element {
           </aside>
         </header>
 
-        {hasMultipleProjects ? (
-          <div
-            className="flex flex-wrap gap-3"
-            role="tablist"
-            aria-label={t("projects_nav_label")}
-          >
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                type="button"
-                role="tab"
-                aria-selected={currentIndex === index}
-                aria-controls={`showcase-panel-${project.id}`}
-                id={`showcase-tab-${project.id}`}
-                onClick={() => handleProjectSelect(index)}
-                className={
-                  currentIndex === index
-                    ? "rounded-full bg-foreground px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-background"
-                    : "rounded-full border border-border/60 bg-background px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
-                }
-              >
-                {project.title}
-              </button>
-            ))}
-          </div>
-        ) : null}
-
         <AnimatePresence mode="wait" initial={false}>
           <m.article
             key={activeProject.id}
@@ -149,7 +122,7 @@ export function Showcase(): React.JSX.Element {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.55, ease: EASE_SMOOTH }}
-            className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]"
+            className="grid gap-8 2xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]"
           >
             <div className="relative overflow-hidden rounded-4xl bg-muted/20 shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
               <Link
