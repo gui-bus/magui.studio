@@ -138,10 +138,6 @@ export default async function RootLayout({
       className={cn("relative antialiased", fontVariables)}
     >
       <head>
-        <meta
-          name="adopt-website-id"
-          content="71c75199-5d4d-4366-8b67-ad6650f48c4a"
-        />
         {siteConfig.analytics.google ? (
           <>
             <Script
@@ -157,11 +153,6 @@ gtag('config', '${siteConfig.analytics.google}');`}
             </Script>
           </>
         ) : null}
-        <script
-          src="https://tag.goadopt.io/injector.js?website_code=71c75199-5d4d-4366-8b67-ad6650f48c4a"
-          className="adopt-injector"
-          async
-        />
         <script
           dangerouslySetInnerHTML={{
             __html:
