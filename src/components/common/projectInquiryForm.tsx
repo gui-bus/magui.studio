@@ -99,7 +99,7 @@ function FormSection({
   children,
 }: FormSectionProps): React.JSX.Element {
   return (
-    <section className="space-y-5 rounded-[2rem] bg-background/92 md:p-5 shadow-[0_18px_50px_rgba(15,23,42,0.05)]">
+    <section className="space-y-5 rounded-4xl bg-background/92 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.05)] sm:p-6">
       <header className="space-y-2">
         <p className="text-[10px] font-black uppercase tracking-[0.34em] text-brand-primary/80">
           {eyebrow}
@@ -145,14 +145,13 @@ function ProjectInquirySelectionGroup({
             type="button"
             onClick={(): void => onSelect(option.value)}
             className={cn(
-              "rounded-[1.5rem] border px-4 py-3 text-left text-[11px] font-black uppercase tracking-[0.22em] transition-all",
+              "rounded-3xl border px-4 py-3 text-left text-[11px] font-black uppercase tracking-[0.22em] transition-all",
               selectedValue === option.value
                 ? "border-transparent bg-foreground text-background shadow-lg shadow-black/8 dark:bg-white dark:text-black"
                 : hasError
                   ? "border-red-500/60 bg-red-500/6 text-foreground hover:border-red-500 hover:bg-red-500/10"
                   : "border-transparent bg-muted/24 text-muted-foreground hover:bg-muted/40 hover:text-foreground"
             )}
-            aria-invalid={hasError}
           >
             {option.label}
           </button>
@@ -177,7 +176,7 @@ function TextField({
       className={cn(
         "rounded-[1.35rem] border bg-muted/18 px-3.5 py-2.5 transition-all",
         hasError
-          ? "border-red-500/70 bg-red-500/[0.03] ring-1 ring-red-500/15"
+          ? "border-red-500/70 bg-red-500/3 ring-1 ring-red-500/15"
           : "border-transparent focus-within:bg-muted/26 focus-within:ring-1 focus-within:ring-brand-primary/40"
       )}
     >
@@ -436,7 +435,7 @@ export function ProjectInquiryForm({
   )
 
   return isSuccess ? (
-    <section className="rounded-[2rem] bg-background px-6 py-14 text-center shadow-[0_24px_80px_rgba(15,23,42,0.06)] md:px-10">
+    <section className="rounded-4xl bg-background px-6 py-14 text-center shadow-[0_24px_80px_rgba(15,23,42,0.06)] md:px-10">
       <div className="flex flex-col items-center justify-center gap-7">
         <div className="flex size-20 items-center justify-center rounded-full bg-brand-primary text-white shadow-2xl shadow-brand-primary/20">
           <CheckCircleIcon size={44} weight="fill" />
@@ -454,10 +453,10 @@ export function ProjectInquiryForm({
   ) : (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-5 rounded-[2.25rem] bg-foreground/[0.02] p-4 sm:p-5"
+      className="space-y-5 rounded-[2.25rem] bg-foreground/2 md:p-5"
     >
       {referral ? (
-        <section className="rounded-[1.75rem] bg-brand-primary/[0.08] px-5 py-5">
+        <section className="rounded-[1.75rem] bg-brand-primary/8 px-5 py-5">
           <div className="flex items-start gap-4">
             <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white">
               <TicketIcon size={18} weight="fill" />
@@ -474,7 +473,7 @@ export function ProjectInquiryForm({
         </section>
       ) : null}
 
-      <section className="rounded-[2rem] bg-background/92 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.05)] sm:p-6">
+      <section className="rounded-4xl bg-background/92 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.05)] sm:p-6">
         <div className="space-y-5">
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-1">
@@ -507,11 +506,11 @@ export function ProjectInquiryForm({
                   }}
                   disabled={isLocked}
                   className={cn(
-                    "flex min-h-24 flex-col items-start gap-2 rounded-[1.35rem] px-3 py-3 text-left transition-all sm:min-h-0 sm:flex-row sm:items-center sm:gap-3 sm:rounded-[1.5rem] sm:px-4 sm:py-4",
+                    "flex min-h-24 flex-col items-start gap-2 rounded-[1.35rem] px-3 py-3 text-left transition-all sm:min-h-0 sm:flex-row sm:items-center sm:gap-3 sm:rounded-3xl sm:px-4 sm:py-4",
                     isActive
                       ? "bg-foreground text-background"
                       : isCompleted
-                        ? "bg-brand-primary/[0.10] text-foreground"
+                        ? "bg-brand-primary/10 text-foreground"
                         : "bg-muted/10 text-muted-foreground/45",
                     isLocked
                       ? "cursor-not-allowed border border-border/30 opacity-45"
@@ -842,13 +841,13 @@ export function ProjectInquiryForm({
       </AnimatePresence>
 
       {submissionError ? (
-        <p className="rounded-[1.5rem] bg-destructive/10 px-5 py-4 text-sm leading-relaxed text-destructive">
+        <p className="rounded-3xl bg-destructive/10 px-5 py-4 text-sm leading-relaxed text-destructive">
           {submissionError}
         </p>
       ) : null}
 
       {stepValidationError ? (
-        <p className="flex items-center gap-3 rounded-[1.5rem] border border-red-500/25 bg-red-500/[0.05] px-5 py-4 text-sm leading-relaxed text-red-700">
+        <p className="flex items-center gap-3 rounded-3xl border border-red-500/25 bg-red-500/5 px-5 py-4 text-sm leading-relaxed text-red-700">
           <WarningCircleIcon size={18} weight="fill" />
           {stepValidationError}
         </p>
