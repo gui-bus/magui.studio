@@ -916,9 +916,13 @@ export function ProjectInquiryForm({
 
         {currentStep < stepItems.length - 1 ? (
           <Button
+            key="next-step"
             type="button"
             size="lg"
-            onClick={handleNextStep}
+            onClick={(event) => {
+              event.preventDefault()
+              void handleNextStep()
+            }}
             className="h-12 rounded-full bg-foreground px-6 text-[11px] font-black uppercase tracking-[0.35em] text-background shadow-xl shadow-black/10 hover:bg-brand-primary"
           >
             {t("submitBlock.next")}
@@ -926,6 +930,7 @@ export function ProjectInquiryForm({
           </Button>
         ) : (
           <Button
+            key="submit-inquiry"
             type="submit"
             size="lg"
             disabled={isSubmitting}
