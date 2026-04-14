@@ -1,80 +1,60 @@
-# 🚀 Next.js Elite Landing Page Template
+<p align="center">
+  <img src="public/logos/LOGO_VAR_03_LM.svg" width="400" alt="MAGUI.studio Logo">
+</p>
 
-A high-performance, production-ready, and strictly typed Landing Page template built with the latest web technologies. This project is engineered for speed, scalability, and professional maintenance.
+<img src="https://github.com/gui-bus/magui/blob/master/public/images/og-image.webp?raw=true" width="100%" alt="Thumbnail MAGUI.studio">
 
-## 🛠 Tech Stack
+<p align="center">
+  <img alt="React" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/React.svg">
+  <img alt="NextJS" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/NextJS.svg">
+  <img alt="Typescript" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Typescript.svg">
+  <img alt="Tailwind" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/TailwindCSS.svg">
+  <img alt="Framer Motion" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Framer%20Motion.svg">
+  <img alt="Phosphor Icons" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Phosphor%20Icons.svg">
+  <img alt="Husky" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Husky.svg">
+  <img alt="Conventional Commits" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Conventional%20Commits.svg">
+  <img alt="Cursor" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Cursor.svg">
+  <img alt="Gemini" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Gemini.svg">
+  <img alt="Windsurf" height="60" width="60" src="https://github.com/gui-bus/TechIcons/blob/main/Dark/Windsurf.svg">
+</p>
 
-- **Framework:** Next.js 16 (App Router)
-- **Library:** React 19
-- **Styling:** Tailwind CSS v4
-- **Components:** shadcn/ui
-- **Internationalization:** next-intl (Prefix-less routing)
-- **Validation:** Zod
-- **Testing:** Vitest + Playwright + React Testing Library
-- **Logging:** Pino (Structured)
-- **CI/CD:** GitHub Actions
-- **Containerization:** Docker (Multi-stage)
-- **Security:** Secretlint
+---
 
-## ✨ Key Features
+## 📖 Panorama Geral
 
-- 🌍 **Full i18n:** Automated translation key synchronization and strict typing.
-- ⚡ **Performance:** Optimized for 100/100 Lighthouse scores with built-in auditing (`pnpm audit`).
-- 🛡️ **Security:** Pre-configured CSP headers and automated secret scanning.
-- 🏗️ **Industrial Scaffolding:** Automated component generation via Plop.js.
-- 🎨 **Dynamic Assets:** On-the-fly Open Graph image generation (`/api/og`).
-- 📱 **PWA Ready:** Manifest and metadata pre-configured for mobile installation.
-- 🧪 **Elite Testing:** 100% coverage strategy with unit, component, and E2E smoke tests.
+O **MAGUI.studio** é um estúdio de estratégia visual e engenharia aplicado ao desenvolvimento de interfaces de alta performance. O projeto foi concebido para transformar desafios de negócio em sistemas digitais sólidos, unindo direção visual consciente e rigor técnico.
 
-## 🚀 Getting Started
+### 🎯 Diferenciais Estratégicos
+- **Design de Autoridade:** Foco em clareza, estética e autoridade visual, utilizando tipografia precisa e composições que projetam credibilidade imediata.
+- **Rigor de Engenharia:** Desenvolvimento focado em performance extrema, estabilidade e segurança, garantindo que a beleza do design seja sustentada por um código de elite.
+- **Protocolo de Execução:** Método cadenciado (Estratégia, Arquitetura, Design e Engenharia) que busca previsibilidade e clareza em cada etapa da entrega.
 
-### 1. Requirements
-- Node.js 20+
-- pnpm 10+
+---
 
-### 2. Installation
-```bash
-pnpm install
-```
+## ✨ Ecossistema de Funcionalidades
 
-### 3. Environment Setup
-```bash
-cp .env.example .env
-# Fill in your variables
-```
+### 💎 Impacto & Autoridade (Hero & Value)
+- **High-Authority Hero:** Primeira dobra desenhada para transmitir seriedade e clareza técnica instantânea com CTAs de alta conversão.
+- **Science of Authority:** Seções fundamentadas na união entre engenharia e design, consolidando a percepção de valor da marca.
 
-### 4. Development
-```bash
-pnpm dev
-```
+### 📚 Portfólio & Especialidades
+- **Curated Showcase:** Exposição de projetos selecionados com navegação fluida e foco nos diferenciais estratégicos de cada case.
+- **Service Modules:** Apresentação clara de especialidades como Landing Pages, Páginas de Vendas e Sites Institucionais.
 
-## 📜 Mandatory Workflow
+### 🔐 Confiança & Relacionamento
+- **Studio Manifesto:** O "Conceito MAGUI" detalhado, construindo conexão através de valores inegociáveis e transparência processual.
+- **Intelligent Contact:** Sistema de solicitação de proposta em múltiplos passos para alinhamento rápido de escopo e prioridade.
 
-Before every commit, the system automatically runs:
-1. `pnpm format` - Organizes imports and styles.
-2. `pnpm check-i18n` - Validates translation sync.
-3. `pnpm test` - Runs unit and component tests.
-4. `pnpm typecheck` - Validates TypeScript integrity.
+---
 
-*A Husky pre-push hook also runs `pnpm build` to ensure production readiness.*
+## 🛠️ Deep Dive Tecnológico
 
-## 📂 Project Structure
+### Performance & Estilização
+- **Next.js 16 & React 19:** Utilização das versões mais recentes para garantir renderização ultra-rápida (App Router) e suporte nativo a Server Components.
+- **Tailwind CSS v4:** Estilização de próxima geração com foco em velocidade de compilação e flexibilidade total via `oklch` colors.
+- **Framer Motion:** Micro-interações sofisticadas e orquestração de entrada de conteúdo que elevam a experiência do usuário.
 
-- `src/app/`: Core routing and layouts.
-- `src/components/`: UI, common, and landing page sections.
-- `src/config/`: Centralized site, font, and env configurations.
-- `src/lib/`: Custom hooks, animations, and utilities.
-- `src/__tests__/`: Unit and E2E test suites.
-- `messages/`: Multi-language JSON files.
-
-## 📋 New Project Checklist
-See [CHECKLIST.md](./CHECKLIST.md) for a step-by-step guide on starting a new project with this template.
-
-## 🛠 Scripts
-
-- `pnpm build`: Optimized production build.
-- `pnpm test:e2e`: Run Playwright E2E tests.
-- `pnpm generate`: Scaffolding new components.
-- `pnpm analyze`: Analyze bundle sizes.
-- `pnpm audit`: Site-wide Lighthouse audit.
-- `pnpm clean`: Wipe build artifacts and caches.
+### Estrutura & Manutenção
+- **Full i18n:** Sistema de internacionalização (next-intl) com sincronização automatizada de chaves e tipagem estrita.
+- **Strict Typing & Validation:** Uso extensivo de TypeScript e Zod para garantir integridade de dados e segurança operacional.
+- **Elite Testing Strategy:** Suite completa de testes unitários (Vitest) e E2E (Playwright) para validação contínua da saúde do projeto.
