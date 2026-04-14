@@ -283,8 +283,6 @@ export function ProjectInquiryForm({
   const selectedProjectType = watch("projectType")
   const selectedBudget = watch("budget")
   const selectedDeadline = watch("deadline")
-  const watchedName = watch("name")
-  const watchedCompany = watch("company")
 
   React.useEffect(() => {
     if (
@@ -317,30 +315,6 @@ export function ProjectInquiryForm({
     ],
     [t]
   )
-
-  const stepSummary = React.useMemo((): string => {
-    if (currentStep === 0) {
-      return watchedName || watchedCompany || t("sections.identity.description")
-    }
-
-    if (currentStep === 1) {
-      return selectedProjectType === "other"
-        ? t("projectTypes.other")
-        : t(`projectTypes.${selectedProjectType}`)
-    }
-
-    return `${t(`budgets.${selectedBudget}`)} · ${t(
-      `deadlines.${selectedDeadline}`
-    )}`
-  }, [
-    currentStep,
-    selectedBudget,
-    selectedDeadline,
-    selectedProjectType,
-    t,
-    watchedCompany,
-    watchedName,
-  ])
 
   const phoneField = register("phone", {
     onChange: (event) => {
@@ -509,9 +483,6 @@ export function ProjectInquiryForm({
             <div className="space-y-1">
               <p className="text-[10px] font-black uppercase tracking-[0.34em] text-brand-primary/80">
                 {t("title")}
-              </p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {stepSummary}
               </p>
             </div>
             <div className="whitespace-nowrap rounded-full bg-muted/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-muted-foreground sm:tracking-[0.28em]">
