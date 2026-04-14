@@ -10,7 +10,6 @@ import { usePathname, useRouter } from "@/src/i18n/navigation"
 import { CaretDown, Check } from "@phosphor-icons/react"
 import { m } from "framer-motion"
 import Cookies from "js-cookie"
-import ReactCountryFlag from "react-country-flag"
 
 import {
   DropdownMenu,
@@ -28,6 +27,12 @@ const countryCodes: Record<string, string> = {
 
 interface LocaleRouteParams {
   [key: string]: string | Array<string>
+}
+
+function toFlagEmoji(countryCode: string): string {
+  return Array.from(countryCode.toUpperCase())
+    .map((character) => String.fromCodePoint(127397 + character.charCodeAt(0)))
+    .join("")
 }
 
 export function LanguageSwitcher(): React.JSX.Element {
@@ -71,17 +76,19 @@ export function LanguageSwitcher(): React.JSX.Element {
     )
   }
 
+  const currentFlag = toFlagEmoji(countryCodes[currentLocale] ?? "US")
+
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="cursor-pointer outline-none">
         <div className="group flex h-9 items-center gap-2 rounded-full border border-border/60 bg-background/50 px-3 backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50">
           <div className="flex items-center gap-2">
-            <ReactCountryFlag
-              countryCode={countryCodes[currentLocale]}
-              svg
+            <span
               aria-hidden="true"
               className="text-base leading-none opacity-90 transition-all group-hover:opacity-100"
-            />
+            >
+              {currentFlag}
+            </span>
             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-colors group-hover:text-foreground">
               {currentLocale}
             </span>
@@ -111,9 +118,7 @@ export function LanguageSwitcher(): React.JSX.Element {
             )}
           >
             <div className="flex items-center gap-2.5">
-              <ReactCountryFlag
-                countryCode={countryCodes[loc]}
-                svg
+              <span
                 aria-hidden="true"
                 className={cn(
                   "text-base leading-none transition-all",
@@ -121,7 +126,9 @@ export function LanguageSwitcher(): React.JSX.Element {
                     ? "opacity-100"
                     : "opacity-60 group-hover:opacity-100"
                 )}
-              />
+              >
+                {toFlagEmoji(countryCodes[loc] ?? "US")}
+              </span>
               <span className="font-bold tracking-tight">{t(loc)}</span>
             </div>
             {currentLocale === loc && (
