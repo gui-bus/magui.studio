@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { useTranslations } from "next-intl"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 
 import { Link } from "@/src/i18n/navigation"
@@ -10,14 +11,35 @@ import { AnimatePresence, m } from "framer-motion"
 
 import { NavLink } from "@/src/components/ui/navLink"
 
-import { LanguageSwitcher } from "@/src/components/common/languageSwitcher"
-import { ThemeToggle } from "@/src/components/common/themeToggle"
-
 import { cn } from "@/src/lib/utils/utils"
 
 import { siteConfig } from "@/src/config/site"
 
 const EASE_APPLE: [number, number, number, number] = [0.16, 1, 0.3, 1]
+
+const LanguageSwitcher = dynamic(
+  () =>
+    import("@/src/components/common/languageSwitcher").then(
+      (module) => module.LanguageSwitcher
+    ),
+  {
+    loading: (): React.JSX.Element => (
+      <div className="h-9 w-24 animate-pulse rounded-full border border-border/50 bg-muted/20" />
+    ),
+  }
+)
+
+const ThemeToggle = dynamic(
+  () =>
+    import("@/src/components/common/themeToggle").then(
+      (module) => module.ThemeToggle
+    ),
+  {
+    loading: (): React.JSX.Element => (
+      <div className="h-9 w-18 animate-pulse rounded-full border border-border/50 bg-muted/20" />
+    ),
+  }
+)
 
 export const Header = React.memo(function Header(): React.JSX.Element {
   const t = useTranslations("Index.Nav")

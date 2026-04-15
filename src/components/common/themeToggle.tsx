@@ -5,7 +5,6 @@ import * as React from "react"
 import { useTranslations } from "next-intl"
 
 import { Moon, Sun } from "@phosphor-icons/react"
-import { m } from "framer-motion"
 
 import { useThemeTransition } from "@/src/lib/hooks/useThemeTransition"
 import { cn } from "@/src/lib/utils/utils"
@@ -29,16 +28,11 @@ export function ThemeToggle(): React.JSX.Element {
 
   return (
     <div className="group relative flex h-9 w-18 items-center rounded-full border border-border/60 bg-background/50 p-1 backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50">
-      <m.div
+      <div
         className="absolute z-0 h-7 w-7 rounded-full bg-muted shadow-sm"
-        initial={false}
-        animate={{
-          x: isLight ? 0 : 34,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          damping: 30,
+        style={{
+          transform: `translateX(${isLight ? 0 : 34}px)`,
+          transition: "transform 300ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       />
 

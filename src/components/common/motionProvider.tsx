@@ -2,11 +2,17 @@
 
 import * as React from "react"
 
-import { LazyMotion, domMax } from "framer-motion"
+import { LazyMotion, domAnimation } from "framer-motion"
 
-export function MotionProvider({ children }: { children: React.ReactNode }) {
+interface MotionProviderProps {
+  children: React.ReactNode
+}
+
+export function MotionProvider({
+  children,
+}: MotionProviderProps): React.JSX.Element {
   return (
-    <LazyMotion features={domMax} strict>
+    <LazyMotion features={domAnimation} strict>
       {children}
     </LazyMotion>
   )

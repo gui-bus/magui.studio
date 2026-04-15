@@ -1,12 +1,17 @@
 import * as React from "react"
 
 import { getTranslations } from "next-intl/server"
+import dynamic from "next/dynamic"
 
 import { Section } from "@/src/components/ui/section"
 
-import { ProjectInquiryForm } from "@/src/components/common/projectInquiryForm"
-
 import { getServerEnv } from "@/src/config/env"
+
+const ProjectInquiryForm = dynamic(() =>
+  import("@/src/components/common/projectInquiryForm").then(
+    (module) => module.ProjectInquiryForm
+  )
+)
 
 export async function Contact(): Promise<React.JSX.Element> {
   const t = await getTranslations("Index.CTA")
@@ -37,7 +42,6 @@ export async function Contact(): Promise<React.JSX.Element> {
             </p>
           </div>
         </header>
-
         <React.Suspense fallback={null}>
           <ProjectInquiryForm
             origin="contact"

@@ -8,7 +8,6 @@ import { useParams } from "next/navigation"
 import { locales } from "@/src/i18n/config"
 import { usePathname, useRouter } from "@/src/i18n/navigation"
 import { CaretDown, Check } from "@phosphor-icons/react"
-import { m } from "framer-motion"
 import Cookies from "js-cookie"
 
 import {
@@ -132,13 +131,9 @@ export function LanguageSwitcher(): React.JSX.Element {
               <span className="font-bold tracking-tight">{t(loc)}</span>
             </div>
             {currentLocale === loc && (
-              <m.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              >
+              <div className="opacity-100 transition-opacity duration-200">
                 <Check weight="bold" size={12} className="text-brand-primary" />
-              </m.div>
+              </div>
             )}
           </DropdownMenuItem>
         ))}

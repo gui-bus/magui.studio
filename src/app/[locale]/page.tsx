@@ -17,11 +17,10 @@ import { Value } from "@/src/components/sections/value"
 
 import { siteConfig } from "@/src/config/site"
 
-const CurvedLoop = dynamic(
-  () =>
-    import("@/src/components/common/curvedMarquee").then(
-      (module) => module.default
-    )
+const CurvedLoop = dynamic(() =>
+  import("@/src/components/common/curvedMarquee").then(
+    (module) => module.default
+  )
 )
 
 const Showcase = dynamic(() =>
