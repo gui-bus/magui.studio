@@ -76,7 +76,7 @@ export async function Hero(): Promise<React.JSX.Element> {
                 size="lg"
                 className="group relative h-20 rounded-full bg-brand-primary px-12 text-white shadow-2xl shadow-brand-primary/20 transition-all duration-500 hover:scale-105"
               >
-                <LocalizedLink href={siteConfig.contact.path}>
+                <LocalizedLink href={siteConfig.contact.path} prefetch={false}>
                   <span className="relative z-10 flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] text-slate-950">
                     {t("cta")}
                     <ArrowUpRightIcon
@@ -89,6 +89,7 @@ export async function Hero(): Promise<React.JSX.Element> {
 
               <Link
                 href="/#portfolio"
+                prefetch={false}
                 className="flex items-start gap-1 group flex-col"
               >
                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground group-hover:text-brand-primary transition-colors">

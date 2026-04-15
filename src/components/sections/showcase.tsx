@@ -114,10 +114,6 @@ export function Showcase(): React.JSX.Element {
         <AnimatePresence mode="wait" initial={false}>
           <m.article
             key={activeProject.id}
-            id={`showcase-panel-${activeProject.id}`}
-            role="tabpanel"
-            aria-labelledby={`showcase-tab-${activeProject.id}`}
-            tabIndex={0}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
@@ -130,6 +126,7 @@ export function Showcase(): React.JSX.Element {
                   pathname: "/projetos/[slug]",
                   params: { slug: activeProject.slug },
                 }}
+                prefetch={false}
                 onClick={() =>
                   trackEvent("select_content", {
                     content_type: "portfolio_case",
@@ -213,6 +210,7 @@ export function Showcase(): React.JSX.Element {
                       pathname: "/projetos/[slug]",
                       params: { slug: activeProject.slug },
                     }}
+                    prefetch={false}
                     onClick={() =>
                       trackEvent("select_content", {
                         content_type: "portfolio_case",

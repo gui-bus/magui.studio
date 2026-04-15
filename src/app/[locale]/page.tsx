@@ -2,10 +2,10 @@ import * as React from "react"
 
 import { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
+import dynamic from "next/dynamic"
 
 import { FAQItem } from "@/src/types/sections"
 
-import CurvedLoop from "@/src/components/common/curvedMarquee"
 import { Footer } from "@/src/components/common/footer"
 import { Header } from "@/src/components/common/header"
 import { ScrollSpy } from "@/src/components/common/scrollSpy"
@@ -13,10 +13,20 @@ import { Contact } from "@/src/components/sections/contact"
 import { FAQ } from "@/src/components/sections/faq"
 import { Hero } from "@/src/components/sections/hero"
 import { Services } from "@/src/components/sections/services"
-import { Showcase } from "@/src/components/sections/showcase"
 import { Value } from "@/src/components/sections/value"
 
 import { siteConfig } from "@/src/config/site"
+
+const CurvedLoop = dynamic(
+  () =>
+    import("@/src/components/common/curvedMarquee").then(
+      (module) => module.default
+    )
+)
+
+const Showcase = dynamic(() =>
+  import("@/src/components/sections/showcase").then((module) => module.Showcase)
+)
 
 interface HomePageProps {
   params: Promise<{

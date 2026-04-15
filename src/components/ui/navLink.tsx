@@ -29,6 +29,7 @@ export function NavLink({
     return (
       <Component
         href={href as never}
+        prefetch={isLocalizedHref ? false : undefined}
         onClick={onClick}
         className={cn(
           "text-3xl sm:text-4xl md:text-5xl font-heading font-black uppercase tracking-tight text-foreground hover:text-brand-primary transition-colors",
@@ -47,6 +48,7 @@ export function NavLink({
     return (
       <Component
         href={href as never}
+        prefetch={isLocalizedHref ? false : undefined}
         className={cn(
           "text-lg font-bold uppercase tracking-tighter text-foreground hover:text-brand-primary transition-all duration-500 flex items-center gap-2 group-hover:translate-x-2",
           className
@@ -63,6 +65,7 @@ export function NavLink({
   return (
     <Component
       href={href as never}
+      prefetch={isLocalizedHref ? false : undefined}
       className={cn(
         "group relative text-[10px] font-black uppercase tracking-[0.4em] text-foreground/60 hover:text-brand-primary transition-colors duration-500",
         className

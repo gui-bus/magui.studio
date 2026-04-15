@@ -139,6 +139,7 @@ export async function Services(): Promise<React.JSX.Element> {
 
                   <Link
                     href={`/?service=${service.inquiryValue}#${idT("contact")}`}
+                    prefetch={false}
                     className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/18 bg-white/8 text-white transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:border-white/35 group-hover:bg-white/14"
                     aria-label={`${t("selection")} ${service.title}`}
                   >

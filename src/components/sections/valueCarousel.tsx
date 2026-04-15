@@ -68,7 +68,7 @@ function ValueDisciplineCard({
         alt={discipline.title}
         fill
         sizes="(max-width: 1024px) 100vw, 33vw"
-        quality={60}
+        quality={index === 1 ? 48 : 56}
         className={cn(
           "object-cover transition-all duration-700",
           isActive ? "scale-105 opacity-100" : "opacity-0"
