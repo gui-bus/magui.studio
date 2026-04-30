@@ -5,6 +5,7 @@ import * as React from "react"
 import { useTranslations } from "next-intl"
 import dynamic from "next/dynamic"
 import Image from "next/image"
+import { ArrowUpRight } from "@phosphor-icons/react"
 
 import { Link } from "@/src/i18n/navigation"
 import { AnimatePresence, m } from "framer-motion"
@@ -44,6 +45,7 @@ const ThemeToggle = dynamic(
 export const Header = React.memo(function Header(): React.JSX.Element {
   const t = useTranslations("Index.Nav")
   const idT = useTranslations("Index.Ids")
+  const dashboardHref = "https://dashboard.magui.studio"
   const [isOpen, setIsOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
   const menuRef = React.useRef<HTMLDivElement>(null)
@@ -174,14 +176,14 @@ export const Header = React.memo(function Header(): React.JSX.Element {
     <>
       <header
         className={cn(
-          "fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-440 flex h-24 items-center justify-between px-6 md:px-10 xl:px-20 transition-all duration-700",
+          "fixed top-0 left-1/2 -translate-x-1/2 flex h-24 w-full max-w-440 items-center justify-between px-6 transition-all duration-700 md:px-10 2xl:px-20",
           isOpen ? "z-220" : "z-100",
           scrolled || isOpen
             ? "bg-background/80 backdrop-blur-xl"
             : " bg-transparent backdrop-blur-none"
         )}
       >
-        <div className="relative z-220 flex min-w-0 shrink items-center gap-6 xl:gap-8">
+        <div className="relative z-220 flex min-w-0 shrink items-center gap-6 2xl:gap-8">
           <Link
             href="/"
             className="flex h-full shrink-0 items-center"
@@ -194,7 +196,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-6 w-auto min-w-28 object-contain dark:hidden xl:min-w-32"
+              className="h-6 w-auto min-w-28 object-contain dark:hidden 2xl:min-w-32"
             />
             <Image
               src="/logos/LOGO_VAR_03_LM.svg"
@@ -202,16 +204,16 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               width={0}
               height={0}
               sizes="100vw"
-              className="hidden h-6 w-auto min-w-28 object-contain dark:block xl:min-w-32"
+              className="hidden h-6 w-auto min-w-28 object-contain dark:block 2xl:min-w-32"
             />
           </Link>
 
-          <div className="hidden shrink-0 items-center gap-5 border-l border-foreground/10 pl-6 xl:flex">
+          <div className="hidden shrink-0 items-center gap-5 border-l border-foreground/10 pl-6 2xl:flex">
             <nav
-              className="hidden min-w-0 items-center xl:flex"
+              className="hidden min-w-0 items-center 2xl:flex"
               aria-label={t("main_nav_label")}
             >
-              <div className="flex min-w-0 items-center gap-6 xl:gap-8">
+              <div className="flex min-w-0 items-center gap-6 2xl:gap-8">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.href}
@@ -225,17 +227,31 @@ export const Header = React.memo(function Header(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="flex min-w-0 items-center justify-end gap-6 xl:flex-1 xl:gap-8">
-          <div className="hidden shrink-0 items-center gap-5 xl:flex">
+        <div className="flex min-w-0 items-center justify-end gap-6 2xl:flex-1 2xl:gap-8">
+          <div className="hidden shrink-0 items-center gap-4 2xl:flex">
             <LanguageSwitcher />
             <ThemeToggle />
+            <a
+              href={dashboardHref}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-primary px-4 text-sm font-medium whitespace-nowrap text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            >
+              <span>{t("client_area")}</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                size={16}
+                weight="regular"
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
           </div>
 
           <button
             ref={toggleButtonRef}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary xl:hidden"
+            className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary 2xl:hidden"
             aria-label={isOpen ? t("close_menu") : t("open_menu")}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -317,6 +333,21 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 className="mt-10 border-t border-foreground/10 pt-6 md:mt-14 md:pt-8"
               >
                 <div className="flex flex-col gap-4">
+                  <a
+                    href={dashboardHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-primary px-5 text-sm font-medium text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                  >
+                    <span>{t("client_area")}</span>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      size={16}
+                      weight="regular"
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/60">
                     {t("preferences")}
                   </span>
