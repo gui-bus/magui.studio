@@ -85,18 +85,5 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@swc/core",
-      "esbuild",
-      "msw",
-      "puppeteer",
-      "sharp",
-      "unrs-resolver",
-      "vue-demi",
-      "husky"
-    ]
   }
 }
