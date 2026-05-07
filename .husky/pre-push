@@ -1,1 +1,2 @@
-pnpm build
+pnpm check-i18n
+pnpm typecheck
