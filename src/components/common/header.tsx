@@ -5,9 +5,9 @@ import * as React from "react"
 import { useTranslations } from "next-intl"
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import { ArrowUpRight } from "@phosphor-icons/react"
 
 import { Link } from "@/src/i18n/navigation"
+import { ArrowUpRight } from "@phosphor-icons/react"
 import { AnimatePresence, m } from "framer-motion"
 
 import { NavLink } from "@/src/components/ui/navLink"

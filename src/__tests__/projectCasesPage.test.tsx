@@ -44,7 +44,11 @@ describe("project case routes", () => {
   it("generates static params for every locale and project slug", () => {
     const params = generateStaticParams()
 
-    expect(params).toHaveLength(6)
+    expect(params).toHaveLength(8)
+    expect(params).toContainEqual({
+      locale: "pt",
+      slug: "portfolio",
+    })
     expect(params).toContainEqual({
       locale: "pt",
       slug: "powervet",

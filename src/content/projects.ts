@@ -128,9 +128,7 @@ export const projectCases: readonly ProjectCaseRecord[] = [
         oklch: "oklch(0.925 0.005 214.3)",
       },
     ],
-    typography: [
-      { name: "Geist Sans", category: "Heading & Body" },
-    ],
+    typography: [{ name: "Geist Sans", category: "Heading & Body" }],
     content: {
       pt: {
         title: "Portfolio GUIBUS",
@@ -146,12 +144,7 @@ export const projectCases: readonly ProjectCaseRecord[] = [
         scope: "Portfólio Pessoal e Vitrine Técnica",
         role: "Arquitetura, Design e Desenvolvimento",
         year: "2026",
-        stack: [
-          "Next.js",
-          "Tailwind CSS",
-          "Framer Motion",
-          "TypeScript",
-        ],
+        stack: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
       },
       en: {
         title: "Portfolio GUIBUS",
@@ -167,12 +160,7 @@ export const projectCases: readonly ProjectCaseRecord[] = [
         scope: "Personal Portfolio & Technical Showcase",
         role: "Architecture, Design, and Development",
         year: "2026",
-        stack: [
-          "Next.js",
-          "Tailwind CSS",
-          "Framer Motion",
-          "TypeScript",
-        ],
+        stack: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
       },
     },
   },

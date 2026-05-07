@@ -10,7 +10,12 @@ describe("project cases content", () => {
   it("exposes a case for every slug", () => {
     const slugs = getProjectCaseSlugs()
 
-    expect(slugs).toEqual(["apareca-e-venda", "powervet", "horizon-travels"])
+    expect(slugs).toEqual([
+      "apareca-e-venda",
+      "portfolio",
+      "powervet",
+      "horizon-travels",
+    ])
 
     for (const slug of slugs) {
       expect(getProjectCaseBySlug(slug, "pt")).not.toBeNull()
@@ -22,17 +27,21 @@ describe("project cases content", () => {
     const cases = getProjectCases("pt")
     const adjacent = getAdjacentProjectCases("powervet", "pt")
 
-    expect(cases).toHaveLength(3)
+    expect(cases).toHaveLength(4)
     expect(cases[0]).toMatchObject({
       sector: "Infoprodutos e Posicionamento",
       scope: "Landing Page de Alta Conversão",
       year: "2026",
     })
-    expect(cases[1]?.stack).toHaveLength(4)
-    expect(cases[2]?.role).toBe(
+    expect(cases[1]).toMatchObject({
+      slug: "portfolio",
+      title: "Portfolio GUIBUS",
+    })
+    expect(cases[2]?.stack).toHaveLength(4)
+    expect(cases[3]?.role).toBe(
       "Conceito Visual, UI Design e Desenvolvimento Full-stack"
     )
-    expect(adjacent?.previousProject.slug).toBe("apareca-e-venda")
+    expect(adjacent?.previousProject.slug).toBe("portfolio")
     expect(adjacent?.nextProject.slug).toBe("horizon-travels")
   })
 })
