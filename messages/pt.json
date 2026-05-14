@@ -76,12 +76,7 @@
       "panel_eyebrow": "O Estúdio",
       "panel_title": "Rigor visual.",
       "panel_description": "Acreditamos que uma boa interface nasce da proporção, do contraste e de decisões visuais feitas com critério técnico.",
-      "pillars": [
-        "Clareza",
-        "Estética",
-        "Autoridade",
-        "Rigor"
-      ],
+      "pillars": ["Clareza", "Estética", "Autoridade", "Rigor"],
       "sidebar_description": "Nosso foco está no equilíbrio: tipografia resolvida, composições seguras e atenção ao que o usuário realmente percebe.",
       "focus": "Atratividade visual e clareza técnica.",
       "focus_label": "Padrão MAGUI"
@@ -532,14 +527,14 @@
         "name": "Maisa",
         "role": "Estratégia + Operação",
         "description": "Maisa organiza a frente estratégica e operacional do estúdio, trazendo clareza para decisões, prioridades e condução dos projetos.",
-        "image": "/images/profile_maisa.png",
+        "image": "/images/maisa.png",
         "imageAlt": "Retrato de Maisa, cofundadora da MAGUI"
       },
       {
         "name": "Guilherme",
         "role": "Desenvolvimento + Design",
         "description": "Desenvolvedor e designer, Guilherme conduz a construção das interfaces e garante que a direção criativa chegue ao código com precisão e consistência.",
-        "image": "/images/profile_guilherme.jpg",
+        "image": "/images/guilherme.png",
         "imageAlt": "Retrato de Guilherme, fundador da MAGUI"
       }
     ],

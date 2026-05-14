@@ -7,7 +7,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 
 import { Link } from "@/src/i18n/navigation"
-import { ArrowUpRight } from "@phosphor-icons/react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { AnimatePresence, m } from "framer-motion"
 
 import { NavLink } from "@/src/components/ui/navLink"
@@ -25,7 +25,7 @@ const LanguageSwitcher = dynamic(
     ),
   {
     loading: (): React.JSX.Element => (
-      <div className="h-9 w-24 animate-pulse rounded-full border border-border/50 bg-muted/20" />
+      <div className="h-9 w-24 animate-pulse rounded-none border border-border/50 bg-muted/20" />
     ),
   }
 )
@@ -37,7 +37,7 @@ const ThemeToggle = dynamic(
     ),
   {
     loading: (): React.JSX.Element => (
-      <div className="h-9 w-18 animate-pulse rounded-full border border-border/50 bg-muted/20" />
+      <div className="h-9 w-18 animate-pulse rounded-none border border-border/50 bg-muted/20" />
     ),
   }
 )
@@ -235,10 +235,10 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               href={dashboardHref}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-primary px-4 text-sm font-medium whitespace-nowrap text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-none bg-brand-primary px-4 text-sm font-medium whitespace-nowrap text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
               <span>{t("client_area")}</span>
-              <ArrowUpRight
+              <ArrowUpRightIcon
                 aria-hidden="true"
                 size={16}
                 weight="regular"
@@ -251,7 +251,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
             ref={toggleButtonRef}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-full border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary 2xl:hidden"
+            className="relative z-220 flex h-12 w-12 flex-col items-center justify-center gap-1.5 rounded-none border border-foreground/5 bg-foreground/5 backdrop-blur-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary 2xl:hidden"
             aria-label={isOpen ? t("close_menu") : t("open_menu")}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -262,7 +262,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 y: isOpen ? 4 : 0,
                 width: isOpen ? 24 : 16,
               }}
-              className="h-0.5 bg-foreground rounded-full origin-center"
+              className="h-0.5 bg-foreground rounded-none origin-center"
               aria-hidden="true"
             />
             <m.span
@@ -271,7 +271,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 x: isOpen ? 10 : 0,
                 width: 24,
               }}
-              className="h-0.5 bg-foreground rounded-full"
+              className="h-0.5 bg-foreground rounded-none"
               aria-hidden="true"
             />
             <m.span
@@ -280,7 +280,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                 y: isOpen ? -4 : 0,
                 width: isOpen ? 24 : 16,
               }}
-              className="h-0.5 bg-foreground rounded-full origin-center"
+              className="h-0.5 bg-foreground rounded-none origin-center"
               aria-hidden="true"
             />
           </button>
@@ -338,10 +338,10 @@ export const Header = React.memo(function Header(): React.JSX.Element {
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-primary px-5 text-sm font-medium text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                    className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-none bg-brand-primary px-5 text-sm font-medium text-white shadow-lg shadow-brand-primary/12 transition-all duration-300 hover:bg-brand-primary/92 hover:shadow-xl hover:shadow-brand-primary/18 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                   >
                     <span>{t("client_area")}</span>
-                    <ArrowUpRight
+                    <ArrowUpRightIcon
                       aria-hidden="true"
                       size={16}
                       weight="regular"
@@ -364,7 +364,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
               >
                 <div className="flex flex-wrap items-center gap-4">
                   <span>{t("studio_year")}</span>
-                  <span className="h-1 w-1 rounded-full bg-brand-primary/40" />
+                  <span className="h-1 w-1 rounded-none bg-brand-primary/40" />
                   <span>{t("technical_rigor")}</span>
                 </div>
               </m.div>

@@ -48,18 +48,12 @@ export async function Manifesto(): Promise<React.JSX.Element> {
         </div>
 
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-          <article className="space-y-6 xl:col-span-8">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(19rem,0.9fr)]">
-              <div
-                className="relative overflow-hidden border border-foreground/8 bg-background"
-                style={{
-                  clipPath:
-                    "polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 0 100%)",
-                }}
-              >
+          <article className="xl:col-span-8">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(20rem,0.85fr)]">
+              <div className="overflow-hidden rounded-4xl bg-[#F0F0F0]">
                 <div className="relative h-88 w-full md:h-120">
                   <Image
-                    src="/images/manifesto.webp"
+                    src="/images/AVATAR.png"
                     alt={t("image_alt")}
                     fill
                     sizes="(max-width: 1280px) 100vw, 56vw"
@@ -67,16 +61,21 @@ export async function Manifesto(): Promise<React.JSX.Element> {
                   />
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
-                  {highlights.map((highlight) => (
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {highlights.map((highlight, index) => (
                     <div
                       key={highlight.id}
-                      className="bg-black/18 px-6 py-12 md:py-10 text-white md:text-black dark:text-white backdrop-blur-[2px]"
+                      className="relative px-7 py-8 md:px-8 md:py-10"
                     >
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em]">
+                      <span className="absolute right-7 top-6 font-heading text-5xl font-black leading-none text-[#161616]/6">
+                        0{index + 1}
+                      </span>
+
+                      <p className="relative text-[10px] font-black uppercase tracking-[0.35em] text-[#161616]/45">
                         {highlight.label}
                       </p>
-                      <p className="mt-3 max-w-md text-lg font-medium leading-snug">
+
+                      <p className="relative mt-4 max-w-md text-lg font-semibold leading-snug text-[#161616]">
                         {highlight.description}
                       </p>
                     </div>
@@ -84,29 +83,36 @@ export async function Manifesto(): Promise<React.JSX.Element> {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between gap-6">
-                <div className="space-y-4  bg-background px-7 py-7">
-                  <span className="inline-flex rounded-full  px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-foreground/72 dark:border-white/12 dark:text-white/70">
+              <div className="flex flex-col gap-6">
+                <div className="rounded-4xl bg-[#161616] p-7 text-[#F0F0F0] md:p-8">
+                  <span className="inline-flex rounded-full bg-white/8 px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-[#F0F0F0]/60">
                     {t("badge")}
                   </span>
 
-                  <div className="space-y-3">
-                    <h3 className="font-heading text-4xl font-black uppercase tracking-[-0.05em] text-foreground md:text-5xl dark:text-white">
-                      {t("title")}
-                    </h3>
-                    <p className="text-lg font-medium leading-relaxed text-foreground/68 dark:text-white/68">
-                      {t("panel_description")}
-                    </p>
-                  </div>
+                  <h3 className="mt-8 font-heading text-4xl font-black uppercase leading-[0.9] tracking-tighter md:text-5xl">
+                    {t("title")}
+                  </h3>
+
+                  <p className="mt-5 text-lg font-medium leading-relaxed text-[#F0F0F0]/72">
+                    {t("panel_description")}
+                  </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-px overflow-hidden border border-foreground/8 bg-foreground/8 dark:border-white/10 dark:bg-white/8">
-                  {principles.map((item) => (
+                <div className="overflow-hidden rounded-4xl bg-[#F0F0F0]">
+                  {principles.map((item, index) => (
                     <div
                       key={item}
-                      className="bg-background px-6 py-6 text-base font-medium leading-relaxed text-foreground/72 dark:bg-white/4 dark:text-white/72"
+                      className="grid grid-cols-[3rem_1fr] gap-4 px-6 py-5 md:px-7"
                     >
-                      {item}
+                      <div className="flex items-start justify-center">
+                        <span className="font-heading text-lg font-black text-[#161616]/20">
+                          0{index + 1}
+                        </span>
+                      </div>
+
+                      <p className="text-base font-medium leading-relaxed text-[#161616]/72">
+                        {item}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -122,7 +128,7 @@ export async function Manifesto(): Promise<React.JSX.Element> {
                 </span>
 
                 <div className="space-y-4">
-                  <h3 className="font-heading text-4xl font-black uppercase leading-[0.88] tracking-[-0.05em] md:text-6xl">
+                  <h3 className="font-heading text-4xl font-black uppercase leading-[0.88] tracking-tighter md:text-6xl">
                     {t("panel_title")}
                   </h3>
                   <p className="text-lg font-medium leading-relaxed text-white/76 dark:text-black/72">

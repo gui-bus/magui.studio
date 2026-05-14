@@ -76,12 +76,7 @@
       "panel_eyebrow": "The Studio",
       "panel_title": "Visual rigor.",
       "panel_description": "We believe a good interface is born from proportion, contrast, and visual decisions made with technical criteria.",
-      "pillars": [
-        "Clarity",
-        "Aesthetics",
-        "Authority",
-        "Rigor"
-      ],
+      "pillars": ["Clarity", "Aesthetics", "Authority", "Rigor"],
       "sidebar_description": "Our focus is on balance: resolved typography, confident compositions, and attention to what the user really perceives.",
       "focus": "Visual appeal and technical clarity.",
       "focus_label": "MAGUI Standard"
@@ -405,11 +400,7 @@
         "label": "Evolutionary support",
         "image": "/images/landing.webp",
         "description": "Project launch, access delivery, and the start of support to ensure the solution performs as expected in the real world and continues to evolve.",
-        "details": [
-          "Production deploy",
-          "Initial monitoring",
-          "Support cycle"
-        ]
+        "details": ["Production deploy", "Initial monitoring", "Support cycle"]
       }
     ],
     "qa_title": "Technical Care",
@@ -532,14 +523,14 @@
         "name": "Maisa",
         "role": "Strategy + Operations",
         "description": "Maisa leads the studio's strategic and operational side, bringing clarity to decisions, priorities, and project coordination.",
-        "image": "/images/profile_maisa.png",
+        "image": "/images/maisa.png",
         "imageAlt": "Portrait of Maisa, MAGUI cofounder"
       },
       {
         "name": "Guilherme",
         "role": "Development + Design",
         "description": "A developer and designer, Guilherme leads interface implementation and ensures the creative direction reaches the code with precision and consistency.",
-        "image": "/images/profile_guilherme.jpg",
+        "image": "/images/guilherme.png",
         "imageAlt": "Portrait of Guilherme, MAGUI founder"
       }
     ],
