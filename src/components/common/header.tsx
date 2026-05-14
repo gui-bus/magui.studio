@@ -176,7 +176,7 @@ export const Header = React.memo(function Header(): React.JSX.Element {
     <>
       <header
         className={cn(
-          "fixed top-0 left-1/2 -translate-x-1/2 flex h-24 w-full max-w-440 items-center justify-between px-6 transition-all duration-700 md:px-10 2xl:px-20",
+          "fixed top-0 left-1/2 -translate-x-1/2 flex h-24 w-full max-w-440 items-center justify-between px-6 transition-all duration-700 md:px-10 2xl:px-20 bg-white! dark:bg-[#161616]!",
           isOpen ? "z-220" : "z-100",
           scrolled || isOpen
             ? "bg-background/80 backdrop-blur-xl"

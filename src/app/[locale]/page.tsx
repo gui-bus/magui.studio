@@ -102,7 +102,7 @@ export default async function Page({
       />
       <ScrollSpy />
       <Header />
-      <main className="pt-24 md:pt-32">
+      <main className="pt-24">
         <Hero />
         <Value />
         <Showcase />
