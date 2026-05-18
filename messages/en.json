@@ -214,8 +214,8 @@
     },
     "CTA": {
       "eyebrow": "Contact",
-      "title": "Let’s talk about your project.",
-      "description": "Share the essentials so the studio can understand the request clearly.",
+      "title": "Let’s open this conversation.",
+      "description": "If MAGUI feels right for your brand’s current moment, leave your contact details and a brief context so we can continue from there.",
       "cardTitle": "What to expect",
       "cardDescription": "A direct form built to understand scope, timing, and priority without turning the first contact into a tiring task.",
       "highlights": {
@@ -226,19 +226,16 @@
     },
     "ContactDrawer": {
       "eyebrow": "Proposal",
-      "title": "Request Proposal",
-      "description": "Fill in the essentials so we can align scope, priority, and timing from the very first contact.",
+      "title": "Next step.",
+      "description": "Share the essentials and MAGUI will reply with a clearer read of what makes sense to build now.",
       "close": "Close form",
       "referralLabel": "Referral active",
       "referralText": "{name} referred you. That information will be considered in our contact.",
-      "successTitle": "Inquiry received.",
-      "successMessage": "The information was sent successfully. The next step is reviewing the context to move forward with the service.",
+      "successTitle": "Conversation started.",
+      "successMessage": "Your message is with us. We will continue the conversation with you soon.",
       "errorMessage": "It could not be sent right now. Please try again in a moment.",
       "submit": "Send Inquiry",
       "submitting": "Sending",
-      "footerNote": "",
-      "notProvided": "Not provided",
-      "emailSubject": "New project inquiry: {name}",
       "fields": {
         "name": {
           "label": "Name",
@@ -250,96 +247,37 @@
         },
         "phone": {
           "label": "WhatsApp / Phone",
-          "placeholder": "+00 00 00000-0000"
+          "placeholder": "(00) 0 0000-0000"
         },
-        "link": {
-          "label": "Current site or Instagram",
-          "placeholder": "https://..."
+        "website": {
+          "label": "Website",
+          "placeholder": "https://magui.studio"
+        },
+        "instagram": {
+          "label": "Instagram",
+          "placeholder": "_magui.studio"
         },
         "company": {
           "label": "Company",
           "placeholder": "Brand or project name"
         },
-        "projectType": {
-          "label": "Project type"
-        },
-        "projectTypeOther": {
-          "label": "Specify the project type",
-          "placeholder": "e.g. Branding, Mobile App, etc."
-        },
-        "budget": {
-          "label": "Budget range"
-        },
-        "deadline": {
-          "label": "Expected timeline"
-        },
         "message": {
           "label": "Project Context",
-          "placeholder": "Summarize the project, the main goal, and any important references."
+          "placeholder": "Share what you want to launch, improve, or structure."
         }
-      },
-      "projectTypes": {
-        "landing": "Landing Page",
-        "sales": "Sales Page",
-        "institutional": "Institutional Website",
-        "other": "Other"
-      },
-      "budgets": {
-        "range1": "Up to R$ 3k",
-        "range2": "R$ 3k to R$ 6k",
-        "range3": "R$ 6k to R$ 10k",
-        "range4": "Above R$ 10k"
-      },
-      "deadlines": {
-        "urgent": "Urgent",
-        "thirtyDays": "Within 30 days",
-        "sixtyDays": "30 to 60 days",
-        "flexible": "Flexible"
       },
       "validation": {
-        "nameMin": "Enter at least 2 characters.",
+        "companyMin": "Enter the company name with at least 2 characters.",
+        "contactMin": "Enter at least 2 characters for the contact name.",
         "emailInvalid": "Enter a valid email.",
+        "emailOrPhoneRequired": "Enter at least one contact method: email or phone.",
         "phoneMin": "Enter a valid contact number.",
-        "projectTypeRequired": "Select a project type.",
-        "projectTypeOtherRequired": "Please specify the project type.",
-        "budgetRequired": "Select a budget range.",
-        "deadlineRequired": "Select a timeline.",
-        "messageMin": "Add at least 10 characters of context.",
-        "stepError": "Review the highlighted fields before continuing."
-      },
-      "sections": {
-        "identity": {
-          "eyebrow": "Contact",
-          "title": "Who is leading this request?",
-          "description": "The key details the studio needs to know who to contact and how to reply."
-        },
-        "scope": {
-          "eyebrow": "Project",
-          "title": "What do you need right now?",
-          "description": "Share the main goal and the format that best matches what you want to build."
-        },
-        "delivery": {
-          "eyebrow": "Scope",
-          "title": "What is the timing of this request?",
-          "description": "These choices help calibrate proposal, priority, and delivery rhythm."
-        }
-      },
-      "stepper": {
-        "identity": {
-          "title": "Contact"
-        },
-        "scope": {
-          "title": "Project"
-        },
-        "delivery": {
-          "title": "Scope"
-        }
+        "websiteInvalid": "Enter a valid website.",
+        "instagramInvalid": "Enter a valid Instagram handle.",
+        "messageMin": "Add at least 5 characters of context."
       },
       "submitBlock": {
-        "eyebrow": "Submit",
-        "note": "After submission, the studio reviews the context and replies with clear direction on next steps.",
-        "previous": "Back",
-        "next": "Continue"
+        "eyebrow": "Submit"
       },
       "requiredNote": "Fields marked with * are required.",
       "requiredNotePrefix": "Fields marked with",

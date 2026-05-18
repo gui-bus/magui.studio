@@ -214,8 +214,8 @@
     },
     "CTA": {
       "eyebrow": "Contato",
-      "title": "Vamos conversar sobre o seu projeto.",
-      "description": "Compartilhe o essencial para o estúdio entender a demanda com clareza.",
+      "title": "Seu projeto começa aqui.",
+      "description": "Deixe seus dados e um breve contexto. A partir disso, a MAGUI avalia o momento da sua marca e retorna para o próximo passo.",
       "cardTitle": "O que você pode esperar",
       "cardDescription": "Um formulário direto para entender escopo, momento e prioridade sem transformar o primeiro contato em uma tarefa cansativa.",
       "highlights": {
@@ -226,19 +226,16 @@
     },
     "ContactDrawer": {
       "eyebrow": "Proposta",
-      "title": "Solicitar Proposta",
-      "description": "Preencha o essencial para alinhar escopo, prioridade e momento do projeto logo no primeiro contato.",
+      "title": "Conte o essencial.",
+      "description": "Preencha as informações principais sobre sua marca e o que você quer construir. Depois disso, a MAGUI entra em contato com direção clara.",
       "close": "Fechar formulário",
       "referralLabel": "Indicação ativa",
       "referralText": "{name} indicou você. Essa informação será considerada no nosso contato.",
-      "successTitle": "Solicitação recebida.",
-      "successMessage": "As informações foram enviadas. O próximo passo é a análise do contexto para darmos sequência ao atendimento.",
+      "successTitle": "Recebido por aqui.",
+      "successMessage": "A MAGUI já recebeu seu envio. Em breve você recebe nosso retorno.",
       "errorMessage": "Não foi possível enviar agora. Tente novamente em instantes.",
       "submit": "Enviar Solicitação",
       "submitting": "Enviando",
-      "footerNote": "",
-      "notProvided": "Não informado",
-      "emailSubject": "Nova solicitação de projeto: {name}",
       "fields": {
         "name": {
           "label": "Nome",
@@ -250,96 +247,37 @@
         },
         "phone": {
           "label": "WhatsApp / Telefone",
-          "placeholder": "(00) 00000-0000"
+          "placeholder": "(00) 0 0000-0000"
         },
-        "link": {
-          "label": "Site atual ou Instagram",
-          "placeholder": "https://..."
+        "website": {
+          "label": "Site",
+          "placeholder": "https://magui.studio"
+        },
+        "instagram": {
+          "label": "Instagram",
+          "placeholder": "_magui.studio"
         },
         "company": {
           "label": "Empresa",
           "placeholder": "Nome da marca ou projeto"
         },
-        "projectType": {
-          "label": "Tipo de projeto"
-        },
-        "projectTypeOther": {
-          "label": "Especifique o tipo de projeto",
-          "placeholder": "Ex: Branding, App Mobile, etc."
-        },
-        "budget": {
-          "label": "Faixa de investimento"
-        },
-        "deadline": {
-          "label": "Prazo esperado"
-        },
         "message": {
           "label": "Contexto do Projeto",
-          "placeholder": "Resuma o projeto, o objetivo principal e qualquer referência importante."
+          "placeholder": "Conte o que você quer lançar, ajustar ou estruturar."
         }
-      },
-      "projectTypes": {
-        "landing": "Landing Page",
-        "sales": "Página de Vendas",
-        "institutional": "Site Institucional",
-        "other": "Outro"
-      },
-      "budgets": {
-        "range1": "Até R$ 3 mil",
-        "range2": "R$ 3 mil a R$ 6 mil",
-        "range3": "R$ 6 mil a R$ 10 mil",
-        "range4": "Acima de R$ 10 mil"
-      },
-      "deadlines": {
-        "urgent": "Urgente",
-        "thirtyDays": "Até 30 dias",
-        "sixtyDays": "30 a 60 dias",
-        "flexible": "Sem pressa"
       },
       "validation": {
-        "nameMin": "Informe pelo menos 2 caracteres.",
+        "companyMin": "Informe o nome da empresa com pelo menos 2 caracteres.",
+        "contactMin": "Informe pelo menos 2 caracteres no nome.",
         "emailInvalid": "Digite um e-mail válido.",
+        "emailOrPhoneRequired": "Informe pelo menos um entre e-mail e telefone.",
         "phoneMin": "Informe um número de contato válido.",
-        "projectTypeRequired": "Selecione o tipo de projeto.",
-        "projectTypeOtherRequired": "Por favor, especifique o tipo de projeto.",
-        "budgetRequired": "Selecione a faixa de investimento.",
-        "deadlineRequired": "Selecione o prazo esperado.",
-        "messageMin": "Explique o contexto com pelo menos 10 caracteres.",
-        "stepError": "Revise os campos destacados antes de continuar."
-      },
-      "sections": {
-        "identity": {
-          "eyebrow": "Contato",
-          "title": "Quem está à frente da demanda?",
-          "description": "Os dados principais para o estúdio entender com quem falar e como retornar."
-        },
-        "scope": {
-          "eyebrow": "Projeto",
-          "title": "O que você precisa agora?",
-          "description": "Conte o objetivo principal e o formato que mais se aproxima do que você quer construir."
-        },
-        "delivery": {
-          "eyebrow": "Escopo",
-          "title": "Qual é o momento da demanda?",
-          "description": "Essas escolhas ajudam a calibrar proposta, prioridade e ritmo de entrega."
-        }
-      },
-      "stepper": {
-        "identity": {
-          "title": "Contato"
-        },
-        "scope": {
-          "title": "Projeto"
-        },
-        "delivery": {
-          "title": "Escopo"
-        }
+        "websiteInvalid": "Digite um site válido.",
+        "instagramInvalid": "Digite um Instagram válido.",
+        "messageMin": "Explique o contexto com pelo menos 5 caracteres."
       },
       "submitBlock": {
-        "eyebrow": "Envio",
-        "note": "Depois do envio, o estúdio revisa o contexto e responde com direção clara sobre próximos passos.",
-        "previous": "Voltar",
-        "next": "Continuar"
+        "eyebrow": "Envio"
       },
       "requiredNote": "Campos com * são obrigatórios.",
       "requiredNotePrefix": "Campos com",

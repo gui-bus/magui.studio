@@ -94,20 +94,22 @@ test.describe("Critical flows", () => {
 
   test("submits the contact inquiry successfully", async ({ page }) => {
     await setLocaleCookie(page, "pt")
-    await page.route("https://api.web3forms.com/submit", async (route) => {
+    await page.route("**/api/leads", async (route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify({ success: true }),
+        body: JSON.stringify({ success: true, created: true }),
       })
     })
 
     await page.goto("/contato")
     await acceptCookiesIfVisible(page)
+    await page.waitForTimeout(1600)
 
+    await page.getByLabel("Empresa").fill("MAGUI")
     await page.getByLabel("Nome").fill("Guilherme")
     await page.getByLabel("E-mail").fill("guibus.dev@gmail.com")
-    await page.getByLabel("Empresa").fill("MAGUI")
+    await page.getByLabel(/Site/i).fill("https://magui.studio")
     await page
       .getByLabel(/Contexto/i)
       .fill("Quero uma landing page com posicionamento premium.")

@@ -13,6 +13,7 @@ export async function FAQ(): Promise<React.JSX.Element> {
   const idT = await getTranslations("Index.Ids")
   const messages = await getMessages()
   const items = messages.Index.FAQ.items as FAQItem[]
+  const [faqTitlePrimary, faqTitleAccent = ""] = t("title").split(" ")
 
   return (
     <Section
@@ -30,8 +31,13 @@ export async function FAQ(): Promise<React.JSX.Element> {
           </div>
 
           <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.65fr)] xl:items-end">
-            <h2 className="font-heading text-5xl font-black uppercase leading-[0.74] tracking-[-0.06em] text-foreground md:text-8xl 2xl:text-[136px]">
-              <StaggeredText text={t("title")} />
+            <h2 className="font-heading text-5xl font-black uppercase leading-[1.2] tracking-[-0.06em] text-foreground md:text-8xl 2xl:text-[136px]">
+              <span className="block">
+                <StaggeredText text={faqTitlePrimary} />
+              </span>
+              <span className="mt-3 block text-brand-primary">
+                <StaggeredText text={faqTitleAccent} />
+              </span>
             </h2>
           </div>
         </div>

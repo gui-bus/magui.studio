@@ -17,6 +17,7 @@ import {
 import { AnimatePresence, m } from "framer-motion"
 
 import { Section } from "@/src/components/ui/section"
+import { StaggeredText } from "@/src/components/ui/staggeredText"
 
 import { trackEvent } from "@/src/lib/analytics"
 
@@ -36,6 +37,9 @@ export function Showcase(): React.JSX.Element {
     [locale]
   )
   const hasMultipleProjects = projects.length > 1
+  const showcaseTitleParts = t("title").split(" ")
+  const showcaseTitlePrimary = showcaseTitleParts.slice(0, -1).join(" ")
+  const showcaseTitleAccent = showcaseTitleParts.slice(-1).join(" ")
 
   const [currentIndex, setCurrentIndex] = React.useState(0)
   const activeProject = projects[currentIndex]
@@ -93,7 +97,12 @@ export function Showcase(): React.JSX.Element {
             </div>
 
             <h2 className="max-w-5xl font-heading text-4xl font-black uppercase leading-[0.86] tracking-[-0.05em] sm:text-6xl lg:text-8xl">
-              {t("title")}
+              <span className="block">
+                <StaggeredText text={showcaseTitlePrimary} />
+              </span>
+              <span className="mt-3 block text-brand-primary">
+                <StaggeredText text={showcaseTitleAccent} />
+              </span>
             </h2>
 
             <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">

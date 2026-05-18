@@ -6,7 +6,9 @@ const publicEnvSchema = z.object({
 })
 
 const serverEnvSchema = z.object({
-  WEB3FORMS_ACCESS_KEY: z.string().uuid(),
+  DASHBOARD_PUBLIC_LEADS_URL: z.string().url(),
+  DASHBOARD_PUBLIC_LEADS_KEY: z.string().min(1),
+  DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET: z.string().min(1),
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
@@ -30,7 +32,10 @@ export type ServerEnv = z.infer<typeof serverEnvSchema>
 
 export function getServerEnv(): ServerEnv {
   const parsedServerEnv = serverEnvSchema.safeParse({
-    WEB3FORMS_ACCESS_KEY: process.env.WEB3FORMS_ACCESS_KEY,
+    DASHBOARD_PUBLIC_LEADS_URL: process.env.DASHBOARD_PUBLIC_LEADS_URL,
+    DASHBOARD_PUBLIC_LEADS_KEY: process.env.DASHBOARD_PUBLIC_LEADS_KEY,
+    DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET:
+      process.env.DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET,
     NODE_ENV: process.env.NODE_ENV,
   })
 

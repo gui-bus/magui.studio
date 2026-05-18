@@ -4,7 +4,10 @@ import "@testing-library/jest-dom/vitest"
 import { vi } from "vitest"
 
 process.env.NEXT_PUBLIC_SITE_URL = "https://example.com"
-process.env.WEB3FORMS_ACCESS_KEY = "4fc93430-7b53-491f-a7ed-8cb2c3b3fd46"
+process.env.DASHBOARD_PUBLIC_LEADS_URL =
+  "https://dashboard.magui.studio/api/public/leads"
+process.env.DASHBOARD_PUBLIC_LEADS_KEY = "shared-key"
+process.env.DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET = "signing-secret"
 
 const translationData: Record<string, Record<string, unknown>> = {
   "Index.About": {

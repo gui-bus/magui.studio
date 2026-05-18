@@ -8,7 +8,9 @@ describe("env schema", () => {
   })
 
   const serverEnvSchema = z.object({
-    WEB3FORMS_ACCESS_KEY: z.string().uuid(),
+    DASHBOARD_PUBLIC_LEADS_URL: z.string().url(),
+    DASHBOARD_PUBLIC_LEADS_KEY: z.string().min(1),
+    DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET: z.string().min(1),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -23,7 +25,10 @@ describe("env schema", () => {
 
   it("should validate server secrets", () => {
     const result = serverEnvSchema.safeParse({
-      WEB3FORMS_ACCESS_KEY: "4fc93430-7b53-491f-a7ed-8cb2c3b3fd46",
+      DASHBOARD_PUBLIC_LEADS_URL:
+        "https://dashboard.magui.studio/api/public/leads",
+      DASHBOARD_PUBLIC_LEADS_KEY: "shared-key",
+      DASHBOARD_PUBLIC_LEADS_SIGNING_SECRET: "signing-secret",
     })
     expect(result.success).toBe(true)
   })

@@ -1,50 +1,81 @@
 import { z } from "zod"
 
 export interface ProjectInquiryValidationMessages {
-  nameMin: string
+  companyMin: string
+  contactMin: string
   emailInvalid: string
+  emailOrPhoneRequired: string
   phoneMin: string
-  projectTypeRequired: string
-  projectTypeOtherRequired: string
-  budgetRequired: string
-  deadlineRequired: string
+  websiteInvalid: string
+  instagramInvalid: string
   messageMin: string
 }
+
+const optionalWebsiteField = (invalidMessage: string) =>
+  z
+    .string()
+    .trim()
+    .refine(
+      (value) =>
+        value.length === 0 ||
+        /^(https?:\/\/)?[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([/?#].*)?$/.test(value),
+      invalidMessage
+    )
+
+const optionalInstagramField = (invalidMessage: string) =>
+  z
+    .string()
+    .trim()
+    .refine(
+      (value) =>
+        value.length === 0 ||
+        /^(@)?[a-zA-Z0-9._]+$/.test(value) ||
+        /^https?:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9._/?=&-]+$/i.test(value),
+      invalidMessage
+    )
 
 export function createProjectInquirySchema(
   messages: ProjectInquiryValidationMessages
 ) {
   return z
     .object({
-      name: z.string().trim().min(2, messages.nameMin),
-      email: z.string().trim().email(messages.emailInvalid),
-      phone: z
+      company: z.string().trim().min(2, messages.companyMin).max(120),
+      name: z
         .string()
         .trim()
         .refine(
-          (value) => value.replace(/\D/g, "").length >= 10,
+          (value) => value.length === 0 || value.length >= 2,
+          messages.contactMin
+        ),
+      email: z
+        .string()
+        .trim()
+        .refine(
+          (value) => value.length === 0 || z.email().safeParse(value).success,
+          messages.emailInvalid
+        ),
+      phone: z
+        .string()
+        .trim()
+        .max(24, messages.phoneMin)
+        .refine(
+          (value) => value.length === 0 || value.replace(/\D/g, "").length >= 8,
           messages.phoneMin
         ),
-      link: z.string().trim().optional(),
-      company: z.string().trim().optional(),
-      projectType: z.string().min(1, messages.projectTypeRequired),
-      projectTypeOther: z.string().trim().optional(),
-      budget: z.string().min(1, messages.budgetRequired),
-      deadline: z.string().min(1, messages.deadlineRequired),
-      message: z.string().trim().min(10, messages.messageMin),
+      website: optionalWebsiteField(messages.websiteInvalid),
+      instagram: optionalInstagramField(messages.instagramInvalid),
+      message: z
+        .string()
+        .trim()
+        .refine(
+          (value) => value.length === 0 || value.length >= 5,
+          messages.messageMin
+        ),
     })
-    .refine(
-      (data) => {
-        if (data.projectType === "other" && !data.projectTypeOther) {
-          return false
-        }
-        return true
-      },
-      {
-        message: messages.projectTypeOtherRequired,
-        path: ["projectTypeOther"],
-      }
-    )
+    .refine((data) => Boolean(data.email?.trim() || data.phone?.trim()), {
+      message: messages.emailOrPhoneRequired,
+      path: ["email"],
+    })
 }
 
 export type ProjectInquiryFormData = z.infer<
