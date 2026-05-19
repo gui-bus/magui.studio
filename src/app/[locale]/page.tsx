@@ -12,6 +12,7 @@ import { ScrollSpy } from "@/src/components/common/scrollSpy"
 import { Contact } from "@/src/components/sections/contact"
 import { FAQ } from "@/src/components/sections/faq"
 import { Hero } from "@/src/components/sections/hero"
+import { MaguiConnect } from "@/src/components/sections/maguiConnect"
 import { Services } from "@/src/components/sections/services"
 import { Value } from "@/src/components/sections/value"
 
@@ -107,6 +108,7 @@ export default async function Page({
         <Value />
         <Showcase />
         <Services />
+        <MaguiConnect />
 
         <div className="md:pt-44">
           <CurvedLoop marqueeText={t("text")} speed={1.5} curveAmount={150} />

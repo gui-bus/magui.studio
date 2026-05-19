@@ -8,7 +8,8 @@
       "services": "servicos",
       "process": "processo",
       "faq": "duvidas",
-      "contact": "contato"
+      "contact": "contato",
+      "connect": "magui-connect"
     },
     "Marquee": {
       "text": "ESTRATÉGIA ✦ ENGENHARIA ✦ DESIGN ✦ PERFORMANCE ✦ AUTORIDADE ✦"
@@ -76,7 +77,12 @@
       "panel_eyebrow": "O Estúdio",
       "panel_title": "Rigor visual.",
       "panel_description": "Acreditamos que uma boa interface nasce da proporção, do contraste e de decisões visuais feitas com critério técnico.",
-      "pillars": ["Clareza", "Estética", "Autoridade", "Rigor"],
+      "pillars": [
+        "Clareza",
+        "Estética",
+        "Autoridade",
+        "Rigor"
+      ],
       "sidebar_description": "Nosso foco está no equilíbrio: tipografia resolvida, composições seguras e atenção ao que o usuário realmente percebe.",
       "focus": "Atratividade visual e clareza técnica.",
       "focus_label": "Padrão MAGUI"
@@ -140,7 +146,7 @@
       "eyebrow": "Portfólio Curado",
       "title_primary": "Projetos",
       "title_accent": "em destaque",
-      "description": "Projetos pensados para traduzir posicionamento em presen\u00e7a digital, com dire\u00e7\u00e3o visual forte, clareza estrat\u00e9gica e execu\u00e7\u00e3o de alto n\u00edvel.",
+      "description": "Projetos pensados para traduzir posicionamento em presença digital, com direção visual forte, clareza estratégica e execução de alto nível.",
       "selection_label": "Seleção",
       "selection_description": "Escolha um projeto para ver o essencial antes de entrar no case completo.",
       "projects_nav_label": "Seleção de projetos",
@@ -300,6 +306,27 @@
       "requiredNote": "Campos com * são obrigatórios.",
       "requiredNotePrefix": "Campos com",
       "requiredNoteSuffix": "são obrigatórios."
+    },
+    "MaguiConnect": {
+      "eyebrow": "Linha de Produtos",
+      "title_1": "MAGUI",
+      "title_2": "Connect",
+      "description": "Uma página de links profissional para reunir bio, contato, portfólio, redes sociais e materiais importantes em um único lugar, com mais clareza, direção e potencial de conversão.",
+      "features": [
+        "Centralize sua presença digital",
+        "Destaque os links mais importantes",
+        "Reduza ruído e distrações na jornada",
+        "Facilite o próximo passo de quem chega até você"
+      ],
+      "offer_eyebrow": "Posicionamento Comercial",
+      "offer": "O MAGUI Connect pode entrar como brinde para clientes que fecham projeto com a MAGUI ou ser contratado separadamente como um produto avulso.",
+      "cta": "Quero meu Connect",
+      "image_alt": "Placeholder visual do MAGUI Connect",
+      "card_eyebrow": "Central de Presença Digital",
+      "card_title": "Tudo o que importa da sua marca em um só lugar.",
+      "card_label": "Contratação avulsa",
+      "card_description": "Uma estrutura mais bonita, objetiva e profissional para transformar atenção em clique, contato e oportunidade.",
+      "price": "R$ 497"
     }
   },
   "ContactPage": {
